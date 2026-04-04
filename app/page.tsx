@@ -173,7 +173,7 @@ export default function Home() {
               aria-label="Toggle Aura Mode"
             >
               <Image
-                src="/me1.png" // User's photo
+                src="/me2.png" // User's photo
                 alt="Profile"
                 fill
                 className={`object-contain transition-all duration-700 ${showEasterEgg ? 'grayscale-0 scale-105' : 'grayscale'}`}
