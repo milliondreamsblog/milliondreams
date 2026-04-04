@@ -1,13 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Bot, User, QrCode, X, ArrowRight, Music, Pause, Link } from "lucide-react";
+import { Github, Linkedin, Bot, User, QrCode, X, ArrowRight, Music, Pause, Link as LinkIcon } from "lucide-react";
 import { ExperienceItem } from "./components/ExperienceItem";
 import { GithubGraph } from "./components/GithubGraph";
 import { TechStack } from "./components/TechStack";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTheme } from "next-themes";
-import { QRCodeSVG } from "qrcode.react";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,11 +14,11 @@ import { PomodoroTimer } from "./components/PomodoroTimer";
 import { NeuralNetworkSim } from "./components/NeuralNetworkSim";
 
 import { getMarkdownContent } from "./data/content";
+import { useNav } from "./context/NavContext";
 
 export default function Home() {
   const [time, setTime] = useState<string>("");
-  const [showQR, setShowQR] = useState(false);
-  const [mode, setMode] = useState<"human" | "agent">("human");
+  const { mode } = useNav();
 
   const { setTheme, resolvedTheme } = useTheme();
 
@@ -296,67 +295,6 @@ export default function Home() {
             </div>
 
 
-            {/* Projects Section */}
-            <div className="mb-16 w-full text-left">
-              <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
-                Projects
-              </h2>
-              <div className="space-y-12">
-                <ExperienceItem
-                  title="Bawarchie - AI-Powered QR Restaurant Ordering System"
-                  role="Next.js, Razorpay, PostgreSQL"
-                  collapsible={true}
-                  link="https://www.bawarchie.com/"
-                >
-                  <div className="space-y-2">
-                    <div className="flex gap-3 mb-2">
-                      <a href="https://github.com/milliondreamsblog/orderbyqr" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-black dark:text-white underline underline-offset-4">GitHub</a>
-                      <a href="https://www.bawarchie.com/" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-black dark:text-white underline underline-offset-4">Live</a>
-                    </div>
-                    <p>Shipped a live QR-based restaurant ordering system handling real customer traffic end-to-end.</p>
-                    <p>Designed the complete order lifecycle, from menu discovery to verified online payments.</p>
-                    <p>Enabling an AI-powered recommendation layer adapting suggestions based on budget and dietary constraints.</p>
-                    <p>Focused on UX performance, enabling instant cart recovery and seamless table-based ordering.</p>
-                  </div>
-                </ExperienceItem>
-
-                <ExperienceItem
-                  title="Talk2Pdf"
-                  role="Agentic AI Tooling, PDF Parsing"
-                  collapsible={true}
-                  link="https://github.com/milliondreamsblog/AskyourPDF"
-                >
-                  <div className="space-y-2">
-                    <div className="flex gap-3 mb-2">
-                      <a href="https://github.com/milliondreamsblog/AskyourPDF" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-black dark:text-white underline underline-offset-4">GitHub</a>
-                    </div>
-                    <p>Created an agentic document Q&A tool used by 500+ users weekly to query large PDFs.</p>
-                    <p>Architected a modular retrieval layer supporting multiple LLMs and vector stores without code changes.</p>
-                    <p>Reduced AI integration effort by 60% for downstream developers.</p>
-                  </div>
-                </ExperienceItem>
-
-                <ExperienceItem
-                  title="ResumeAI - Intelligent Resume Optimizer"
-                  role="Next.js 15, TypeScript, Tailwind, GenAI"
-                  collapsible={true}
-                  link="https://resume-ai-sigma-lime.vercel.app/"
-                >
-                  <div className="space-y-2">
-                    <div className="flex gap-3 mb-2">
-                      <a href="https://github.com/milliondreamsblog/Resume_AI" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-black dark:text-white underline underline-offset-4">GitHub</a>
-                      <a href="https://resume-ai-sigma-lime.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-black dark:text-white underline underline-offset-4">Live</a>
-                    </div>
-                    <p>Built a GenAI resume coach that analyzes 50+ data points from resumes and job descriptions.</p>
-                    <p>Deployed a custom LLM pipeline with 40% faster responses and 100% data privacy.</p>
-                    <p>Created a responsive UI using Next.js 15, Framer Motion, and TailwindCSS, boosting engagement by 35%.</p>
-                    <p>Engineered a resume parser with 98% accuracy, handling PDF/DOCX files up to 10MB.</p>
-                  </div>
-                </ExperienceItem>
-              </div>
-            </div>
-
-
             {/* Education Section */}
             <div className="mb-16 w-full text-left">
               <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
@@ -504,52 +442,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Videos Section */}
-            {/* <div className="mb-16 w-full text-left">
-              <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
-                Explainer Videos
-              </h2>
-              <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
-                Here is how I explain complex systems on my {" "}
-                <a
-                  href="https://www.youtube.com/@theracecondition"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-black dark:text-white underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                  YouTube Channel
-                </a>
-              </p>
-              <div className="aspect-video w-full overflow-hidden rounded-xl border border-gray-100 dark:border-gray-900 bg-gray-50 dark:bg-gray-950 shadow-sm transition-all hover:shadow-md grayscale hover:grayscale-0 duration-500">
-                <iframe
-                  src="https://www.youtube.com/embed/m84tBP_4DWE"
-                  title="Explaining Complex Systems"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="h-full w-full"
-                />
-              </div>
-            </div> */}
-
-            {/* Writings & Blogs Section */}
-            <div className="mb-16 w-full text-left">
-              <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
-                Writings & Blogs
-              </h2>
-              <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                I host my thoughts on{" "}{" "}
-                <a
-                  href="https://substack.com/@akshatdarshi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-black dark:text-white underline underline-offset-4 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                    Blogs
-                </a>{" "}
-                rather than building a custom site. Instead of overengineering and reinventing the wheel, I prefer leveraging a mature platform that lets me focus on what matters: sharing insights on AI systems, product strategy, and technical architecture.
-              </p>
-            </div>
-
             {/* Library Section */}
             <div className="mb-16 w-full text-left">
               <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
@@ -671,100 +563,9 @@ export default function Home() {
             {/* Pomodoro Timer Section */}
             <PomodoroTimer />
 
-
-
           </motion.main>
         )}
       </AnimatePresence>
-
-      {/* Glass Island Navbar */}
-      <nav className="fixed bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-gray-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/80 px-4 py-3 shadow-sm backdrop-blur-md transition-all hover:bg-white/90 dark:hover:bg-zinc-900 sm:gap-6 sm:px-6">
-        {/* Mode Toggle Switch */}
-        <div className="flex items-center">
-          <button
-            onClick={() => setMode(mode === "human" ? "agent" : "human")}
-            className="group relative flex h-7 w-12 cursor-pointer rounded-full bg-gray-200 dark:bg-zinc-700 p-1 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-zinc-600 focus:outline-none"
-            role="switch"
-            aria-checked={mode === "agent"}
-            title={`Switch to ${mode === "human" ? "agent" : "human"} mode`}
-          >
-            <div
-              className={`flex h-5 w-5 transform items-center justify-center rounded-full bg-white dark:bg-white shadow-sm transition duration-200 ease-in-out ${mode === "agent" ? "translate-x-5" : "translate-x-0"
-                }`}
-            >
-              {mode === "human" ? (
-                <User className="h-3 w-3 text-black" />
-              ) : (
-                <Bot className="h-3 w-3 text-black" />
-              )}
-            </div>
-          </button>
-        </div>
-        <button
-          onClick={() => setShowQR(true)}
-          className="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors hover:scale-110"
-          aria-label="Show QR Code"
-        >
-          <QrCode className="h-5 w-5" />
-        </button>
-        <div className="h-6 w-px bg-gray-200 dark:bg-zinc-700" />
-        <a
-          href="https://github.com/milliondreamsblog"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors hover:scale-110"
-        >
-          <Github className="h-5 w-5" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/akshat-darshi/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors hover:scale-110"
-        >
-          <Linkedin className="h-5 w-5" />
-        </a>
-        <a
-          href="https://codolio.com/profile/milliondreamsblog"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors hover:scale-110"
-        >
-          <Link className="h-5 w-5" />
-        </a>
-      </nav>
-
-      {/* QR Code Modal */}
-      {
-        showQR && (
-          <div
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/20 dark:bg-white/5 backdrop-blur-sm"
-            onClick={() => setShowQR(false)}
-          >
-            <div
-              className="relative rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-8 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowQR(false)}
-                className="absolute -right-3 -top-3 rounded-full bg-black dark:bg-white p-2 text-white dark:text-black transition-transform hover:scale-110"
-                aria-label="Close"
-              >
-                <X className="h-4 w-4" />
-              </button>
-              <div className="rounded-lg bg-white p-2">
-                <QRCodeSVG
-                  value="https://www.linkedin.com/in/akshat-darshi/"
-                  size={200}
-                  level="H"
-                  includeMargin={false}
-                />
-              </div>
-            </div>
-          </div>
-        )
-      }
     </div >
   );
 }
-
