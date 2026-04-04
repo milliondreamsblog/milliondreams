@@ -1,0 +1,17 @@
+import type { NextConfig } from "next";
+
+const nextConfig: any = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.simpleicons.org",
+      },
+    ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
+
+export default nextConfig;

@@ -1,0 +1,153 @@
+The system cannot find the path specified.
+
+> dev-portfolio@0.1.0 lint
+> eslint
+
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\GithubGraph.tsx
+  12:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\GithubGraph.tsx:12:9
+  10 |
+  11 |     useEffect(() => {
+> 12 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  13 |     }, []);
+  14 |
+  15 |     if (!mounted) return null;  react-hooks/set-state-in-effect
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\NeuralNetworkSim.tsx
+  72:16  warning  'setBH' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\PomodoroTimer.tsx
+   4:34  warning  'Coffee' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   4:51  warning  'TimerIcon' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  40:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\PomodoroTimer.tsx:40:13
+  38 |             }, 1000);
+  39 |         } else if (timeLeft === 0 && isActive) {
+> 40 |             setIsActive(false);
+     |             ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  41 |             setCompleted(true);
+  42 |             if (timerRef.current) clearInterval(timerRef.current);
+  43 |         } else {  react-hooks/set-state-in-effect
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\TechStack.tsx
+   93:45  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  107:45  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  141:53  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\ThemeToggle.tsx
+   8:13  warning  'theme' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  12:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\components\ThemeToggle.tsx:12:9
+  10 |
+  11 |     useEffect(() => {
+> 12 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  13 |     }, []);
+  14 |
+  15 |     if (!mounted) {  react-hooks/set-state-in-effect
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\page.tsx
+    4:50   warning  'ArrowRight' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+   24:11   warning  'setTheme' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   24:21   warning  'resolvedTheme' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   85:15   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\page.tsx:85:15
+  83 |   const starPositions = useMemo(() => {
+  84 |     return [...Array(50)].map(() => ({
+> 85 |       top: `${Math.random() * 100}%`,
+     |               ^^^^^^^^^^^^^ Cannot call impure function
+  86 |       left: `${Math.random() * 100}%`,
+  87 |       duration: 2 + Math.random() * 3,
+  88 |       delay: Math.random() * 5,  react-hooks/purity
+   86:16   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\page.tsx:86:16
+  84 |     return [...Array(50)].map(() => ({
+  85 |       top: `${Math.random() * 100}%`,
+> 86 |       left: `${Math.random() * 100}%`,
+     |                ^^^^^^^^^^^^^ Cannot call impure function
+  87 |       duration: 2 + Math.random() * 3,
+  88 |       delay: Math.random() * 5,
+  89 |     }));                                react-hooks/purity
+   87:21   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\page.tsx:87:21
+  85 |       top: `${Math.random() * 100}%`,
+  86 |       left: `${Math.random() * 100}%`,
+> 87 |       duration: 2 + Math.random() * 3,
+     |                     ^^^^^^^^^^^^^ Cannot call impure function
+  88 |       delay: Math.random() * 5,
+  89 |     }));
+  90 |   }, []);                                                        react-hooks/purity
+   88:14   error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\page.tsx:88:14
+  86 |       left: `${Math.random() * 100}%`,
+  87 |       duration: 2 + Math.random() * 3,
+> 88 |       delay: Math.random() * 5,
+     |              ^^^^^^^^^^^^^ Cannot call impure function
+  89 |     }));
+  90 |   }, []);
+  91 |                                                                                                     react-hooks/purity
+  266:172  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  266:181  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  267:168  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  295:248  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  329:25   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  341:152  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  439:22   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  456:23   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+  458:159  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\providers.tsx
+  10:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Akshat Darshi\Downloads\miyoko-portfolio-main\miyoko-portfolio-main\app\providers.tsx:10:9
+   8 |
+   9 |     useEffect(() => {
+> 10 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  11 |     }, []);
+  12 |
+  13 |     if (!mounted) {  react-hooks/set-state-in-effect
+
+✖ 27 problems (17 errors, 10 warnings)
+
