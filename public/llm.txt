@@ -1,4 +1,4 @@
-# Aditya Patil
+# AkshatPatil
 /əˈdɪtjə pɑːˈtiːl/ • noun • 00:00:00 IST
 
 ## About
@@ -88,7 +88,7 @@ Most recently, I worked on **Meteor**, an AI SEO toolkit at Entrepreneurs First.
 
 ### Cross-Compatible Encryption Adapter for Securing Legacy Modbus Devices
 **2025 17th International Conference on COMmunication Systems and NETworks (COMSNETS)**
-Authors: Aditya Patil; T. S. Sreeram
+Authors: AkshatPatil; T. S. Sreeram
 [https://doi.org/10.1109/COMSNETS63942.2025.10885597](https://doi.org/10.1109/COMSNETS63942.2025.10885597)
 
 **Abstract:**
@@ -103,12 +103,12 @@ Next.js, Go, Python, Hugging Face, TypeScript, React, Tailwind CSS, GitHub, Git,
 ## Recommendations by Clients
 
 ### [Roy Feldman](https://www.linkedin.com/in/royhax/)
-I've had the privilege to work with Aditya on several highly technical cybersecurity R&D projects involving design and implementation of defensive network components in Golang, network protocol research and analysis. He is a bright young engineer, extremely talented in hacking and cybersecurity, with a natural curiosity and passion for hacking, and a gift understanding how systems work, how to design and break them. I am certain that he will succeed in any endeavor he puts his mind to, in the realms of cybersecurity, engineering and beyond! :)
+I've had the privilege to work with Akshaton several highly technical cybersecurity R&D projects involving design and implementation of defensive network components in Golang, network protocol research and analysis. He is a bright young engineer, extremely talented in hacking and cybersecurity, with a natural curiosity and passion for hacking, and a gift understanding how systems work, how to design and break them. I am certain that he will succeed in any endeavor he puts his mind to, in the realms of cybersecurity, engineering and beyond! :)
 
 ### [Tom Granot](https://www.linkedin.com/in/tomgranot/)
 It's not often that you get to talk to a person who is not only hungry for mentorship, but comes out of the gate with the attitude that enables him to learn so, so quickly on his feet.
 
-Aditya did research for highly technical content for me and independently navigated difficult situations without a lot of guidance. If you're looking for someone to research a technical topic for your content work, Aditya is disciplined, thorough and insistent on understanding things in depth before giving a final output.
+Akshatdid research for highly technical content for me and independently navigated difficult situations without a lot of guidance. If you're looking for someone to research a technical topic for your content work, Akshatis disciplined, thorough and insistent on understanding things in depth before giving a final output.
 
 Keep on keeping on brother!
 
