@@ -650,7 +650,7 @@ export default function Home() {
                 <p className="text-lg text-gray-600 dark:text-gray-400">
                   Connect with me on{" "}
                   <a
-                    href="https://www.linkedin.com/in/aditya-patil-260a631b2/"
+                    href="https://www.linkedin.com/in/akshat-darshi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-black dark:text-white underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300"
