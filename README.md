@@ -2,7 +2,7 @@
 
 A premium, minimalistic, and highly interactive portfolio built with **Next.js 15**, **Framer Motion**, and **Tailwind CSS**. This project features a unique "Agent Mode" that transforms the experience into a terminal-like developer view, along with a custom Lofi player and smooth transitions.
 
-![Portfolio Preview](/public/me2.png) *(Note: Replace with a project screenshot if available)*
+![Portfolio Preview]() *(Note: Replace with a project screenshot if available)*
 
 ## ✨ Key Features
 
