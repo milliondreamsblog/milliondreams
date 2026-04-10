@@ -80,10 +80,12 @@ export default function Blog() {
               </p>
             </div>
 
-            {/* 3-column card grid */}
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-8">
+            {/* Card grid — centred when fewer than 3 posts */}
+            <div className="w-full flex flex-wrap justify-start gap-12">
               {BLOG_POSTS.map((post) => (
-                <BlogCard key={post.id} post={post} />
+                <div key={post.id} className="w-full sm:w-[260px]">
+                  <BlogCard post={post} />
+                </div>
               ))}
             </div>
 
