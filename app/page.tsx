@@ -1,7 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Bot, User, QrCode, X, ArrowRight, Music, Pause, Link as LinkIcon } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Bot,
+  User,
+  QrCode,
+  X,
+  ArrowRight,
+  Music,
+  Pause,
+  Link as LinkIcon,
+} from "lucide-react";
 import { ExperienceItem } from "./components/ExperienceItem";
 import { GithubGraph } from "./components/GithubGraph";
 import { TechStack } from "./components/TechStack";
@@ -32,7 +43,7 @@ export default function Home() {
           minute: "2-digit",
           second: "2-digit",
           hour12: false,
-        })
+        }),
       );
     };
 
@@ -74,7 +85,9 @@ export default function Home() {
     if (isLofiPlaying) {
       lofiRef.current.pause();
     } else {
-      lofiRef.current.play().catch(e => console.error("Lofi play failed:", e));
+      lofiRef.current
+        .play()
+        .catch((e) => console.error("Lofi play failed:", e));
     }
     setIsLofiPlaying(!isLofiPlaying);
   };
@@ -89,7 +102,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`relative flex min-h-screen flex-col items-center bg-white dark:bg-black px-3 pt-16 text-black dark:text-white selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black pb-32 sm:px-4 sm:pt-24 sm:pb-40 overflow-x-hidden transition-colors duration-300`}>
+    <div
+      className={`relative flex min-h-screen flex-col items-center bg-white dark:bg-black px-3 pt-16 text-black dark:text-white selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black pb-32 sm:px-4 sm:pt-24 sm:pb-40 overflow-x-hidden transition-colors duration-300`}
+    >
       {/* Easter Egg Effects */}
       <AnimatePresence>
         {showEasterEgg && (
@@ -150,7 +165,10 @@ export default function Home() {
           >
             <pre
               className="w-full whitespace-pre-wrap font-mono text-sm leading-relaxed text-black dark:text-gray-300 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black antialiased"
-              style={{ fontFamily: '"Courier New", Courier, "Lucida Sans Typewriter", "Lucida Console", monospace' }}
+              style={{
+                fontFamily:
+                  '"Courier New", Courier, "Lucida Sans Typewriter", "Lucida Console", monospace',
+              }}
             >
               {markdownContent}
             </pre>
@@ -175,7 +193,7 @@ export default function Home() {
                 src="/me3.png" // User's photo
                 alt="Profile"
                 fill
-                className={`object-contain transition-all duration-700 ${showEasterEgg ? 'grayscale-0 scale-105' : 'grayscale'}`}
+                className={`object-contain transition-all duration-700 ${showEasterEgg ? "grayscale-0 scale-105" : "grayscale"}`}
                 priority
               />
               <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white via-white/60 to-transparent dark:from-black dark:via-black/60 backdrop-blur-[1px]" />
@@ -197,20 +215,30 @@ export default function Home() {
               <span className="text-gray-300 dark:text-gray-700">•</span>
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1.5">
-                  <span className="tabular-nums text-xs sm:text-sm">{time || "00:00:00"}</span>
-                  <span className="text-[10px] uppercase tracking-wider sm:text-xs">IST</span>
+                  <span className="tabular-nums text-xs sm:text-sm">
+                    {time || "00:00:00"}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+                    IST
+                  </span>
                 </div>
 
                 <span className="text-gray-300 dark:text-gray-700">•</span>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-tight text-gray-400">lofi</span>
+                  <span className="text-[10px] font-bold uppercase tracking-tight text-gray-400">
+                    lofi
+                  </span>
                   <button
                     onClick={toggleLofi}
                     className="flex h-5 w-5 items-center justify-center rounded-full transition-all hover:bg-gray-100 dark:hover:bg-zinc-800 text-gray-400 hover:text-black dark:hover:text-white"
                     aria-label={isLofiPlaying ? "Pause Lofi" : "Play Lofi"}
                   >
-                    {isLofiPlaying ? <Pause size={10} fill="currentColor" /> : <Music size={10} />}
+                    {isLofiPlaying ? (
+                      <Pause size={10} fill="currentColor" />
+                    ) : (
+                      <Music size={10} />
+                    )}
                   </button>
                   <AnimatePresence>
                     {isLofiPlaying && (
@@ -226,7 +254,9 @@ export default function Home() {
                           max="1"
                           step="0.01"
                           value={lofiVolume}
-                          onChange={(e) => setLofiVolume(parseFloat(e.target.value))}
+                          onChange={(e) =>
+                            setLofiVolume(parseFloat(e.target.value))
+                          }
                           className="h-[2px] w-8 cursor-pointer appearance-none rounded-full bg-gray-200 dark:bg-zinc-800 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:w-2 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gray-400 dark:[&::-webkit-slider-thumb]:bg-zinc-500 hover:[&::-webkit-slider-thumb]:bg-black dark:hover:[&::-webkit-slider-thumb]:bg-white [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:h-2 [&::-moz-range-thumb]:w-2 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-gray-400 dark:[&::-moz-range-thumb]:bg-zinc-500 hover:[&::-moz-range-thumb]:bg-black dark:hover:[&::-moz-range-thumb]:bg-white transition-all"
                         />
                       </motion.div>
@@ -238,10 +268,30 @@ export default function Home() {
 
             <div className="w-full space-y-4 text-left text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg md:text-xl">
               <p>
-                a <a href="https://en.wikipedia.org/wiki/Software_engineering" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">software engineer</a> delivering production-grade SaaS platforms and GenAI systems with backend-heavy full-stack expertise.
+                a{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Software_engineering"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  software engineer
+                </a>{" "}
+                delivering production-grade SaaS platforms and GenAI systems
+                with backend-heavy full-stack expertise.
               </p>
               <p>
-                building <a href="https://en.wikipedia.org/wiki/Enterprise_software" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">enterprise-grade</a> applications, APIs, and dashboards — familiar with Agile workflows, CI/CD pipelines, and AWS deployments.
+                building{" "}
+                <a
+                  href="https://en.wikipedia.org/wiki/Enterprise_software"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  enterprise-grade
+                </a>{" "}
+                applications, APIs, and dashboards — familiar with Agile
+                workflows, CI/CD pipelines, and AWS deployments.
               </p>
             </div>
 
@@ -259,11 +309,26 @@ export default function Home() {
                   collapsible={true}
                 >
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-400 dark:text-gray-500">Jan 2026 -- Present</p>
-                    <p>Architecting an internal operations management platform supporting a real-estate portfolio valued at $1B+.</p>
-                    <p>Built modular backend services and a React Native mobile app used by 120+ users for construction operations.</p>
-                    <p>Productionized a background job system generating 700+ payroll PDFs/month using Puppeteer and Resend.</p>
-                    <p>Implemented real-time approval and project status workflows across 120+ users, reducing coordination delays by 40%.</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">
+                      Jan 2026 -- Present
+                    </p>
+                    <p>
+                      Architecting an internal operations management platform
+                      supporting a real-estate portfolio valued at $1B+.
+                    </p>
+                    <p>
+                      Built modular backend services and a React Native mobile
+                      app used by 120+ users for construction operations.
+                    </p>
+                    <p>
+                      Productionized a background job system generating 700+
+                      payroll PDFs/month using Puppeteer and Resend.
+                    </p>
+                    <p>
+                      Implemented real-time approval and project status
+                      workflows across 120+ users, reducing coordination delays
+                      by 40%.
+                    </p>
                   </div>
                 </ExperienceItem>
 
@@ -273,10 +338,22 @@ export default function Home() {
                   collapsible={true}
                 >
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-400 dark:text-gray-500">Apr 2025 -- Jan 2026</p>
-                    <p>Shipped climate-risk dashboards powering decision-making across 50+ regions using ML-backed scoring models.</p>
-                    <p>Collaborated with cross-functional teams to integrate internal tools across 5+ enterprise workflows, supporting 3+ departments via backend APIs and data reporting layers.</p>
-                    <p>Owned model deployment and monitoring, ensuring consistent performance under growing data volumes.</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">
+                      Apr 2025 -- Jan 2026
+                    </p>
+                    <p>
+                      Shipped climate-risk dashboards powering decision-making
+                      across 50+ regions using ML-backed scoring models.
+                    </p>
+                    <p>
+                      Collaborated with cross-functional teams to integrate
+                      internal tools across 5+ enterprise workflows, supporting
+                      3+ departments via backend APIs and data reporting layers.
+                    </p>
+                    <p>
+                      Owned model deployment and monitoring, ensuring consistent
+                      performance under growing data volumes.
+                    </p>
                   </div>
                 </ExperienceItem>
 
@@ -286,14 +363,21 @@ export default function Home() {
                   collapsible={true}
                 >
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-400 dark:text-gray-500">Jun 2024 -- Aug 2024</p>
-                    <p>Improved deep CNN inference latency by 40%, enabling faster experimentation on limited compute budgets.</p>
-                    <p>Refactored inefficient training pipelines, directly reducing compute spend by $50,000/year.</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">
+                      Jun 2024 -- Aug 2024
+                    </p>
+                    <p>
+                      Improved deep CNN inference latency by 40%, enabling
+                      faster experimentation on limited compute budgets.
+                    </p>
+                    <p>
+                      Refactored inefficient training pipelines, directly
+                      reducing compute spend by $50,000/year.
+                    </p>
                   </div>
                 </ExperienceItem>
               </div>
             </div>
-
 
             {/* Education Section */}
             <div className="mb-16 w-full text-left">
@@ -305,9 +389,7 @@ export default function Home() {
                   title="University Institute of Engineering and Technology, CSJM University"
                   role="B.Tech in Computer Science (AI Specialization)"
                 >
-                  <p>Oct 2022 -- Oct 2026 
-
-                  </p>
+                  <p>Oct 2022 -- Oct 2026</p>
                 </ExperienceItem>
               </div>
             </div>
@@ -349,10 +431,7 @@ export default function Home() {
                   </div>
                 </ExperienceItem>
 
-                <ExperienceItem
-                  title="Top 5% -- E-Yantra IIT Bombay"
-                  role=""
-                >
+                <ExperienceItem title="Top 5% -- E-Yantra IIT Bombay" role="">
                   <div className="space-y-2">
                     <p>Ranked 73 / 1475 in national robotics competition.</p>
                     <a
@@ -366,12 +445,12 @@ export default function Home() {
                   </div>
                 </ExperienceItem>
 
-                <ExperienceItem
-                  title="Innovation Awards"
-                  role=""
-                >
+                <ExperienceItem title="Innovation Awards" role="">
                   <div className="space-y-2">
-                    <p>2nd / 3rd Place, CSJM Innovation Robotics Contest; 3rd Place, Women Innovation.</p>
+                    <p>
+                      2nd / 3rd Place, CSJM Innovation Robotics Contest; 3rd
+                      Place, Women Innovation.
+                    </p>
                     <a
                       href="https://www.linkedin.com/feed/update/urn:li:activity:7163477746843676672/"
                       target="_blank"
@@ -391,7 +470,8 @@ export default function Home() {
                 Tech Stack
               </h2>
               <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
-                I&apos;m a generalist at heart who can build with anything, but here&apos;s the core stack I&apos;ve spent the most time with:
+                I&apos;m a generalist at heart who can build with anything, but
+                here&apos;s the core stack I&apos;ve spent the most time with:
               </p>
               <TechStack />
             </div>
@@ -415,7 +495,16 @@ export default function Home() {
                     </a>
                   </div>
                   <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                    I&apos;ve had the privilege to work with Akshaton several highly technical cybersecurity R&D projects involving design and implementation of defensive network components in Golang, network protocol research and analysis. He is a bright young engineer, extremely talented in hacking and cybersecurity, with a natural curiosity and passion for hacking, and a gift understanding how systems work, how to design and break them. I am certain that he will succeed in any endeavor he puts his mind to, in the realms of cybersecurity, engineering and beyond! :)
+                    I&apos;ve had the privilege to work with Akshaton several
+                    highly technical cybersecurity R&D projects involving design
+                    and implementation of defensive network components in
+                    Golang, network protocol research and analysis. He is a
+                    bright young engineer, extremely talented in hacking and
+                    cybersecurity, with a natural curiosity and passion for
+                    hacking, and a gift understanding how systems work, how to
+                    design and break them. I am certain that he will succeed in
+                    any endeavor he puts his mind to, in the realms of
+                    cybersecurity, engineering and beyond! :)
                   </p>
                 </div>
 
@@ -432,10 +521,20 @@ export default function Home() {
                     </a>
                   </div>
                   <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                    It&apos;s not often that you get to talk to a person who is not only hungry for mentorship, but comes out of the gate with the attitude that enables him to learn so, so quickly on his feet.
-                    <br /><br />
-                    Akshatdid research for highly technical content for me and independently navigated difficult situations without a lot of guidance. If you&apos;re looking for someone to research a technical topic for your content work, Akshatis disciplined, thorough and insistent on understanding things in depth before giving a final output.
-                    <br /><br />
+                    It&apos;s not often that you get to talk to a person who is
+                    not only hungry for mentorship, but comes out of the gate
+                    with the attitude that enables him to learn so, so quickly
+                    on his feet.
+                    <br />
+                    <br />
+                    Akshatdid research for highly technical content for me and
+                    independently navigated difficult situations without a lot
+                    of guidance. If you&apos;re looking for someone to research
+                    a technical topic for your content work, Akshatis
+                    disciplined, thorough and insistent on understanding things
+                    in depth before giving a final output.
+                    <br />
+                    <br />
                     Keep on keeping on brother!
                   </p>
                 </div>
@@ -455,14 +554,33 @@ export default function Home() {
                 </h3>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   {[
-                    { title: "Linux Kernel Development", author: "Robert Love" },
-                    { title: "Hacking: The Art of Exploitation", author: "Jon Erickson" },
-                    { title: "Linux in a Nutshell", author: "Ellen Siever, Stephen Figgins, Robert Love, and Arnold Robbins" },
-                    { title: "Linux Kernel in a Nutshell", author: "Greg Kroah-Hartman" },
-                    { title: "The Art of Electronics", author: "Paul Horowitz and Winfield Hill" },
-                    { title: "Nmap Cookbook", author: "Nicholas Marsh" }
+                    {
+                      title: "Linux Kernel Development",
+                      author: "Robert Love",
+                    },
+                    {
+                      title: "Hacking: The Art of Exploitation",
+                      author: "Jon Erickson",
+                    },
+                    {
+                      title: "Linux in a Nutshell",
+                      author:
+                        "Ellen Siever, Stephen Figgins, Robert Love, and Arnold Robbins",
+                    },
+                    {
+                      title: "Linux Kernel in a Nutshell",
+                      author: "Greg Kroah-Hartman",
+                    },
+                    {
+                      title: "The Art of Electronics",
+                      author: "Paul Horowitz and Winfield Hill",
+                    },
+                    { title: "Nmap Cookbook", author: "Nicholas Marsh" },
                   ].map((book) => (
-                    <div key={book.title} className="group flex flex-col gap-1 transition-all">
+                    <div
+                      key={book.title}
+                      className="group flex flex-col gap-1 transition-all"
+                    >
                       <span className="text-sm font-medium text-black dark:text-white group-hover:underline underline-offset-4 decoration-gray-200 dark:decoration-gray-800 transition-all">
                         {book.title}
                       </span>
@@ -481,14 +599,26 @@ export default function Home() {
                 </h3>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   {[
-                    { title: "Hooked: How to Build Habit-Forming Products", author: "Nir Eyal" },
+                    {
+                      title: "Hooked: How to Build Habit-Forming Products",
+                      author: "Nir Eyal",
+                    },
                     { title: "The Lean Startup", author: "Eric Ries" },
                     { title: "Zero to One", author: "Peter Thiel" },
-                    { title: "The Almanack of Naval Ravikant", author: "Eric Jorgenson" },
+                    {
+                      title: "The Almanack of Naval Ravikant",
+                      author: "Eric Jorgenson",
+                    },
                     { title: "Deep Work", author: "Cal Newport" },
-                    { title: "The Anthology of Balaji Srinivasan", author: "Eric Jorgenson" }
+                    {
+                      title: "The Anthology of Balaji Srinivasan",
+                      author: "Eric Jorgenson",
+                    },
                   ].map((book) => (
-                    <div key={book.title} className="group flex flex-col gap-1 transition-all">
+                    <div
+                      key={book.title}
+                      className="group flex flex-col gap-1 transition-all"
+                    >
                       <span className="text-sm font-medium text-black dark:text-white group-hover:underline underline-offset-4 decoration-gray-200 dark:decoration-gray-800 transition-all">
                         {book.title}
                       </span>
@@ -513,11 +643,23 @@ export default function Home() {
               </h2>
               <div className="space-y-6">
                 <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                  Beyond engineering and build systems, I find balance in the tactile and the thoughtful. Whether it&apos;s exploring the nuances of complex architectures or spending time in the real world, my approach to life is driven by curiosity and a desire to understand how things work at their core.
+                  Beyond engineering and build systems, I find balance in the
+                  tactile and the thoughtful. Whether it&apos;s exploring the
+                  nuances of complex architectures or spending time in the real
+                  world, my approach to life is driven by curiosity and a desire
+                  to understand how things work at their core.
                 </p>
 
                 <div className="flex justify-center">
-                  <div className="relative h-[250px] w-full max-w-sm grayscale hover:grayscale-0 transition-all duration-700 sm:h-[350px]" style={{ maskImage: "radial-gradient(circle, black 40%, transparent 95%)", WebkitMaskImage: "radial-gradient(circle, black 40%, transparent 95%)" }}>
+                  <div
+                    className="relative h-[250px] w-full max-w-sm grayscale hover:grayscale-0 transition-all duration-700 sm:h-[350px]"
+                    style={{
+                      maskImage:
+                        "radial-gradient(circle, black 40%, transparent 95%)",
+                      WebkitMaskImage:
+                        "radial-gradient(circle, black 40%, transparent 95%)",
+                    }}
+                  >
                     <Image
                       src="/casual1.png"
                       alt="Casual photo"
@@ -528,7 +670,10 @@ export default function Home() {
                 </div>
 
                 <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                  I believe that the best products are built by people who have a diverse range of interests. It&apos;s the unique combination of technical depth and human perspective that allows us to create technology that actually resonates.
+                  I believe that the best products are built by people who have
+                  a diverse range of interests. It&apos;s the unique combination
+                  of technical depth and human perspective that allows us to
+                  create technology that actually resonates.
                 </p>
               </div>
             </div>
@@ -549,9 +694,9 @@ export default function Home() {
                   >
                     LinkedIn
                   </a>{" "}
-                  or{" "} shoot an {" "}
+                  or shoot an{" "}
                   <a
-                    href="mailto:adityapatil24680@gmail.com"
+                    href="mailto:akshatsan23@gmail.com"
                     className="text-black dark:text-white underline underline-offset-4 hover:text-gray-600 dark:hover:text-gray-300"
                   >
                     email
@@ -562,10 +707,9 @@ export default function Home() {
 
             {/* Pomodoro Timer Section */}
             <PomodoroTimer />
-
           </motion.main>
         )}
       </AnimatePresence>
-    </div >
+    </div>
   );
 }
