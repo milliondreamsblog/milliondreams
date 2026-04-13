@@ -17,7 +17,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categoryColor: "#e85d04",
     title: "Going Home",
     description: `I was everywhere. Solving everything. Preparing, supposedly. But I didn't feel complete. I felt like I was performing "being productive" really well.`,
-    image: "/going-home.jpg",
+    image: "/Blog/Blogimg1.jpeg",
     url: "https://substack.com/@akshatdarshi/note/p-185972523?r=1pocd&utm_source=notes-share-action&utm_medium=web",
   },
 ];
