@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNav } from "../context/NavContext";
 import { getMarkdownContent } from "../data/content";
 import { BLOG_POSTS } from "../data/blog.data";
-import { BlogCard } from "../components/BlogCard";
+import { PostCard } from "../components/PostCard";
 import { useState, useEffect } from "react";
 
 export default function Blog() {
@@ -81,11 +81,23 @@ export default function Blog() {
             </div>
 
             {/* Card grid — centred when fewer than 3 posts */}
-            <div className="w-full flex flex-wrap justify-start gap-12">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {BLOG_POSTS.map((post) => (
-                <div key={post.id} className="w-full sm:w-[260px]">
-                  <BlogCard post={post} />
-                </div>
+                <PostCard
+                  key={post.id}
+                  avatarFallback="AD"
+                  avatarColor="#0a0a0a"
+                  title={post.title}
+                  tags={[
+                    `#${post.category.toLowerCase().replace(/\s+/g, "-")}`,
+                  ]}
+                  date={post.date}
+                  readTime="5m read time"
+                  coverImage={post.image}
+                  coverImageAlt={post.title}
+                  actionLabel="Read post"
+                  actionUrl={post.url}
+                />
               ))}
             </div>
 
