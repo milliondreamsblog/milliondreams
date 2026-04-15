@@ -4,6 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "./providers";
 import { NavProvider } from "./context/NavContext";
 import { Navbar } from "./components/Navbar";
+import { SmoothScroll } from "./components/SmoothScroll";
+import { ReadingProgress } from "./components/ReadingProgress";
+import { KonamiEasterEgg } from "./components/KonamiEasterEgg";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -19,11 +22,22 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Akshat Darshi",
-  description: "Software Engineer",
+  metadataBase: new URL("https://akshatdarshi.dev"),
+  title: {
+    default: "Akshat Darshi",
+    template: "%s | Akshat Darshi",
+  },
+  description:
+    "Software engineer building production-grade SaaS & GenAI systems. Backend-heavy full-stack engineer.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Akshat Darshi",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
-
-import { SmoothScroll } from "./components/SmoothScroll";
 
 export default function RootLayout({
   children,
@@ -37,9 +51,9 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <NavProvider>
-            <SmoothScroll>
-              {children}
-            </SmoothScroll>
+            <ReadingProgress />
+            <KonamiEasterEgg />
+            <SmoothScroll>{children}</SmoothScroll>
             <Navbar />
           </NavProvider>
         </ThemeProvider>
