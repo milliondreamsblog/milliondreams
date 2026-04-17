@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { ReadingProgress } from "./components/ReadingProgress";
 import { KonamiEasterEgg } from "./components/KonamiEasterEgg";
+import { Analytics } from "@vercel/analytics/next";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -63,6 +64,7 @@ export default function RootLayout({
             <Navbar />
           </NavProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
