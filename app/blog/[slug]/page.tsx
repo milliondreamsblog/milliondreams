@@ -523,7 +523,7 @@ export default async function BlogPostPage({
         </Link>
 
         <header className="border-b border-stone-800 pb-10">
-          <div className="max-w-[46rem]">
+          <div className="mx-auto max-w-[46rem]">
             <h1 className="text-5xl font-bold tracking-[-0.05em] text-stone-50 sm:text-[4.25rem]">
               {title}
             </h1>
@@ -549,7 +549,7 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        <div className="max-w-[46rem] pt-14">
+        <div className="mx-auto max-w-[46rem] pt-14">
           <Content />
         </div>
       </main>
