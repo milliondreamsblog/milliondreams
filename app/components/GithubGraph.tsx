@@ -2,17 +2,21 @@
 
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function useIsClient() {
+    return useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false,
+    );
+}
 
 export function GithubGraph() {
     const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const isClient = useIsClient();
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) return null;
+    if (!isClient) return null;
 
     return (
         <div className="w-full overflow-x-auto pb-4 scrollbar-hide">

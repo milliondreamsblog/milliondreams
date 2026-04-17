@@ -1,8 +1,10 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
+import { execSync } from "node:child_process";
+import { writeFileSync } from "node:fs";
+
 try {
-    const result = execSync('npx eslint . --format json', { encoding: 'utf8', maxBuffer: 10 ** 7 });
-    fs.writeFileSync('lint.json', result);
+    const result = execSync("npx eslint . --format json", { encoding: "utf8", maxBuffer: 10 ** 7 });
+    writeFileSync("lint.json", result);
 } catch (e) {
-    fs.writeFileSync('lint.json', e.stdout);
+    const stdout = e instanceof Error && "stdout" in e ? e.stdout : "";
+    writeFileSync("lint.json", typeof stdout === "string" ? stdout : "");
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { BlogPost } from "../data/blog.data";
 
 // ─── Per-letter colorful title ────────────────────────────────────────────────
@@ -60,12 +60,12 @@ function OvalImage({ src, alt }: { src: string; alt: string }) {
 
 // ─── BlogCard ─────────────────────────────────────────────────────────────────
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 };
 

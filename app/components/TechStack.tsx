@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -58,6 +59,19 @@ const categories = [
 
 const marqueeSkills = categories.flatMap(c => c.skills);
 
+function SkillIcon({ name, slug, className }: { name: string; slug: string; className: string }) {
+    return (
+        <Image
+            src={`https://cdn.simpleicons.org/${slug}`}
+            alt={name}
+            width={40}
+            height={40}
+            className={className}
+            loading="lazy"
+        />
+    );
+}
+
 export function TechStack() {
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -88,11 +102,10 @@ export function TechStack() {
                                 {marqueeSkills.map((tech, index) => (
                                     <div key={index} className="flex flex-col items-center justify-center gap-2">
                                         <div className="h-10 w-10 transition-all duration-300">
-                                            <img
-                                                src={`https://cdn.simpleicons.org/${tech.slug}`}
-                                                alt={tech.name}
-                                                className="h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
-                                                loading="lazy"
+                                            <SkillIcon
+                                                name={tech.name}
+                                                slug={tech.slug}
+                                                className="h-full w-full object-contain opacity-80 transition-all duration-300 brightness-0 hover:opacity-100 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
                                             />
                                         </div>
                                     </div>
@@ -102,11 +115,10 @@ export function TechStack() {
                                 {marqueeSkills.map((tech, index) => (
                                     <div key={index + marqueeSkills.length} className="flex flex-col items-center justify-center gap-2">
                                         <div className="h-10 w-10 transition-all duration-300">
-                                            <img
-                                                src={`https://cdn.simpleicons.org/${tech.slug}`}
-                                                alt={tech.name}
-                                                className="h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
-                                                loading="lazy"
+                                            <SkillIcon
+                                                name={tech.name}
+                                                slug={tech.slug}
+                                                className="h-full w-full object-contain opacity-80 transition-all duration-300 brightness-0 hover:opacity-100 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
                                             />
                                         </div>
                                     </div>
@@ -136,11 +148,10 @@ export function TechStack() {
                                                 className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-gray-100 dark:hover:border-zinc-800 hover:bg-gray-50/50 dark:hover:bg-zinc-900/50"
                                             >
                                                 <div className="h-5 w-5 shrink-0 transition-all duration-300">
-                                                    <img
-                                                        src={`https://cdn.simpleicons.org/${skill.slug}`}
-                                                        alt={skill.name}
-                                                        className="h-full w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-300 brightness-0 group-hover:brightness-100 dark:brightness-0 dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-100"
-                                                        loading="lazy"
+                                                    <SkillIcon
+                                                        name={skill.name}
+                                                        slug={skill.slug}
+                                                        className="h-full w-full object-contain opacity-50 transition-all duration-300 brightness-0 group-hover:opacity-100 group-hover:brightness-100 dark:brightness-0 dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-100"
                                                     />
                                                 </div>
                                                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors">

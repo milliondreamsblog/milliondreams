@@ -19,24 +19,30 @@ import { QRCodeSVG } from "qrcode.react";
 import { useNav } from "../context/NavContext";
 import { ThemeToggle } from "./ThemeToggle";
 
+type NavLink = {
+  href: string;
+  icon: typeof Home;
+  label: string;
+};
+
 export function Navbar() {
   const { mode, toggleMode, showQR, setShowQR } = useNav();
   const pathname = usePathname();
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: "/", icon: Home, label: "Home" },
     { href: "/projects", icon: LayoutGrid, label: "Projects" },
     { href: "/blog", icon: BookOpen, label: "Blog" },
-  ] as any;
+  ];
 
   return (
     <>
       {/* Glass Island Navbar — scrollable on mobile */}
-      <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 w-[calc(100vw-2rem)] sm:w-auto">
-        <nav className="flex items-center gap-3 rounded-full border border-gray-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/80 px-4 py-3 shadow-sm backdrop-blur-md transition-all hover:bg-white/90 dark:hover:bg-zinc-900 overflow-x-auto scrollbar-hide sm:gap-5 sm:px-6">
+      <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100vw-1.5rem)] -translate-x-1/2 sm:bottom-6 sm:w-auto">
+        <nav className="flex items-center justify-center gap-3 overflow-x-auto rounded-[28px] border border-gray-200 bg-white/70 px-3 py-3 shadow-sm backdrop-blur-md transition-all hover:bg-white/90 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:bg-zinc-900 scrollbar-hide sm:gap-5 sm:rounded-full sm:px-6">
           {/* Internal Navigation */}
           <div className="flex items-center gap-3 shrink-0 sm:gap-4">
-            {navLinks.map((link: any) => {
+            {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
               return (

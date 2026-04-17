@@ -69,7 +69,7 @@ const Surface = ({ weights }: { weights: Weights }) => {
 export function NeuralNetworkSim() {
     const [wIH, setWIH] = useState([[1, 1, 1], [-1, -1, -1]]);
     const [wHO, setWHO] = useState([1, -1, 1]);
-    const [bH, setBH] = useState([0, 0, 0]);
+    const [bH] = useState([0, 0, 0]);
     const [bO, setBO] = useState(0);
     const [isAuto, setIsAuto] = useState(false);
     const [isOpen, setIsOpen] = useState(false);

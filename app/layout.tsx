@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Sans, Instrument_Serif, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers";
 import { NavProvider } from "./context/NavContext";
@@ -19,6 +19,12 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal", "italic"],
+});
+
+const sourceSerif = Source_Serif_4({
+  variable: "--font-reading-serif",
+  subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -47,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${instrumentSerif.variable} antialiased transition-colors duration-300`}
+        className={`${dmSans.variable} ${instrumentSerif.variable} ${sourceSerif.variable} antialiased transition-colors duration-300`}
       >
         <ThemeProvider>
           <NavProvider>

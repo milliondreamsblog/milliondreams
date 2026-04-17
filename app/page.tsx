@@ -2,22 +2,13 @@
 
 import Image from "next/image";
 import {
-  Github,
-  Linkedin,
-  Bot,
-  User,
-  QrCode,
-  X,
-  ArrowRight,
   Music,
   Pause,
-  Link as LinkIcon,
 } from "lucide-react";
 import { ExperienceItem } from "./components/ExperienceItem";
 import { GithubGraph } from "./components/GithubGraph";
 import { TechStack } from "./components/TechStack";
-import { useState, useEffect, useMemo, useRef } from "react";
-import { useTheme } from "next-themes";
+import { useState, useEffect, useRef } from "react";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -30,8 +21,6 @@ import { useNav } from "./context/NavContext";
 export default function Home() {
   const [time, setTime] = useState<string>("");
   const { mode } = useNav();
-
-  const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
@@ -92,18 +81,21 @@ export default function Home() {
     setIsLofiPlaying(!isLofiPlaying);
   };
 
-  const starPositions = useMemo(() => {
-    return [...Array(50)].map(() => ({
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      duration: 2 + Math.random() * 3,
-      delay: Math.random() * 5,
-    }));
-  }, []);
+  const starPositions = Array.from({ length: 50 }, (_, index) => {
+    const seed = index + 1;
+    const fraction = (value: number) => value - Math.floor(value);
+
+    return {
+      top: `${fraction(Math.sin(seed * 12.9898) * 43758.5453) * 100}%`,
+      left: `${fraction(Math.sin(seed * 78.233) * 12345.6789) * 100}%`,
+      duration: 2 + fraction(Math.sin(seed * 45.164) * 24680.1357) * 3,
+      delay: fraction(Math.sin(seed * 93.731) * 86420.9753) * 5,
+    };
+  });
 
   return (
     <div
-      className={`relative flex min-h-screen flex-col items-center bg-white dark:bg-black px-3 pt-16 text-black dark:text-white selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black pb-32 sm:px-4 sm:pt-24 sm:pb-40 overflow-x-hidden transition-colors duration-300`}
+      className={`relative flex min-h-screen flex-col items-center overflow-x-hidden bg-white px-4 pb-36 pt-16 text-black transition-colors duration-300 selection:bg-black selection:text-white dark:bg-black dark:text-white dark:selection:bg-white dark:selection:text-black sm:px-4 sm:pb-40 sm:pt-24`}
     >
       {/* Easter Egg Effects */}
       <AnimatePresence>
@@ -181,12 +173,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="flex w-full max-w-2xl flex-col items-center text-center"
+            className="flex w-full max-w-2xl flex-col items-center px-1 text-center sm:px-0"
           >
             {/* Profile Image - Easter Egg Trigger */}
             <button
               onClick={() => setShowEasterEgg(!showEasterEgg)}
-              className="group relative mb-2 h-40 w-40 grayscale filter sm:h-56 sm:w-56 overflow-hidden cursor-pointer transition-all duration-500 hover:grayscale-0 active:scale-95"
+              className="group relative mb-3 h-32 w-32 cursor-pointer overflow-hidden grayscale transition-all duration-500 hover:grayscale-0 active:scale-95 sm:mb-2 sm:h-56 sm:w-56"
               aria-label="Toggle Aura Mode"
             >
               <Image
@@ -203,12 +195,12 @@ export default function Home() {
             </button>
 
             {/* Hero Text */}
-            <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-7xl">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-7xl">
               Akshat Darshi
             </h1>
 
             {/* Phonetic Pronunciation (Aesthetic touch often found in minimal portfolios) */}
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400 dark:text-gray-500 sm:text-sm">
+            <div className="mb-8 flex max-w-md flex-wrap items-center justify-center gap-2 px-2 text-center text-[11px] text-gray-400 dark:text-gray-500 sm:text-sm">
               <span>/ˈəkʃət ˈdɑːrʃi/</span>
               <span className="text-gray-300 dark:text-gray-700">•</span>
               <span>noun</span>
@@ -266,7 +258,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-full space-y-4 text-left text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg md:text-xl">
+            <div className="w-full max-w-xl space-y-4 text-center text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg md:text-xl">
               <p>
                 a{" "}
                 <a

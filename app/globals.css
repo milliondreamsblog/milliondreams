@@ -17,6 +17,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
   --font-instrument-serif: var(--font-instrument-serif);
+  --font-reading-serif: var(--font-reading-serif);
 }
 
 body {

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { motion, type Variants } from "framer-motion";
 import {
   ThumbsUp,
   ThumbsDown,
@@ -47,12 +48,12 @@ export interface PostCardProps {
 
 // ─── Animation ───────────────────────────────────────────────────────────────
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as any },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -90,11 +91,12 @@ function Avatar({
 }
 
 function ActionButton({ label, url }: { label: string; url: string }) {
+  const isInternal = url.startsWith("/");
   return (
     <Link
       href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={isInternal ? undefined : "_blank"}
+      rel={isInternal ? undefined : "noopener noreferrer"}
       onClick={(e) => e.stopPropagation()}
       className="flex items-center gap-1.5 bg-black dark:bg-white text-white dark:text-black rounded-full px-3 py-1.5 text-[11px] font-semibold tracking-wide hover:opacity-75 transition-opacity whitespace-nowrap"
     >
@@ -168,9 +170,20 @@ export function PostCard({
   upvotes,
   comments,
 }: PostCardProps) {
+  const router = useRouter();
+  const isInternal = actionUrl.startsWith("/");
+
   const handleCopyLink = (e: React.MouseEvent) => {
     e.stopPropagation();
     navigator.clipboard.writeText(actionUrl).catch(() => {});
+  };
+
+  const handleCardClick = () => {
+    if (isInternal) {
+      router.push(actionUrl);
+    } else {
+      window.open(actionUrl, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
@@ -180,7 +193,7 @@ export function PostCard({
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
       className="w-full cursor-pointer"
-      onClick={() => window.open(actionUrl, "_blank", "noopener,noreferrer")}
+      onClick={handleCardClick}
     >
       <div
         className="
