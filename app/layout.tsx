@@ -8,6 +8,7 @@ import { SmoothScroll } from "./components/SmoothScroll";
 import { ReadingProgress } from "./components/ReadingProgress";
 import { KonamiEasterEgg } from "./components/KonamiEasterEgg";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -65,6 +66,7 @@ export default function RootLayout({
           </NavProvider>
         </ThemeProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
