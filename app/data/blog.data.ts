@@ -28,6 +28,6 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Going Home",
     description: `I was everywhere. Solving everything. Preparing, supposedly. But I didn't feel complete. I felt like I was performing "being productive" really well.`,
     image: "/Blog/Blogimg1.jpeg",
-    url: "/blog/going-home",
+    url: "https://substack.com/@akshatdarshi/note/p-185972523?r=1pocd&utm_source=notes-share-action&utm_medium=web",
   },
 ];
