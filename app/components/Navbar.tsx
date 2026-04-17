@@ -39,7 +39,7 @@ export function Navbar() {
     <>
       {/* Glass Island Navbar — scrollable on mobile */}
       <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100vw-1.5rem)] -translate-x-1/2 sm:bottom-6 sm:w-auto">
-        <nav className="flex items-center justify-center gap-3 overflow-x-auto rounded-[28px] border border-gray-200 bg-white/70 px-3 py-3 shadow-sm backdrop-blur-md transition-all hover:bg-white/90 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:bg-zinc-900 scrollbar-hide sm:gap-5 sm:rounded-full sm:px-6">
+        <nav className="flex items-center justify-start gap-3 overflow-x-auto rounded-[28px] border border-gray-200 bg-white/70 px-3 py-3 shadow-sm backdrop-blur-md transition-all hover:bg-white/90 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:bg-zinc-900 scrollbar-hide sm:justify-center sm:gap-5 sm:rounded-full sm:px-6">
           {/* Internal Navigation */}
           <div className="flex items-center gap-3 shrink-0 sm:gap-4">
             {navLinks.map((link) => {
