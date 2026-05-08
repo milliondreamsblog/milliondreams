@@ -30,7 +30,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://akshatdarshi.dev"),
+  metadataBase: new URL("https://milliondreams.vercel.app"),
   title: {
     default: "Akshat Darshi",
     template: "%s | Akshat Darshi",
