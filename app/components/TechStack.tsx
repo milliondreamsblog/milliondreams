@@ -40,7 +40,7 @@ const categories = [
         name: "Infra & Tools",
         skills: [
             { name: "Docker", slug: "docker" },
-            { name: "AWS", slug: "amazonwebservices" },
+            { name: "Cloudflare", slug: "cloudflare" },
             { name: "Vercel", slug: "vercel" },
             { name: "Git", slug: "git" },
             { name: "GitHub", slug: "github" },
@@ -50,7 +50,7 @@ const categories = [
         name: "AI & ML",
         skills: [
             { name: "LangChain", slug: "langchain" },
-            { name: "OpenAI", slug: "openai" },
+            { name: "Anthropic", slug: "anthropic" },
             { name: "PyTorch", slug: "pytorch" },
             { name: "TensorFlow", slug: "tensorflow" },
         ]

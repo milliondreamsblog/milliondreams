@@ -44,7 +44,7 @@ export default async function Image() {
             letterSpacing: "0.1em",
           }}
         >
-          akshatdarshi.dev/blog
+          milliondreams.vercel.app/blog
         </div>
 
         {/* Accent line */}
