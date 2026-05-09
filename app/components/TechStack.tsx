@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,7 +60,8 @@ const marqueeSkills = categories.flatMap(c => c.skills);
 
 function SkillIcon({ name, slug, className }: { name: string; slug: string; className: string }) {
     return (
-        <Image
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
             src={`https://cdn.simpleicons.org/${slug}`}
             alt={name}
             width={40}
