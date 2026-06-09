@@ -20,6 +20,8 @@ export interface Project {
   stack: string[];
   githubUrl?: string;
   liveUrl?: string;
+  /** Optional thumbnail (path under /public). Falls back to a typographic placeholder. */
+  image?: string;
   /** Controls special layout: "hero" = 2-col wide, "sidebar" = left sidebar stats, "standard" = default */
   layout?: "hero" | "sidebar" | "standard";
 }
