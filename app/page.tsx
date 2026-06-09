@@ -677,6 +677,9 @@ export default function Home() {
                       className="absolute inset-0 h-full w-full"
                     />
                   </div>
+                  <figcaption className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+                    A look at something I built
+                  </figcaption>
                 </figure>
 
                 <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
