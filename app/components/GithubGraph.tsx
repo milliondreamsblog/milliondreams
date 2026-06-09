@@ -21,3 +21,13 @@ const THEME = {
 
 const USERNAME = "milliondreamsblog";
 
+export function GithubGraph() {
+  const { resolvedTheme } = useTheme();
+  const isClient = useIsClient();
+  const [total, setTotal] = useState<number | null>(null);
+
+  if (!isClient) return null;
+
+  const isDark = resolvedTheme === "dark";
+  const scale = isDark ? THEME.dark : THEME.light;
+
