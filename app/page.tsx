@@ -665,6 +665,12 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Featured Video */}
+                <figure className="w-full">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+                  </div>
+                </figure>
+
                 <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
                   I believe that the best products are built by people who have
                   a diverse range of interests. It&apos;s the unique combination
