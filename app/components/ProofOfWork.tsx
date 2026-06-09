@@ -127,3 +127,15 @@ function ProofCard({ project }: { project: Project }) {
             <span className="text-gray-400 dark:text-gray-500">: {project.tagline}</span>
           </h3>
 
+          <ul className="mt-3 space-y-2">
+            {project.bullets.slice(0, 2).map((b) => (
+              <li
+                key={b}
+                className="flex gap-2 text-[13px] leading-relaxed text-gray-600 dark:text-gray-400"
+              >
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gray-400 dark:bg-gray-600" />
+                {b}
+              </li>
+            ))}
+          </ul>
+
