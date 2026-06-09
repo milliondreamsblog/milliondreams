@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { PomodoroTimer } from "./components/PomodoroTimer";
 import { NeuralNetworkSim } from "./components/NeuralNetworkSim";
+import { ProofOfWork } from "./components/ProofOfWork";
 
 import { getMarkdownContent } from "./data/content";
 import { useNav } from "./context/NavContext";
