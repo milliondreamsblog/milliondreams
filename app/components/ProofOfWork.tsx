@@ -38,3 +38,23 @@ const TECH_SLUGS: Record<string, string> = {
   JWT: "jsonwebtokens",
 };
 
+function TechBadge({ label }: { label: string }) {
+  const slug = TECH_SLUGS[label];
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-medium text-gray-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-300">
+      {slug && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`https://cdn.simpleicons.org/${slug}`}
+          alt=""
+          width={13}
+          height={13}
+          loading="lazy"
+          className="h-3.5 w-3.5 object-contain opacity-80 brightness-0 dark:brightness-0 dark:invert"
+        />
+      )}
+      {label}
+    </span>
+  );
+}
+
