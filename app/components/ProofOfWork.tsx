@@ -139,3 +139,14 @@ function ProofCard({ project }: { project: Project }) {
             ))}
           </ul>
 
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.stack.map((s) => (
+              <TechBadge key={s} label={s} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
