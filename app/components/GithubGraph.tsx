@@ -61,3 +61,37 @@ export function GithubGraph() {
         </div>
       </div>
 
+      {/* Calendar grid */}
+      <div className="w-full overflow-x-auto pb-1 scrollbar-hide">
+        <div className="flex min-w-max justify-start">
+          <GitHubCalendar
+            username={USERNAME}
+            colorScheme={isDark ? "dark" : "light"}
+            theme={THEME}
+            blockSize={11}
+            blockMargin={3}
+            blockRadius={2}
+            fontSize={11}
+            showColorLegend={false}
+            showTotalCount={false}
+            transformData={(data: Activity[]) => {
+              const sum = data.reduce((acc, d) => acc + d.count, 0);
+              setTotal((prev) => (prev === sum ? prev : sum));
+              return data;
+            }}
+            renderBlock={(block, activity) =>
+              React.cloneElement(
+                block,
+                {},
+                <title>{`${activity.count} contribution${
+                  activity.count === 1 ? "" : "s"
+                } on ${activity.date}`}</title>,
+              )
+            }
+            errorMessage="Couldn't load GitHub contributions right now."
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
