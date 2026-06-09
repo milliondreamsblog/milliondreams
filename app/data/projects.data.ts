@@ -26,6 +26,31 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: "buildinfra",
+    index: "01",
+    title: "BuildInfra",
+    tagline: "Construction Project Management Platform",
+    description:
+      "Internal operations platform for a real-estate portfolio valued at $1B+. Project tracking, approvals, payroll automation, and field workflows — backend services plus a React Native app used daily on construction sites.",
+    tier: "tier1",
+    badge: "Live Product",
+    badgeVariant: "live",
+    layout: "hero",
+    stats: [
+      { value: "120+",  label: "Active users" },
+      { value: "$1B+",  label: "Portfolio managed" },
+      { value: "700+",  label: "Payroll PDFs/mo" },
+    ],
+    bullets: [
+      "Modular backend services + React Native mobile app used by 120+ users for construction ops",
+      "Background job system generating 700+ payroll PDFs/month with Puppeteer & Resend",
+      "Real-time approval & project-status workflows — cut coordination delays by 40%",
+      "Demo login — projectmanager@email.com / 12345678",
+    ],
+    stack: ["Next.js", "Golang", "TypeScript", "React Native", "AWS"],
+    liveUrl: "https://app.buildenfra.in",
+  },
+  {
     id: "bawarchie",
     index: "03",
     title: "Bawarchie",
