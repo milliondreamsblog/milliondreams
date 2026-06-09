@@ -51,6 +51,7 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["Next.js", "Golang", "TypeScript", "React Native", "AWS"],
     liveUrl: "https://app.buildenfra.in",
+    image: "/projects/buildinfra.svg",
   },
   {
     id: "cadence",
