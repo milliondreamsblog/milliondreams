@@ -27,7 +27,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "bawarchie",
-    index: "01",
+    index: "03",
     title: "Bawarchie",
     tagline: "QR Restaurant Ordering System",
     description:
@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "roborumble",
-    index: "02",
+    index: "04",
     title: "RoboRumble 3.0",
     tagline: "Kanpur's largest tech event platform · roborumble.in",
     description:
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "talk2pdf",
-    index: "03",
+    index: "05",
     title: "Talk2PDF",
     tagline: "Agentic Document Q&A",
     description:
@@ -100,7 +100,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "evolvesanga",
-    index: "04",
+    index: "06",
     title: "EvolveSanga",
     tagline: "NGO Platform · Section 8 Nonprofit",
     description:
@@ -123,7 +123,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "resumeai",
-    index: "05",
+    index: "07",
     title: "ResumeAI",
     tagline: "Intelligent Resume Optimizer · Next.js 15",
     description:
@@ -149,7 +149,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "rbac",
-    index: "06",
+    index: "08",
     title: "RBAC Auth",
     tagline: "Role-based access control · Node.js",
     description:
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ehm",
-    index: "07",
+    index: "09",
     title: "EHM Platform",
     tagline: "ESG SaaS · ClimAgro Analytics",
     description:
@@ -193,7 +193,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "misinformation",
-    index: "08",
+    index: "10",
     title: "Misinformation Agent",
     tagline: "Agentic NLP · MANIT Bhopal Research",
     description:
