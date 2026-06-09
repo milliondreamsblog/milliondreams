@@ -28,3 +28,20 @@ const fadeUp: Variants = {
   },
 };
 
+function ProofCard({ project }: { project: Project }) {
+  const primaryUrl = project.liveUrl ?? project.githubUrl;
+
+  return (
+    <motion.article
+      variants={fadeUp}
+      className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50/40 p-5 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.04] sm:p-6"
+    >
+      {/* Ghost index, top-right */}
+      <span
+        className="pointer-events-none absolute right-4 top-2 select-none font-instrument-serif italic leading-none text-black/[0.04] dark:text-white/[0.06]"
+        style={{ fontSize: "64px" }}
+        aria-hidden
+      >
+        {project.index}
+      </span>
+
