@@ -31,3 +31,20 @@ export function GithubGraph() {
   const isDark = resolvedTheme === "dark";
   const scale = isDark ? THEME.dark : THEME.light;
 
+  return (
+    <div className="w-full rounded-2xl border border-gray-200 bg-gray-50/40 p-5 transition-colors dark:border-white/10 dark:bg-white/[0.02] sm:p-6">
+      {/* Header — prominent total + legend */}
+      <div className="mb-5 flex items-end justify-between gap-4">
+        <p className="text-sm leading-none text-gray-500 dark:text-gray-400 sm:text-base">
+          {total !== null ? (
+            <>
+              <span className="font-semibold tabular-nums text-black dark:text-white">
+                {total.toLocaleString()}
+              </span>{" "}
+              contributions in the last year
+            </>
+          ) : (
+            <span className="inline-block h-3.5 w-52 animate-pulse rounded bg-gray-200 align-middle dark:bg-zinc-800" />
+          )}
+        </p>
+
