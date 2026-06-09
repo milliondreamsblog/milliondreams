@@ -93,6 +93,7 @@ export const PROJECTS: Project[] = [
       "No app download — scan QR, order, pay; kitchen receives instantly",
       "Restaurant dashboard: live orders, menu management, revenue reporting",
       "Razorpay: UPI/Card/Wallet — order only fires after payment confirms",
+      "Demo login — akshatsan23@gmail.com / 12345678",
     ],
     stack: ["Next.js", "PostgreSQL", "Razorpay", "TypeScript", "Tailwind"],
     githubUrl: "https://github.com/milliondreamsblog/orderbyqr",
