@@ -58,3 +58,28 @@ function TechBadge({ label }: { label: string }) {
   );
 }
 
+// ─── Thumbnail (real image, else typographic placeholder) ─────────────────────
+
+function Thumbnail({ project }: { project: Project }) {
+  if (project.image) {
+    return (
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-gray-200 dark:border-white/10">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="200px"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+  return (
+    <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-gray-100 px-3 text-center dark:border-white/10 dark:bg-zinc-900">
+      <span className="font-instrument-serif italic text-xl leading-tight text-gray-300 dark:text-zinc-600">
+        {project.title}
+      </span>
+    </div>
+  );
+}
+
