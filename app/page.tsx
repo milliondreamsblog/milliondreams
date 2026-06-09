@@ -668,6 +668,14 @@ export default function Home() {
                 {/* Featured Video */}
                 <figure className="w-full">
                   <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+                    <iframe
+                      src="https://www.youtube.com/embed/J_KfJrqMyN8"
+                      title="Featured demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full"
+                    />
                   </div>
                 </figure>
 
