@@ -45,3 +45,26 @@ function ProofCard({ project }: { project: Project }) {
         {project.index}
       </span>
 
+      <div className="relative flex flex-col gap-3">
+        <span
+          className={`inline-block w-fit font-mono text-[8px] uppercase tracking-[0.2em] px-[7px] py-[3px] ${BADGE_STYLES[project.badgeVariant]}`}
+        >
+          {project.badge}
+        </span>
+
+        <div>
+          <h3
+            className="font-instrument-serif font-normal leading-[1.05] text-[#0a0a0a] dark:text-white"
+            style={{ fontSize: "clamp(22px,4vw,28px)", letterSpacing: "-0.015em" }}
+          >
+            {project.title}
+          </h3>
+          <p className="mt-0.5 font-mono text-[10px] tracking-[0.04em] text-gray-400 dark:text-gray-500">
+            {project.tagline}
+          </p>
+        </div>
+
+        <p className="max-w-[60ch] text-[13px] leading-[1.65] text-gray-600 dark:text-gray-400">
+          {project.description}
+        </p>
+
