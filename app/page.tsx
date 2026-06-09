@@ -372,6 +372,9 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Proof of Work Section */}
+            <ProofOfWork />
+
             {/* Education Section */}
             <div className="mb-16 w-full text-left">
               <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
