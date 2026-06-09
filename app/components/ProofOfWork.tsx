@@ -150,3 +150,23 @@ function ProofCard({ project }: { project: Project }) {
   );
 }
 
+// ─── Section ──────────────────────────────────────────────────────────────────
+
+export function ProofOfWork() {
+  const featured = PROJECTS.slice(0, 3);
+
+  return (
+    <section className="w-full">
+      {/* Header — left-aligned pill + bold heading + subtitle */}
+      <div className="mb-10 flex flex-col items-start text-left">
+        <span className="mb-5 inline-flex items-center rounded-full bg-black px-4 py-1.5 text-sm font-medium text-white dark:bg-white dark:text-black">
+          Proof of Work
+        </span>
+        <h2 className="text-4xl font-bold tracking-tight text-black dark:text-white sm:text-5xl">
+          Check out my latest work
+        </h2>
+        <p className="mt-4 max-w-xl text-base text-gray-500 dark:text-gray-400 sm:text-lg">
+          I&apos;ve worked on a variety of projects, from fullstack apps to AI agents.
+        </p>
+      </div>
+
