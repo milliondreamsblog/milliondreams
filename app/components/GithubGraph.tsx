@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useSyncExternalStore } from "react";
-import { GitHubCalendar, type Activity } from "react-github-calendar";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
+import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
 
 function useIsClient() {
@@ -25,6 +25,23 @@ export function GithubGraph() {
   const { resolvedTheme } = useTheme();
   const isClient = useIsClient();
   const [total, setTotal] = useState<number | null>(null);
+
+  // Fetch the yearly total independently — avoids setState during the
+  // calendar's render (which transformData would otherwise trigger).
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (!cancelled && typeof d?.total?.lastYear === "number") {
+          setTotal(d.total.lastYear);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   if (!isClient) return null;
 
@@ -74,11 +91,6 @@ export function GithubGraph() {
             fontSize={11}
             showColorLegend={false}
             showTotalCount={false}
-            transformData={(data: Activity[]) => {
-              const sum = data.reduce((acc, d) => acc + d.count, 0);
-              setTotal((prev) => (prev === sum ? prev : sum));
-              return data;
-            }}
             renderBlock={(block, activity) =>
               React.cloneElement(
                 block,
