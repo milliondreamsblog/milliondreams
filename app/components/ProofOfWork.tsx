@@ -68,3 +68,17 @@ function ProofCard({ project }: { project: Project }) {
           {project.description}
         </p>
 
+        {/* Stats */}
+        <div className="flex flex-wrap gap-x-6 gap-y-1 pt-1">
+          {project.stats.map((s) => (
+            <div key={s.label} className="flex items-baseline gap-1.5">
+              <span className="font-instrument-serif italic text-[18px] leading-none text-[#0a0a0a] dark:text-white">
+                {s.value}
+              </span>
+              <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-gray-400 dark:text-gray-500">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
