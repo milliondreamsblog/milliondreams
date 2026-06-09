@@ -82,3 +82,107 @@ function ProofCard({ project }: { project: Project }) {
           ))}
         </div>
 
+        {/* Stack */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1 pt-1">
+          {project.stack.map((s, i) => (
+            <span
+              key={s}
+              className="font-mono text-[9px] tracking-[0.04em] text-gray-400 dark:text-gray-500"
+            >
+              {s}
+              {i < project.stack.length - 1 && (
+                <span className="ml-3 text-gray-300 dark:text-gray-700">/</span>
+              )}
+            </span>
+          ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex items-center gap-4 pt-2">
+          {project.liveUrl && (
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-b border-[#0a0a0a] pb-px font-mono text-[9px] uppercase tracking-[0.12em] text-[#0a0a0a] transition-colors hover:border-[#c8410a] hover:text-[#c8410a] dark:border-white dark:text-white"
+            >
+              Live <ArrowUpRight className="h-2.5 w-2.5" />
+            </Link>
+          )}
+          {project.githubUrl && (
+            <Link
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-b border-gray-300 pb-px font-mono text-[9px] uppercase tracking-[0.12em] text-gray-500 transition-colors hover:border-[#c8410a] hover:text-[#c8410a] dark:border-white/30 dark:text-gray-400"
+            >
+              Source
+            </Link>
+          )}
+        </div>
+      </div>
+
+      {/* Whole-card affordance — covers the card, sits under explicit links */}
+      {primaryUrl && (
+        <Link
+          href={primaryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${project.title}`}
+          className="absolute inset-0 z-0"
+        />
+      )}
+    </motion.article>
+  );
+}
+
+// ─── Section ──────────────────────────────────────────────────────────────────
+
+export function ProofOfWork() {
+  const featured = PROJECTS.slice(0, 3);
+
+  return (
+    <section className="mb-16 w-full text-left">
+      {/* Heading */}
+      <div className="mb-8">
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+          Proof of Work
+        </p>
+        <h2
+          className="font-instrument-serif font-normal leading-[0.95] text-[#0a0a0a] dark:text-white"
+          style={{ fontSize: "clamp(34px,6vw,52px)", letterSpacing: "-0.02em" }}
+        >
+          Check out my latest{" "}
+          <em className="italic text-[#c8410a]">work</em>
+        </h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
+          A range of projects — from full-stack SaaS platforms to AI agents.
+        </p>
+      </div>
+
+      {/* Top 3 cards */}
+      <motion.div
+        className="relative z-10 space-y-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-48px" }}
+        transition={{ staggerChildren: 0.08 }}
+      >
+        {featured.map((project) => (
+          <ProofCard key={project.id} project={project} />
+        ))}
+      </motion.div>
+
+      {/* Show more */}
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-2.5 text-sm font-medium text-black transition-all hover:bg-black hover:text-white dark:border-white/15 dark:text-white dark:hover:bg-white dark:hover:text-black"
+        >
+          Show more
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+    </section>
+  );
+}
