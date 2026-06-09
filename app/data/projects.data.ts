@@ -102,6 +102,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "PostgreSQL", "Razorpay", "TypeScript", "Tailwind"],
     githubUrl: "https://github.com/milliondreamsblog/orderbyqr",
     liveUrl: "https://www.bawarchie.com",
+    image: "/projects/bawarchie.svg",
   },
   {
     id: "roborumble",
