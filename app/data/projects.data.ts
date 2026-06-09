@@ -51,6 +51,28 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://app.buildenfra.in",
   },
   {
+    id: "cadence",
+    index: "02",
+    title: "Cadence",
+    tagline: "Content Intelligence Engine",
+    description:
+      "A content intelligence engine that ingests, analyzes, and orchestrates content workflows — turning unstructured inputs into structured, queryable insight.",
+    tier: "tier1",
+    badge: "AI / GenAI",
+    badgeVariant: "ai",
+    stats: [
+      { value: "AI",   label: "Content engine" },
+      { value: "Live", label: "Production" },
+    ],
+    bullets: [
+      "Content pipeline — ingestion, analysis, and orchestration end-to-end",
+      "Turns unstructured content into structured, actionable insight",
+      "Deployed live on Vercel",
+    ],
+    stack: ["Next.js", "TypeScript", "GenAI", "Vercel"],
+    liveUrl: "https://web-app-self-mu.vercel.app",
+  },
+  {
     id: "bawarchie",
     index: "03",
     title: "Bawarchie",
