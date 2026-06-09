@@ -170,3 +170,29 @@ export function ProofOfWork() {
         </p>
       </div>
 
+      {/* Cards */}
+      <motion.div
+        className="space-y-5"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-48px" }}
+        transition={{ staggerChildren: 0.08 }}
+      >
+        {featured.map((project) => (
+          <ProofCard key={project.id} project={project} />
+        ))}
+      </motion.div>
+
+      {/* Show more */}
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-2.5 text-sm font-medium text-black transition-all hover:bg-black hover:text-white dark:border-white/15 dark:text-white dark:hover:bg-white dark:hover:text-black"
+        >
+          Show more
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+    </section>
+  );
+}
