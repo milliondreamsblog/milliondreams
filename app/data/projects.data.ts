@@ -74,6 +74,7 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "GenAI", "Vercel"],
     liveUrl: "https://web-app-self-mu.vercel.app",
+    image: "/projects/cadence.svg",
   },
   {
     id: "bawarchie",
