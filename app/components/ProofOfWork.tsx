@@ -17,3 +17,14 @@ const BADGE_STYLES: Record<BadgeVariant, string> = {
   research: "bg-[#2a1a3a] text-[#c8a8e8]",
 };
 
+// ─── Card ─────────────────────────────────────────────────────────────────────
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
