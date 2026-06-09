@@ -120,3 +120,10 @@ function ProofCard({ project }: { project: Project }) {
           )}
         </div>
 
+        {/* Right — title, bullets, stack */}
+        <div className="min-w-0 flex-1">
+          <h3 className="text-lg font-semibold leading-snug text-black dark:text-white sm:text-xl">
+            {project.title}{" "}
+            <span className="text-gray-400 dark:text-gray-500">: {project.tagline}</span>
+          </h3>
+
