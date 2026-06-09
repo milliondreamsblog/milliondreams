@@ -48,3 +48,16 @@ export function GithubGraph() {
           )}
         </p>
 
+        <div className="hidden items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-gray-400 dark:text-gray-500 sm:flex">
+          <span>Less</span>
+          {scale.map((c) => (
+            <span
+              key={c}
+              className="h-2.5 w-2.5 rounded-[2px]"
+              style={{ backgroundColor: c }}
+            />
+          ))}
+          <span>More</span>
+        </div>
+      </div>
+
