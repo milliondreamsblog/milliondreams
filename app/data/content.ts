@@ -5,6 +5,8 @@ export const getMarkdownContent = (time: string) => `# Akshat Darshi
 
 Software Engineer with experience delivering **production-grade SaaS platforms and GenAI systems**. Skilled in **backend-heavy full-stack development**, object-oriented design, and clean, maintainable code. Proven track record of building **enterprise-grade applications**, APIs, and dashboards. Familiar with Agile workflows, CI/CD pipelines, and AWS deployments. Currently in the **Founder's Office at Bricx**, building **AI agents for GTM** and founder-led marketing.
 
+I believe that the best products are built by people who have a diverse range of interests. It's the unique combination of technical depth and human perspective that allows us to create technology that actually resonates.
+
 ## Experience
 
 ### Bricx
