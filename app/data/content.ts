@@ -3,18 +3,26 @@ export const getMarkdownContent = (time: string) => `# Akshat Darshi
 
 ## About
 
-Software Engineer with experience delivering **production-grade SaaS platforms and GenAI systems**. Skilled in **backend-heavy full-stack development**, object-oriented design, and clean, maintainable code. Proven track record of building **enterprise-grade applications**, APIs, and dashboards. Familiar with Agile workflows, CI/CD pipelines, and AWS deployments. Currently exploring ERP systems, including Oracle and analytics tooling.
+Software Engineer with experience delivering **production-grade SaaS platforms and GenAI systems**. Skilled in **backend-heavy full-stack development**, object-oriented design, and clean, maintainable code. Proven track record of building **enterprise-grade applications**, APIs, and dashboards. Familiar with Agile workflows, CI/CD pipelines, and AWS deployments. Currently in the **Founder's Office at Bricx**, building **AI agents for GTM** and founder-led marketing.
 
 ## Experience
 
+### Bricx
+**Founder's Office | AI Agents, GTM, Founder-Led Marketing**
+*Jul 2026 -- Present*
+
+Building **AI agents for GTM**, automating go-to-market workflows end to end.
+Running **founder-led marketing** for **YC founders**.
+Shipping **SEO agents** for content research and optimization.
+
 ### Tracks & Towers Infratech (ISO 9001, Real Estate Infra Firm)
 **Software Engineer | Next.js, Golang, TypeScript, AI Tooling, Docker, AWS (EC2, S3) | Hyderabad**
-*Jan 2026 -- Present*
+*Jan 2026 -- Jul 2026*
 
-Architecting an internal **operations management platform** supporting a real-estate portfolio valued at **$1B+**.
-Built modular backend services and a **React Native mobile app** used by **120+ users** for construction operations.
+Architected an internal **operations management platform** supporting a real-estate portfolio valued at **$2B**.
+Built modular backend services and a **React Native mobile app**, scaling from **120+** to **1,000+ users** for construction operations.
 Productionized a **background job system** generating **700+ payroll PDFs/month** using **Puppeteer and Resend**.
-Implemented real-time approval and project status workflows across **120+ users**, reducing coordination delays by **40%**.
+Implemented real-time approval and project status workflows across **1,000+ users**, reducing coordination delays by **40%**.
 
 ### ClimAgro Analytics (IIT Kanpur–Funded Climate Tech Startup)
 **ML & Full-Stack Developer | Spring Boot, REST APIs, React, PostgreSQL | Kanpur**
@@ -42,13 +50,21 @@ Designed the complete order lifecycle, from menu discovery to **verified online 
 Enabling an AI-powered recommendation layer adapting suggestions based on **budget and dietary constraints**.
 Focused on UX performance, enabling **instant cart recovery** and seamless table-based ordering.
 
-### Talk2Pdf
-**Agentic AI Tooling, PDF Parsing**
-[GitHub](https://github.com/milliondreamsblog/AskyourPDF) | [Live](https://github.com/milliondreamsblog/AskyourPDF)
+### Contract-Risk.ai – AI Contract Analysis
+**Next.js 15, Gemini 2.0 Flash, ChromaDB, Tesseract.js**
+[GitHub](https://github.com/milliondreamsblog/Contract-Risk.ai)
 
-Created an **agentic document Q&A tool** used by **500+ users weekly** to query large PDFs.
-Architected a modular retrieval layer supporting multiple LLMs and vector stores without code changes.
-Reduced AI integration effort by **60%** for downstream developers.
+Built a **RAG pipeline** detecting predatory clauses in Indian freelance contracts, grounding findings in the **Indian Contract Act** rather than free-form LLM output.
+Generates a **0–100 risk score** per contract.
+Added **OCR intake** via Tesseract.js so scanned and photographed contracts parse end-to-end.
+
+### BrandVoiceAgent – AI Brand-Voice Critic
+**TypeScript, Next.js 15, Anthropic Claude, Vercel Blob**
+[GitHub](https://github.com/milliondreamsblog/BrandVoiceAgent)
+
+Built an **agentic critic** scoring social drafts against a **19-rule brand voice system** before a human reviews them.
+Shipped an approved-content library and a **review queue** for edge cases.
+Paired it with a training game that calibrates new writers on the voice.
 
 ### ResumeAI – Intelligent Resume Optimizer
 **Next.js 15, TypeScript, Tailwind, GenAI**
@@ -64,14 +80,14 @@ Engineered a resume parser with **98% accuracy**, handling **PDF/DOCX files up t
 **Languages:** Java, Python, TypeScript / JavaScript, Go
 **Frontend:** React.js, Next.js (SSR / ISR), Tailwind CSS, Redux, HTML5
 **Backend:** Node.js, Express.js, Spring Boot, Hibernate, REST / GraphQL APIs, WebSockets
-**AI & ML:** LangChain, LlamaIndex, OpenAI SDK, RAG, Vector DBs (Qdrant), TensorFlow, PyTorch
+**AI & ML:** LangChain, LlamaIndex, OpenAI SDK, Anthropic Claude SDK, Google ADK, Gemini, Agentic Workflows, RAG, Vector DBs (Qdrant, ChromaDB), TensorFlow, PyTorch
 **Databases & Tools:** PostgreSQL, MySQL, OAS (Oracle Analytics), ERP, Workflow Engines
 
 ## Education
 
 ### University Institute of Engineering and Technology, CSJM University
 **B.Tech in Computer Science (AI Specialization)**
-*Oct 2022 -- Oct 2026* 
+*Oct 2022 -- Jul 2026*
 
 ## Publications & Awards
 
