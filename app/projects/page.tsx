@@ -59,7 +59,7 @@ function CategoryTabs({
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(t)}
-            className={`relative font-mono text-[10px] tracking-[0.18em] uppercase pb-[6px] transition-colors ${
+            className={`relative font-mono text-[10px] tracking-[0.18em] uppercase pb-1.5 transition-colors ${
               isActive
                 ? "text-[#c8410a]"
                 : "text-[#c8c3b8] hover:text-[#0a0a0a] dark:hover:text-white"
