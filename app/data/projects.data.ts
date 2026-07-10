@@ -1,6 +1,38 @@
 export type ProjectTier = "tier1" | "tier2";
 export type BadgeVariant = "live" | "ai" | "work" | "client" | "event" | "backend" | "research";
 
+/**
+ * A project may belong to several categories at once — they describe what the
+ * work *is*, not where it sits in the page hierarchy (that's `tier`).
+ *
+ * design: visual or interaction craft is a headline feature of the project,
+ *   not merely a byproduct of it having a UI. Reserve it for work where the
+ *   design is the thing worth pointing at.
+ */
+export type ProjectCategory =
+  | "ai"
+  | "fullstack"
+  | "design"
+  | "backend"
+  | "research";
+
+/** Tab order on the projects page. "All" is prepended by the page itself. */
+export const CATEGORY_ORDER: ProjectCategory[] = [
+  "ai",
+  "fullstack",
+  "design",
+  "backend",
+  "research",
+];
+
+export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
+  ai: "AI / Agents",
+  fullstack: "Full-Stack",
+  design: "Design",
+  backend: "Backend",
+  research: "Research",
+};
+
 export interface ProjectStat {
   value: string;
   label: string;
@@ -13,6 +45,8 @@ export interface Project {
   tagline: string;
   description: string;
   tier: ProjectTier;
+  /** One or more; a project can appear under several tabs. */
+  categories: ProjectCategory[];
   badge: string;
   badgeVariant: BadgeVariant;
   stats: ProjectStat[];
@@ -30,21 +64,22 @@ export const PROJECTS: Project[] = [
   {
     id: "buildinfra",
     index: "01",
+    categories: ["fullstack", "backend"],
     title: "BuildInfra",
     tagline: "Construction Project Management Platform",
     description:
-      "Internal operations platform for a real-estate portfolio valued at $1B+. Project tracking, approvals, payroll automation, and field workflows — backend services plus a React Native app used daily on construction sites.",
+      "Internal operations platform for a real-estate portfolio valued at $2B. Project tracking, approvals, payroll automation, and field workflows — backend services plus a React Native app used daily on construction sites.",
     tier: "tier1",
     badge: "Live Product",
     badgeVariant: "live",
     layout: "hero",
     stats: [
-      { value: "120+",  label: "Active users" },
-      { value: "$1B+",  label: "Portfolio managed" },
-      { value: "700+",  label: "Payroll PDFs/mo" },
+      { value: "1,000+", label: "Active users" },
+      { value: "$2B",    label: "Portfolio managed" },
+      { value: "700+",   label: "Payroll PDFs/mo" },
     ],
     bullets: [
-      "Modular backend services + React Native mobile app used by 120+ users for construction ops",
+      "Modular backend services + React Native mobile app — scaled from 120+ to 1,000+ users",
       "Background job system generating 700+ payroll PDFs/month with Puppeteer & Resend",
       "Real-time approval & project-status workflows — cut coordination delays by 40%",
       "Demo login — projectmanager@email.com / 12345678",
@@ -56,6 +91,7 @@ export const PROJECTS: Project[] = [
   {
     id: "cadence",
     index: "02",
+    categories: ["ai", "fullstack"],
     title: "Cadence",
     tagline: "Content Intelligence Engine",
     description:
@@ -79,6 +115,7 @@ export const PROJECTS: Project[] = [
   {
     id: "bawarchie",
     index: "03",
+    categories: ["fullstack", "backend"],
     title: "Bawarchie",
     tagline: "QR Restaurant Ordering System",
     description:
@@ -107,6 +144,7 @@ export const PROJECTS: Project[] = [
   {
     id: "roborumble",
     index: "04",
+    categories: ["fullstack", "design"],
     title: "RoboRumble 3.0",
     tagline: "Kanpur's largest tech event platform · roborumble.in",
     description:
@@ -132,6 +170,7 @@ export const PROJECTS: Project[] = [
   {
     id: "talk2pdf",
     index: "05",
+    categories: ["ai", "backend"],
     title: "Talk2PDF",
     tagline: "Agentic Document Q&A",
     description:
@@ -154,6 +193,7 @@ export const PROJECTS: Project[] = [
   {
     id: "evolvesanga",
     index: "06",
+    categories: ["fullstack", "design"],
     title: "EvolveSanga",
     tagline: "NGO Platform · Section 8 Nonprofit",
     description:
@@ -177,6 +217,7 @@ export const PROJECTS: Project[] = [
   {
     id: "resumeai",
     index: "07",
+    categories: ["ai", "fullstack", "design"],
     title: "ResumeAI",
     tagline: "Intelligent Resume Optimizer · Next.js 15",
     description:
@@ -201,8 +242,147 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://resume-ai-sigma-lime.vercel.app",
   },
   {
-    id: "rbac",
+    id: "contractrisk",
     index: "08",
+    categories: ["ai", "fullstack"],
+    title: "Contract-Risk.ai",
+    tagline: "AI contract analysis · Indian Contract Act",
+    description:
+      "Detects predatory clauses in Indian freelance contracts, grounded against the Indian Contract Act, and generates a 0–100 risk score. OCR intake handles scanned and photographed documents.",
+    tier: "tier1",
+    badge: "AI / GenAI",
+    badgeVariant: "ai",
+    stats: [
+      { value: "0–100", label: "Risk score" },
+      { value: "RAG",   label: "Statute-grounded" },
+    ],
+    bullets: [
+      "RAG pipeline grounds every finding in statute text — not free-form LLM opinion",
+      "OCR intake via Tesseract.js accepts scanned and photographed contracts",
+      "ChromaDB vector retrieval over the Indian Contract Act, reasoned over by Gemini 2.0 Flash",
+    ],
+    stack: ["Next.js 15", "TypeScript", "Gemini 2.0 Flash", "ChromaDB", "Tesseract.js"],
+    githubUrl: "https://github.com/milliondreamsblog/Contract-Risk.ai",
+  },
+  {
+    id: "kirtanam",
+    index: "09",
+    categories: ["fullstack"],
+    title: "Kirtanam",
+    tagline: "Video-lecture platform · web + Android",
+    description:
+      "Personalized video-lecture platform for ashram communities — admin controls, attendance tracking, and analytics. Ships to web and Android from a single codebase.",
+    tier: "tier1",
+    badge: "Live Product",
+    badgeVariant: "live",
+    stats: [
+      { value: "2",    label: "Platforms shipped" },
+      { value: "Live", label: "Web + Android" },
+    ],
+    bullets: [
+      "One codebase ships to web and Android via Capacitor",
+      "Attendance tracking and analytics for community administrators",
+      "YouTube Data API integration behind personalized lecture feeds",
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Capacitor"],
+    githubUrl: "https://github.com/milliondreamsblog/Kirtanam",
+  },
+  {
+    id: "brandvoiceagent",
+    index: "10",
+    categories: ["ai"],
+    title: "BrandVoiceAgent",
+    tagline: "AI brand-voice critic · 19-rule system",
+    description:
+      "Scores social drafts against a 19-rule brand voice system, paired with a training game, an approved-content library, and a human review queue.",
+    tier: "tier2",
+    badge: "AI / GenAI",
+    badgeVariant: "ai",
+    stats: [
+      { value: "19", label: "Voice rules" },
+      { value: "AI", label: "Review queue" },
+    ],
+    bullets: [
+      "Scores drafts against a 19-rule voice system before a human sees them",
+      "Approved-content library plus a review queue for edge cases",
+      "Training game calibrates new writers on the voice",
+    ],
+    stack: ["TypeScript", "Next.js 15", "Anthropic Claude", "Vercel Blob", "TanStack Table"],
+    githubUrl: "https://github.com/milliondreamsblog/BrandVoiceAgent",
+  },
+  {
+    id: "cmoagent",
+    index: "11",
+    categories: ["ai"],
+    title: "CMO Agent",
+    tagline: "Weekly content-intelligence agent",
+    description:
+      "Finds top X/Twitter posts, analyzes why they resonate, and generates on-brand post ideas and briefs — closing the loop from trend mining to ideation.",
+    tier: "tier2",
+    badge: "AI / GenAI",
+    badgeVariant: "ai",
+    stats: [
+      { value: "Weekly", label: "Cadence" },
+      { value: "X",      label: "Trend source" },
+    ],
+    bullets: [
+      "Mines top-performing X posts and extracts why they resonated",
+      "Generates on-brand post ideas and writing briefs",
+      "Runs unattended on a weekly cadence",
+    ],
+    stack: ["Node.js", "JavaScript", "Claude AI", "Next.js"],
+    githubUrl: "https://github.com/milliondreamsblog/CMO_agent",
+  },
+  {
+    id: "elvynchess",
+    index: "12",
+    categories: ["fullstack", "backend"],
+    title: "Elvyn-Chess",
+    tagline: "Chess coaching SaaS · web + mobile",
+    description:
+      "Students, coaches, and admins manage classes and schedules on a shared backend, with web and mobile clients living in one Turborepo monorepo.",
+    tier: "tier2",
+    badge: "Full-Stack SaaS",
+    badgeVariant: "backend",
+    stats: [
+      { value: "3", label: "User roles" },
+      { value: "2", label: "Clients" },
+    ],
+    bullets: [
+      "Turborepo monorepo — Next.js web and Expo mobile share one tRPC API",
+      "Role-based flows across students, coaches, and admins",
+      "Supabase + Drizzle ORM with end-to-end type safety",
+    ],
+    stack: ["TypeScript", "Turborepo", "tRPC", "Expo", "Supabase", "Drizzle"],
+    githubUrl: "https://github.com/milliondreamsblog/Elvyn-Chess",
+  },
+  {
+    id: "projectmanager",
+    index: "13",
+    categories: ["fullstack", "backend"],
+    title: "Project Manager",
+    tagline: "Enterprise project management · MERN",
+    description:
+      "Project-management platform for multi-team enterprises — RBAC, audit logging, real-time notifications, and D3 dependency visualizations.",
+    tier: "tier2",
+    badge: "Enterprise SaaS",
+    badgeVariant: "backend",
+    stats: [
+      { value: "RBAC", label: "Access control" },
+      { value: "D3",   label: "Dependency graphs" },
+    ],
+    bullets: [
+      "RBAC with audit logging across multi-team workspaces",
+      "Real-time notifications delivered over Pusher",
+      "D3.js dependency visualizations for task graphs",
+    ],
+    stack: ["React 19", "Node.js", "Express", "MongoDB", "D3.js", "Turborepo"],
+    githubUrl: "https://github.com/milliondreamsblog/ProjectManger",
+  },
+  {
+    id: "rbac",
+    index: "14",
+    categories: ["backend"],
     title: "RBAC Auth",
     tagline: "Role-based access control · Node.js",
     description:
@@ -224,7 +404,8 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ehm",
-    index: "09",
+    index: "15",
+    categories: ["fullstack", "backend"],
     title: "EHM Platform",
     tagline: "ESG SaaS · ClimAgro Analytics",
     description:
@@ -246,7 +427,8 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "misinformation",
-    index: "10",
+    index: "16",
+    categories: ["ai", "research"],
     title: "Misinformation Agent",
     tagline: "Agentic NLP · MANIT Bhopal Research",
     description:
