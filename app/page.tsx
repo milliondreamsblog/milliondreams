@@ -648,7 +648,7 @@ export default function Home() {
 
                 <div className="flex justify-center">
                   <div
-                    className="relative h-[250px] w-full max-w-sm grayscale hover:grayscale-0 transition-all duration-700 sm:h-[350px]"
+                    className="relative h-62.5 w-full max-w-sm grayscale hover:grayscale-0 transition-all duration-700 sm:h-87.5"
                     style={{
                       maskImage:
                         "radial-gradient(circle, black 40%, transparent 95%)",

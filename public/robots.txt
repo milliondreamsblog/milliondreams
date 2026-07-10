@@ -1,0 +1,35 @@
+# Robots.txt for milliondreams.vercel.app
+# Allow search engines to crawl and index your site
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.next/
+Disallow: /api/
+Disallow: *?*sort=
+Disallow: *?*filter=
+Disallow: /private/
+Disallow: /temp/
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /api/
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+# Sitemap location (create if you have one)
+Sitemap: https://milliondreams.vercel.app/sitemap.xml
+
+# Crawl delay for all bots (in seconds)
+Crawl-delay: 1
+Request-rate: 1/1s
