@@ -120,6 +120,39 @@ export const projectmanager: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "runtime-configurable RBAC",
+      over: "hard-coded role checks",
+      body: "Permissions live in a RoleConfig collection and are fetched per-request, so an admin can grant managers delete_task from the Admin UI with zero redeploys. The price is an extra DB read on every guarded request, plus the failure mode of a missing config locking a role out — which the middleware handles with an explicit 'contact administrator' 403. Admin bypasses the lookup entirely.",
+    },
+    {
+      chose: "Pusher Channels",
+      over: "self-hosted Socket.IO",
+      body: "The commented-out Socket.IO server is still in server.js — it was tried first. On Render's free tier, long-lived WebSocket servers fight instance sleep and cold starts, so a managed pub/sub with one channel per user sidesteps the whole problem. The vendor dependency is softened by making Pusher a safe no-op when credentials are absent.",
+    },
+    {
+      chose: "an in-memory MongoDB fallback",
+      over: "requiring Atlas for dev",
+      body: "When MONGO_URI is unset, db.js boots mongodb-memory-server and runs the seed script, so the API starts with literally zero configuration and a working demo login. Data evaporates on restart — exactly acceptable for demos and recruiter walkthroughs, and a real Atlas URI switches the fallback off.",
+    },
+    {
+      chose: "a pnpm/Turborepo monorepo",
+      over: "three separate repos",
+      body: "Web, mobile, and API share packages for types, API client, and config, so the Expo app and the React app consume the same typed surface instead of drifting apart. The cost is heavier tooling — workspaces, Turborepo, per-app Dockerfiles — for what is functionally one product.",
+    },
+    {
+      chose: "Cloudinary",
+      over: "AWS S3",
+      body: "The Comment schema still carries a legacy s3Key field next to the Cloudinary publicId — fossil evidence of a deliberate migration. Cloudinary's free tier bundles storage, CDN, and transforms behind one API key set, versus S3's IAM and bucket-policy ceremony; the optional AWS variables still linger in .env.example as the road not retaken.",
+    },
+  ],
+  funFacts: [
+    "A GitHub Actions workflow pings the API's /health endpoint every 12 minutes explicitly 'so Render's free tier doesn't sleep (and recruiters don't hit a 30–60s cold start)' — uptime as a hiring strategy.",
+    "The deadline cron is scheduled at */1 * * * * — every single minute — directly under a header comment claiming it 'runs every hour'; it's currently disabled via a commented-out require in server.js.",
+    "The Task model lives in a file named Task1.js and guards its export with mongoose.models.Task || mongoose.model(...) — scars from an earlier duplicate-model-registration bug.",
+    "The Pusher payload misspells progress as 'prograss', and the frontend faithfully matches the typo — renaming it is now a breaking API change.",
+    "The seed script rebuilds project IDs' date stamps (PJYYMMDD-0001) on every run, so demo data always looks freshly created no matter when you clone it.",
+    "You cannot complete a task with incomplete dependencies, set a completion date in the future, or un-complete a finished project — all enforced by Mongoose pre-save hooks, not frontend validation.",
+  ],
 };
