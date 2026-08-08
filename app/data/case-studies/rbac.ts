@@ -83,6 +83,33 @@ export const rbac: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "two JWT secrets",
+      over: "one secret with a role claim",
+      body: "Admin routes verify against a completely different signing key than user routes. With a single secret, an authorization bug that forgets to check the role claim silently grants users admin access; with split secrets, a user token cryptographically cannot pass admin verification no matter what its payload says. The cost is duplicated signing logic and a second secret to rotate.",
+    },
+    {
+      chose: "a role enum on the user document",
+      over: "a permissions collection",
+      body: "role: {enum: ['user','admin']} makes authorization a one-field read with schema-level integrity — invalid roles are rejected at write time. For a two-role system that's the right call; the author's larger ProjectManager shows the other end of the tradeoff, moving to a runtime-editable RoleConfig collection once permission lists needed to change without redeploys.",
+    },
+    {
+      chose: "a purchase join collection",
+      over: "an array of course IDs on the user",
+      body: "A join document scales without unbounded array growth, can carry its own metadata later (price paid, timestamp), and makes 'who bought this course' exactly as cheap as 'what did this user buy' — the both-directions query an embedded array can't do.",
+    },
+    {
+      chose: "stateless JWT",
+      over: "server-side sessions",
+      body: "With jsonwebtoken and no session store anywhere in the dependency list, auth state lives entirely in the signed token — no per-request session lookup and no shared store to operate. The accepted tradeoff is the standard one: tokens can't be revoked before expiry, which is exactly the gap a refresh-token-rotation layer would close — a layer this repo does not (yet) contain.",
+    },
+  ],
+  funFacts: [
+    "The package.json name is 'week-7' — this repo began life as a weekly cohort assignment (Week 7: authentication) and got promoted to a standalone portfolio piece.",
+    "The admin secret's env var name carries a typo preserved forever in the config surface: JWT_SERECT_ADMIN — 'SERECT' in config.js and .env.example alike.",
+    "db.js registers models with trailing spaces in their names — mongoose.model('course ', …) and mongoose.model('purchase ', …). Mongoose tolerates it, and it makes a great spot-the-bug interview question.",
+    "The example JWT secret in .env.example is 'Hare Krishna' — for both the user and admin secrets, which slightly undermines the two-trust-domain design in dev.",
+    "index.js imports four routers from a Routes/ directory that isn't in the published repo — the schemas and the two-secret design are committed, but the middleware that enforces them lives off-camera for now.",
+  ],
 };
