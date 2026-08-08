@@ -89,6 +89,33 @@ export const misinformation: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "a sequential multi-agent pipeline",
+      over: "one mega-prompt",
+      body: "A single prompt asking for 'verdict + score + recommendation' produces entangled, unauditable output. The SequentialAgent forces detection, grading, and response into separate LLM calls with separate instructions, so each stage can be inspected, tested, and re-prompted independently — the recommender can see the validator said 'invalid: lacks credible sources' and respond to exactly that. The cost is three model calls of latency and tokens per query.",
+    },
+    {
+      chose: "named state keys",
+      over: "conversation-history passing",
+      body: "Each stage declares an output_key, and the recommender interpolates those keys explicitly rather than trusting the model to fish facts out of chat history. That makes the inter-stage contract structural: if the validator's output format changes, exactly one prompt template needs updating. The tradeoff is rigidity — nuance the validator produces outside its strict format is simply dropped.",
+    },
+    {
+      chose: "Gemini 2.0 Flash",
+      over: "a bigger model",
+      body: "Every query costs three chained LLM calls, so per-call latency and price triple. Flash keeps the pipeline snappy on a free AI Studio key — which matters for a research-internship prototype — and the bet is that decomposition-plus-prompting recovers the reasoning quality a larger model would bring to a single call.",
+    },
+    {
+      chose: "LLM-as-judge",
+      over: "a fine-tuned transformer classifier",
+      body: "A supervised classifier gives a probability but no explanation, and needs labeled training data. The validator prompt demands the reason — cited clues, inconsistencies, missing sources — because the stated goal is educating users about misinformation, not just flagging it. The tradeoff is honest: no calibrated accuracy metric, and prompt-level brittleness in place of a test set.",
+    },
+  ],
+  funFacts: [
+    "The repo is a refactor caught mid-transformation: it's forked from ADK's 'lead qualification' tutorial, and only the validator's prompt has been rewritten for misinformation — the scorer and recommender still talk about budgets and discovery calls, and the root agent is still named LeadQualificationPipeline.",
+    "requirements.txt includes yfinance, a stock-market data library — a leftover from the multi-example ADK course environment the project grew out of.",
+    "subagents/root_agent.yaml exists but is completely empty — a placeholder for ADK's declarative config style that never got filled in.",
+    "The validator enforces a machine-parseable output contract on a fundamentally fuzzy task: exactly 'valid' or 'invalid: [reason]' — a one-line schema implemented purely in prompt text.",
+    "The package directory is still named lead_qualification_agent, so running it means selecting a misinformation detector from a dropdown that swears it qualifies sales leads.",
+  ],
 };
