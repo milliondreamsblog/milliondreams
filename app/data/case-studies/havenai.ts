@@ -99,6 +99,57 @@ export const havenai: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "Shadow DOM",
+      over: "an iframe",
+      body: "The widget mounts a div with attachShadow and injects its stylesheet inside, so it survives a host page that globally forces magenta text and 8px dashed lime borders on every button. It stays in the host document — no cross-frame postMessage protocol, no resize dance, one bundle. The security cost is fine because there's nothing to steal: the embed key is public by design.",
+    },
+    {
+      chose: "two databases",
+      over: "one with schemas",
+      body: "Separate Postgres instances, separate ORM models, separate migration histories — neither service imports the other's sessions. One database would be simpler to operate, but the core boundary ('the agent may never query the CRM directly') becomes trivially auditable when there is physically no connection string to misuse.",
+    },
+    {
+      chose: "strict LangGraph tools",
+      over: "free-form prompting",
+      body: "Five Pydantic-validated tools bound with strict schemas; property cards are typed UI events from verified tool results — the widget never scrapes model prose. The bot can't improvise outside its tools, but business rules are enforced in server-side tool execution, and the tool stubs literally raise RuntimeError if invoked directly.",
+    },
+    {
+      chose: "SSE",
+      over: "WebSockets",
+      body: "Chat traffic is almost entirely server-to-client — token deltas, property cards, confirmation prompts — so POST-based SSE covers it without connection upgrades or sticky sessions. The widget's hand-rolled SSE parser is tested against split-chunk, CRLF, and invalid-JSON frames, with a 90-second idle watchdog.",
+    },
+    {
+      chose: "two keys per bot",
+      over: "one",
+      body: "The public pk_live_ key appears in host-page HTML by design and grants no CRM access. The private crm_live_ key is Fernet-encrypted where it must be recoverable, HMAC-hashed where it never needs to be read back, and rendered nowhere — the admin UI shows only a 12-character fingerprint. A single-key design would force the embed credential to be secret, which is impossible on a public page.",
+    },
+    {
+      chose: "confirmation-gated writes",
+      over: "direct tool execution",
+      body: "Write tools never execute inline: the graph persists a PendingConfirmation and ends the turn. Only an explicit visitor click triggers the CRM call, with the confirmation ID as the idempotency key — so a replayed approval can't create a duplicate lead. The human, not the model, commits the transaction.",
+    },
+  ],
+  funFacts: [
+    "The widget's demo page is deliberately sabotaged — Georgia serif on everything, magenta buttons with dashed lime borders — and that hostile page ships as the production demo, purely to prove Shadow DOM isolation on camera.",
+    "The entire agent test suite runs without a single paid API call: a fake chat model whose bind_tools is a no-op feeds the real LangGraph graph deterministic scripted tool calls.",
+    "Double-booking prevention is a database trick, not application logic: partial unique indexes scoped to status = 'scheduled' mean cancelling a visit automatically frees the slot.",
+    "Both services refuse to boot in production while any committed development default secret is still in use — settings compare live values against their own field defaults at startup.",
+    "The system prompt injects today's UTC date each turn specifically so the model can resolve 'this Saturday' into a real calendar date before booking a site visit.",
+  ],
+  gallery: [
+    {
+      src: "/case-studies/havenai/hero.png",
+      caption: "Widget opening on the hostile-CSS demo page",
+    },
+    {
+      src: "/case-studies/havenai/customize.png",
+      caption: "Client dashboard — bot branding, persona & business rules",
+    },
+    {
+      src: "/case-studies/havenai/visits.png",
+      caption: "Visits page with the bonus calendar view",
+    },
+  ],
 };
