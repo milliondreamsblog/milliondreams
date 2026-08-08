@@ -6,6 +6,7 @@ import { roborumble } from "./roborumble";
 import { talk2pdf } from "./talk2pdf";
 import { evolvesanga } from "./evolvesanga";
 import { resumeai } from "./resumeai";
+import { contractrisk } from "./contractrisk";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -19,6 +20,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   talk2pdf,
   evolvesanga,
   resumeai,
+  contractrisk,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
