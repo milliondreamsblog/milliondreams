@@ -106,3 +106,4 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/akshat-darshi/) or sho
 - GitHub: [https://github.com/milliondreamsblog](https://github.com/milliondreamsblog)
 - LinkedIn: [https://www.linkedin.com/in/akshat-darshi/](https://www.linkedin.com/in/akshat-darshi/)
 - Codolio: [https://codolio.com/profile/milliondreamsblog](https://codolio.com/profile/milliondreamsblog)
+- Case studies: every project has a deep-dive at /projects/<id> — architecture diagrams, stack rationale, data models, decisions, and comments
