@@ -9,6 +9,7 @@ import { evolvesanga } from "./evolvesanga";
 import { resumeai } from "./resumeai";
 import { contractrisk } from "./contractrisk";
 import { kirtanam } from "./kirtanam";
+import { brandvoiceagent } from "./brandvoiceagent";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -25,6 +26,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   contractrisk,
   kirtanam,
   havenai,
+  brandvoiceagent,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
