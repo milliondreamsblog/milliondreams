@@ -102,6 +102,39 @@ export const resumeai: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "an in-memory file store",
+      over: "S3 or a database",
+      body: "Resume buffers live in a process-local Map with a 30-minute TTL — uploads never touch disk or a third party, which is both a privacy stance and zero infrastructure. The tradeoff is real: serverless can route upload and parse to different lambda instances, 404ing the fileId — which is exactly why the routes pin runtime = 'nodejs' and the store logs its size on every operation.",
+    },
+    {
+      chose: "regex resume parsing",
+      over: "LLM extraction",
+      body: "Sections are found by heading keywords and experience entries split on month/year regexes. It's free, instant, and deterministic, saving the only LLM spend for the two calls users actually see value from. The cost is brittleness on creatively formatted resumes — the first non-empty line is simply assumed to be your name.",
+    },
+    {
+      chose: "mock-data fallback",
+      over: "a hard error",
+      body: "Both LLM routes catch failures and return pre-baked results tagged isMock: true, rendered with a visible badge. For a free app riding free-tier quotas, the demo must never show a recruiter a 500 — and honesty is preserved by labeling the data rather than pretending it's real.",
+    },
+    {
+      chose: "HuggingFace via Novita with a fallback chain",
+      over: "OpenAI",
+      body: "The client targets Qwen3-80B, retries 503s with linear backoff, swaps to Llama-3.3-70B on overload, and even splits feedback and interview traffic across separate tokens so one feature exhausting its quota doesn't kill the other. That's a lot of resilience machinery whose entire purpose is running an 80B-class model for $0 — while the installed-but-unused openai and razorpay packages sit as evidence of roads not taken.",
+    },
+    {
+      chose: "client-side PDF export",
+      over: "server rendering",
+      body: "html2canvas plus jsPDF snapshot the rendered feedback into a PDF in the browser. No Puppeteer, no server CPU, works on static hosting — the tradeoff is a raster screenshot rather than a selectable-text PDF.",
+    },
+  ],
+  funFacts: [
+    "The monetization strategy is a meme: hitting the API limit opens an 'upgrade' popup showing Gareeb.png (Hindi for 'broke') with a UPI QR code captioned 'Scan the QR code and pay me whatever you want' — pay-what-you-want as the entire pricing page.",
+    "The README's setup section accidentally reveals a previous name: 'Follow these steps to set up Daddy AI locally.'",
+    "The code has bilingual comments — src/lib/hugingface.ts (yes, the filename is misspelled) opens with '// Alag clients for different services' (alag = separate in Hindi).",
+    "The feedback prompt explicitly engineers against LLM tics: it demands varied decimals like 7.3 and 8.7 — 'do not use fixed increments' — and bans 'roasting' language.",
+    "Quota detection is string-sniffing: ten substrings including 'billing' and 'subscription' matched against error messages, plus status codes 403/429/503.",
+    "Three different PDF libraries are installed; the live route uses pdf2json while a helper file still carries a whole pdf-parse implementation.",
+  ],
 };
