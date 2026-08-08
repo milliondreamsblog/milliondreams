@@ -100,10 +100,11 @@ function StackRow({ stack }: { stack: string[] }) {
   );
 }
 
-function LinkRow({ githubUrl, liveUrl }: Pick<Project, "githubUrl" | "liveUrl">) {
+function LinkRow({ id, githubUrl, liveUrl }: Pick<Project, "id" | "githubUrl" | "liveUrl">) {
   const cls = "flex items-center gap-[6px] font-mono text-[9px] tracking-[0.12em] uppercase text-[#0a0a0a] dark:text-white border-b border-[#0a0a0a] dark:border-white pb-px hover:text-[#c8410a] hover:border-[#c8410a] transition-colors duration-150";
   return (
     <div className="flex gap-4 items-center">
+      <Link href={`/projects/${id}`} className={`${cls} text-[#c8410a] border-[#c8410a]`}>Case study →</Link>
       {githubUrl && <Link href={githubUrl} target="_blank" rel="noopener" className={cls}><GithubIcon /> Source</Link>}
       {liveUrl   && <Link href={liveUrl}   target="_blank" rel="noopener" className={cls}><ExternalIcon /> Live</Link>}
     </div>
@@ -133,7 +134,7 @@ function HeroLayout({ p }: { p: Project }) {
         <p className="text-[13px] text-[rgba(10,10,10,0.55)] dark:text-gray-400 leading-[1.7] mb-5 max-w-[46ch]">{p.description}</p>
         <BulletList bullets={p.bullets} />
         <StackRow stack={p.stack} />
-        <LinkRow githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
+        <LinkRow id={p.id} githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
       </div>
     </div>
   );
@@ -169,7 +170,7 @@ function SidebarLayout({ p }: { p: Project }) {
         <p className="text-[13px] text-[rgba(10,10,10,0.55)] dark:text-gray-400 leading-[1.7] mb-5 max-w-[52ch]">{p.description}</p>
         <BulletList bullets={p.bullets} />
         <StackRow stack={p.stack} />
-        <LinkRow githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
+        <LinkRow id={p.id} githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
       </div>
     </div>
   );
@@ -191,7 +192,7 @@ function StandardLayout({ p }: { p: Project }) {
       <p className="text-[12px] text-[rgba(10,10,10,0.5)] dark:text-gray-400 leading-[1.65] mb-4">{p.description}</p>
       <BulletList bullets={p.bullets} />
       <StackRow stack={p.stack} />
-      <LinkRow githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
+      <LinkRow id={p.id} githubUrl={p.githubUrl} liveUrl={p.liveUrl} />
     </div>
   );
 }
