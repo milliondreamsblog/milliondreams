@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
       "Razorpay: UPI/Card/Wallet — order only fires after payment confirms",
       "Demo login — akshatsan23@gmail.com / 12345678",
     ],
-    stack: ["Next.js", "PostgreSQL", "Razorpay", "TypeScript", "Tailwind"],
+    stack: ["Next.js", "MongoDB", "Razorpay", "TypeScript", "Tailwind"],
     githubUrl: "https://github.com/milliondreamsblog/orderbyqr",
     liveUrl: "https://www.bawarchie.com",
     image: "/projects/bawarchie.svg",
