@@ -82,6 +82,38 @@ export const cadence: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "per-author baselines",
+      over: "absolute engagement metrics",
+      body: "A post with 10k likes is a flop for a huge account and a breakout for a small one; scoring against each author's own baseline makes insights meaningful at any account size. It's also what enables the product's key distinction — separating viral spikes from durable formulas — which absolute numbers simply cannot do.",
+    },
+    {
+      chose: "JSON upload",
+      over: "a live X API integration",
+      body: "Uploading a .json of posts sidesteps X API pricing, rate limits, and OAuth complexity, letting the engine focus on analysis rather than ingestion plumbing. It also keeps the deployment stateless and demo-friendly — 'Load sample data' is one click, no account connection required.",
+    },
+    {
+      chose: "GenAI analysis",
+      over: "pure statistics",
+      body: "Statistics can find outliers, but explaining why a post worked, filtering off-topic noise, and drafting an on-brand brief require understanding the content itself. The design pairs a statistical baseline with LLM interpretation — numbers find the signal, language models explain it.",
+    },
+    {
+      chose: "human-in-the-loop",
+      over: "auto-posting",
+      body: "The site states it outright: the agent drafts, a human approves before anything posts. Brand-voice mistakes on a public account are expensive and irreversible, so the agent's autonomy deliberately stops at the draft — which also keeps the product safely on the analysis side of X's automation rules.",
+    },
+    {
+      chose: "Vercel serverless",
+      over: "a hosted backend",
+      body: "Analysis happens in bursts when a user clicks Analyze; a runtime that scales to zero fits that shape far better than an always-on server. And Vercel is the zero-friction home for a Next.js app — deploy is a git push.",
+    },
+  ],
+  funFacts: [
+    "The landing page proudly wears a 'built in Claude Code' badge — a tool built with an AI agent that itself produces agent-drafted briefs.",
+    "The core promise fits in one sentence on the page: separate 'viral spikes from durable formulas' — luck versus repeatable strategy.",
+    "The whole product is operable from one screen: load sample data, upload a JSON of a week's X posts, hit Analyze.",
+    "It is deliberately not an auto-poster: the visible footer note insists a human approves before anything ships.",
+    "It shipped under a default Vercel preview-style domain — a working product ahead of a vanity domain.",
+  ],
 };
