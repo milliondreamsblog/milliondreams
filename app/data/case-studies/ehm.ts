@@ -81,6 +81,38 @@ export const ehm: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "Spring Boot",
+      over: "Node.js for the APIs",
+      body: "ClimAgro sells ESG compliance to industries and governments — buyers who expect JVM-grade reliability, mature security via Spring Security, and long-term maintainability. It also fits an academically linked, IIT Kanpur-funded engineering culture where Java is a lingua franca.",
+    },
+    {
+      chose: "PostgreSQL",
+      over: "NoSQL or a time-series store",
+      body: "ESG and compliance data demand auditability, constraints, and relational joins between organizations, regions, and scores. PostgreSQL provides all of that while still handling regional time-series risk scores well — one boring, dependable database instead of two exotic ones.",
+    },
+    {
+      chose: "separate ML scoring models",
+      over: "rules-based scoring in the API",
+      body: "Climate risk across 50+ heterogeneous regions is exactly the multivariate problem ML fits: learned models can weigh many climate signals per region and be retrained as data grows, whereas hand-tuned rules would ossify. Keeping scoring separate from the API also lets models evolve on their own cadence.",
+    },
+    {
+      chose: "a Next.js frontend",
+      over: "server-rendered Spring templates",
+      body: "Climate-risk dashboards are interactive, chart-heavy interfaces; a React/Next.js frontend decouples UI iteration speed from the JVM backend and let an intern contribute across a modern split-stack architecture. It also allowed the marketing site to ship independently on Vercel.",
+    },
+    {
+      chose: "a template landing page",
+      over: "a bespoke marketing site",
+      body: "Standing up the public face on the Frontend Tribe 'Light SaaS' template got a credible, polished landing page live with minimal effort, keeping engineering time on the actual dashboards. The un-replaced template title tag confirms exactly where the priorities were — a rational startup trade-off, honestly worn.",
+    },
+  ],
+  funFacts: [
+    "Built during an internship at ClimAgro Analytics, an IIT Kanpur-funded climate startup — the footer stamps '2025 ClimAgro Analytics, Inc.'",
+    "The ML scoring covers 50+ regions and feeds 5+ distinct enterprise workflows.",
+    "The product positions ESG explicitly around the UN Sustainable Development Goals, targeting both industries and governments.",
+    "The live landing page is a customized Frontend Tribe template — its title tag still reads 'Light Saas Landing Page', a charming tell of startup speed over polish.",
+    "The real product is a split-stack build: Vercel-hosted Next.js out front, Spring Boot + PostgreSQL + ML models behind — none of it exposed on the public site.",
+  ],
 };
