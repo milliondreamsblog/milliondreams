@@ -14,6 +14,7 @@ import { cmoagent } from "./cmoagent";
 import { elvynchess } from "./elvynchess";
 import { projectmanager } from "./projectmanager";
 import { rbac } from "./rbac";
+import { ehm } from "./ehm";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -35,6 +36,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   elvynchess,
   projectmanager,
   rbac,
+  ehm,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
