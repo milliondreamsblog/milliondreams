@@ -115,6 +115,39 @@ export const contractrisk: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "hybrid keyword + semantic detection",
+      over: "pure LLM analysis",
+      body: "Rules first: keyword/regex patterns catch known predatory language deterministically, and ChromaDB semantic search catches the paraphrases rules miss. The merge step gives keywords priority and tags every violation as keyword, semantic, or both — so the risk score is reproducible and every hit cites a real section of law. The LLM is confined to explaining findings, where a hallucination is low-stakes.",
+    },
+    {
+      chose: "three databases",
+      over: "one",
+      body: "SQLite ships the static legal corpus with the repo, Postgres holds per-user data that must survive deployments, and ChromaDB does the one thing neither does well: similarity search. The cost is real — three connection layers to maintain — but each store does the single job it's best at, and local dev works with just the SQLite piece.",
+    },
+    {
+      chose: "a deterministic weighted scorer",
+      over: "an LLM-assigned score",
+      body: "The 0-100 score is per-section base scores times industry weight matrices — Section 27 non-compete weighted 1.5x for freelancers but 0.7x for employees, whose salary continues — plus contract-value and duration modifiers. The same contract always scores the same, which is essential for output users may actually act on. An LLM score would drift run to run and be unexplainable.",
+    },
+    {
+      chose: "HuggingFace with token rotation",
+      over: "the Gemini SDK",
+      body: "The Gemini SDK is installed and the README still says Gemini 2.0 Flash, but the live code paths all call the HuggingFace service, which rotates between two tokens when one gets rate-limited. It trades model quality for a genuinely free inference tier with built-in failover — a pragmatic pivot the docs haven't caught up with.",
+    },
+    {
+      chose: "in-memory rate limiting",
+      over: "Redis",
+      body: "A hand-rolled Map-based token bucket keyed by route and user, with its own comment admitting counters reset on serverless cold starts. For a single-server deployment it's a zero-dependency abuse brake, and the file documents its own upgrade path: swap for Upstash + Redis once the app moves to Vercel.",
+    },
+  ],
+  funFacts: [
+    "The repo contains a brutally honest self-audit, AUDIT_REPORT.md, rating the codebase 'Overall Risk: CRITICAL' — and the current code shows the remediation happened: routes now enforce auth and rate limits, and .env.example warns 'Never commit real secrets.'",
+    "The ground truth is a real government artifact: the 53-page Indian Contract Act PDF is committed to the repo, and every violation links back to the official indiacode.nic.in URL.",
+    "It ships a deliberately predatory test contract alongside a fair-contract template, purely for demoing the score spread.",
+    "Explanations come from one LLM call that returns both the freelancer's and the company's perspective, and the schema carries parallel explanation_en / explanation_hi columns for Hindi support.",
+    "The pipeline logs like a flight recorder: box-drawing-character banners and emoji-tagged lines for every clause decision, making the hybrid merge auditable from the server console.",
+    "Uploads are validated by magic bytes on the buffer, not file extension — a photo renamed to .pdf won't sneak into the wrong parser.",
+  ],
 };
