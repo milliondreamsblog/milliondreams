@@ -94,6 +94,39 @@ export const cmoagent: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "curated sample data behind an adapter",
+      over: "live scraping",
+      body: "The official X API is ~$200/mo and rate-limited, scrapers break mid-demo, and the assignment graded the system over live data. So the full pipeline was built against a sample set behind a swappable getPosts() contract — live data is a one-file drop-in, and the demo is guaranteed to run. The sample set is engineered like a test fixture: every designed behavior, from the relevance exclusion to the controversy flag to each quadrant, demonstrably fires.",
+    },
+    {
+      chose: "a distilled pattern taxonomy file",
+      over: "RAG",
+      body: "Roughly 30 named patterns in ~2K tokens, read whole in every prompt. At this corpus size, prompt caching makes 'read everything in one pass' nearly free and fully deterministic, while a vector DB would add infrastructure plus a wrong-retrieval failure mode for zero token savings. RAG is explicitly deferred to the productionization story, when the corpus grows to hundreds of essays.",
+    },
+    {
+      chose: "deterministic scoring in code",
+      over: "asking the LLM",
+      body: "The stated design principle: never ask the LLM to do arithmetic; never ask code to judge a hook. All math — weights, medians, percentiles, quadrants — costs zero tokens, is reproducible, and is tunable via YAML knobs labeled 'hypotheses, not truths.' The LLM only receives the already-scored shortlist and does what code cannot: explain mechanisms and write in a brand voice.",
+    },
+    {
+      chose: "two axes (breakout vs baseline)",
+      over: "one engagement sort",
+      body: "A one-off viral spike and a consistently strong author teach different things. Breakout — this post versus the author's own median — yields a time-sensitive trend with n=1 confidence; baseline percentile — the author's sustained size-normalized rate versus peers — yields a durable formula with n=many confidence. The resulting 2x2 becomes the brief's spine: 'Ride Now' versus 'Build the Engine.'",
+    },
+    {
+      chose: "a PR gate via GitHub Actions",
+      over: "auto-posting",
+      body: "The weekly workflow ends with create-pull-request rather than any posting step, and the header comment says why: 'it never posts — it proposes.' The human trust boundary brackets the automation — humans own the config before the run and approve the brief after it — and the voice-learning loop only ingests human-approved posts, never raw drafts, to avoid model drift.",
+    },
+  ],
+  funFacts: [
+    "The repo is branded as a Claude Code project and ships @anthropic-ai/sdk in both package.json files — yet no shipped code imports it. Headless and serverless brief generation actually run on Gemini's free tier; Claude is only in the loop when you run the /weekly-brief slash command inside Claude Code itself.",
+    "The judgement showcase is baked into the sample data: a Rolex vintage-ad post with 718,000 views is deliberately included so the relevance filter excludes it, and a hot take with far more replies than likes trips the controversy guard's 'verify' flag — so the system never teaches the writer to make rage-bait.",
+    "The baseline reliability guard exists partly to protect the client from itself: the dormant @bricxlabs brand account (110 followers, posts at 0-3 likes) is left 'unrated' instead of being false-crowned a breakout the moment one post gets 10 likes.",
+    "The decision log records the pitch hook: the founder being studied had posted a job ad hiring an 'X content strategist to research trends and create viral content' — this agent is that exact job posting, productized. The take-home's subject company was also its dataset.",
+    "There's a quiet config/code drift: the pipeline dutifully loads topics.yaml and passes it to the relevance filter, which ignores the parameter and matches against its own hardcoded keyword array. The YAML topics currently only document intent.",
+    "The Apify provider treats field-mapping archaeology as the deliverable — 'On the FIRST real run, log a raw item... discovering the real shape IS the point of this spike' — and the data doc's phase gate is literally 'look at the output, look at the bill.'",
+  ],
 };
