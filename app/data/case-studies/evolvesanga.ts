@@ -80,6 +80,38 @@ export const evolvesanga: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "Next.js",
+      over: "a website builder (Wix/WordPress)",
+      body: "An NGO site must be fast on low-end phones, rank on search, and cost nearly nothing to run — statically rendered Next.js on Vercel's free tier beats a paid builder subscription while keeping full control over donation and form flows. It also lets the campaign pages be genuinely dynamic instead of duplicated static pages.",
+    },
+    {
+      chose: "client-side campaign loading",
+      over: "fully static cause pages",
+      body: "/support-a-cause renders a loading shell and hydrates by ?cause= (education, food, or future), so all three campaigns share one route and campaign content can change without touching page markup. Three campaigns, one page, zero duplication.",
+    },
+    {
+      chose: "Tailwind",
+      over: "a component library",
+      body: "The site has a strong custom visual identity — campaign typography like 'TYARI KAL KI', pillar-based sections — that off-the-shelf component libraries would fight. Tailwind gives that freedom with none of the specificity wars of hand-rolled CSS, and purges to a tiny bundle for mobile donors.",
+    },
+    {
+      chose: "a single interest form",
+      over: "separate volunteer/partner/donor funnels",
+      body: "The /join-us form routes every kind of engagement — volunteering, internships, CSR partnership, donations — through one 'Area of Interest' selector. For a small NGO team, one inbox-style pipeline is far easier to actually follow up on than four separate systems.",
+    },
+    {
+      chose: "Vercel",
+      over: "shared hosting in India",
+      body: "Vercel's global CDN plus image optimization keeps a photo-heavy nonprofit site fast for both Indian donors and diaspora donors abroad, with git-push deploys and no server maintenance. When engineering time is donated, zero ops is the feature.",
+    },
+  ],
+  funFacts: [
+    "The foundation's motto structures the entire information architecture: activities group under Living (food, shelter, clothing), Loving (environment, mental wellness, women empowerment), and Learning (education, skills, values).",
+    "The three donation campaigns have memorable Hindi names: 'Tyari Kal Ki' (preparation for tomorrow), 'Hunger Free Night', and 'Shiksha Na Ruke' (education must not stop).",
+    "The homepage counts impact in plates and meals — plates served in underprivileged schools, weekly meals in slums, education kits distributed, children given free coaching — animating up from zero.",
+    "The footer links an Audit Report section: a transparency signal for a Section 8 registered nonprofit courting CSR partners.",
+    "Nine distinct program pages under /activities/* make this a genuinely deep site of 12+ routes, not a one-page brochure.",
+  ],
 };
