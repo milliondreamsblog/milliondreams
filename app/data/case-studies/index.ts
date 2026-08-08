@@ -1,4 +1,5 @@
 import type { CaseStudy } from "./types";
+import { havenai } from "./havenai";
 import { buildinfra } from "./buildinfra";
 import { cadence } from "./cadence";
 import { bawarchie } from "./bawarchie";
@@ -23,6 +24,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   resumeai,
   contractrisk,
   kirtanam,
+  havenai,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
