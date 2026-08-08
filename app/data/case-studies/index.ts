@@ -2,6 +2,7 @@ import type { CaseStudy } from "./types";
 import { buildinfra } from "./buildinfra";
 import { cadence } from "./cadence";
 import { bawarchie } from "./bawarchie";
+import { roborumble } from "./roborumble";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -11,6 +12,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   buildinfra,
   cadence,
   bawarchie,
+  roborumble,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
