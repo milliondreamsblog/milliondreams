@@ -101,6 +101,38 @@ export const elvynchess: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "hybrid Supabase-direct + tRPC",
+      over: "an all-tRPC API",
+      body: "Reads and realtime subscriptions call Supabase straight from the client — RLS guarantees a student only ever sees their own rows — while only multi-step writes go through tRPC routers, which themselves run on the caller's RLS-scoped client. The tradeoff is two data paths to reason about, but it removes a server hop from every read and makes Supabase Realtime free to use; the repo treats RLS as the security backbone and explicitly bans duplicating role checks in JS.",
+    },
+    {
+      chose: "Broadcast mirror + DB snapshot",
+      over: "Postgres CDC or a game server",
+      body: "Every playground action applies optimistically, mirrors to the peer over a Broadcast channel, and persists via tRPC in parallel; a reconnector loads the authoritative DB row and then rides broadcasts. That gets sub-100ms move latency without a DB round-trip per move, at the cost of a brief window where the mirror leads the DB. Crucially, broadcasts are untrusted: each payload is re-validated with Zod on receipt, and the server-side move mutation re-checks driver identity and replays the whole tree through chess.js so a hostile client cannot persist an illegal board.",
+    },
+    {
+      chose: "DB-trigger notification fan-out",
+      over: "application-side inserts",
+      body: "Notification rows are created only by SECURITY DEFINER triggers and one RPC, never by app code. Fan-out stays consistent no matter which client made the write, RLS would block cross-user inserts from JS anyway, and the existing tRPC mutations didn't have to change at all. The cost is business logic living in SQL — harder to test, with per-recipient timezone formatting done inside the trigger — accepted for guaranteed consistency.",
+    },
+    {
+      chose: "one recursive JSONB tree per study",
+      over: "a moves table",
+      body: "Analyses and playground boards store the entire variation tree as a single JSONB document manipulated by pure structural-sharing functions in a shared package. A normalized moves table would allow per-move queries the product never makes, while the document model makes load-render-save and the broadcast payload trivially the same shape. A 2,000-node budget enforced in Zod keeps a pathological tree from blowing up the row.",
+    },
+    {
+      chose: "a hand-rolled tap-to-move mobile board",
+      over: "a native chessboard library",
+      body: "The React Native board is ~130 lines: it parses FEN placement itself and renders Unicode chess glyphs in colored Pressable squares with tap-select/tap-move. Legality never lives in the board — chess.js decides what's legal on both platforms — so mobile could stay a dumb renderer with zero native dependencies. That matters in a repo where every new native module forces an EAS rebuild for all users.",
+    },
+  ],
+  funFacts: [
+    "The FK-naming war story: drizzle-kit push kept reverting foreign-key constraint names from PostgREST's _fkey convention to Drizzle's _fk default, silently breaking every embedded join in the app and causing a whole-app outage. The fix is two-layered — explicit foreignKey({ name }) builders on every FK, plus a rename script that runs after every push as defense in depth.",
+    "The original RLS policies caused literal 'infinite recursion detected in policy' errors — classes policies referenced class_attendees and vice versa — fixed by wrapping cross-table lookups in SECURITY DEFINER helper functions that bypass RLS internally.",
+    "The playground chess clock is deliberately never persisted: broadcasts share an epoch-ms 'since' timestamp and both clients independently compute the running side's remaining time as storedMs - (now - since) — clock sync without a server tick.",
+    "Puzzles come from the Lichess CC0 dump, streamed from the .csv.zst file with in-process zstd decompression and upserted through the Supabase REST API instead of the Postgres pooler — the comment notes 'the pooler host has had flaky DNS.'",
+    "Push notifications must no-op in Expo Go — SDK 53+ removed remote push there, so the app detects the environment and silently skips registration instead of crashing. Reschedule guardrails are hard constants: 12 hours notice and a maximum of 2 moves per class, checked against a DST-correct open-slots RPC that expands the coach's weekly windows in their own timezone.",
+  ],
 };
