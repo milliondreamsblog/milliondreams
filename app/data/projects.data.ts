@@ -288,8 +288,34 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/milliondreamsblog/Kirtanam",
   },
   {
-    id: "brandvoiceagent",
+    id: "havenai",
     index: "10",
+    categories: ["ai", "fullstack", "backend"],
+    title: "Haven AI",
+    tagline: "Embeddable Real-Estate Chatbot Platform",
+    description:
+      "Multi-tenant platform that adds an AI property assistant to any website with one script tag. Visitors search listings, register interest, and book site visits; admins provision tenants, clients monitor leads — all backed by a LangGraph agent and an isolated CRM microservice.",
+    tier: "tier1",
+    badge: "AI / GenAI",
+    badgeVariant: "ai",
+    layout: "hero",
+    stats: [
+      { value: "4",  label: "Services" },
+      { value: "2",  label: "Isolated databases" },
+      { value: "1",  label: "Script tag to embed" },
+    ],
+    bullets: [
+      "Preact widget in Shadow DOM — survives hostile host-page CSS, streams over SSE",
+      "LangGraph agent with strict CRM-backed tools and explicit write confirmations",
+      "Separate FastAPI CRM microservice — per-tenant API keys, Redis rate limiting, own Postgres",
+      "Public embed keys grant zero CRM access; private keys encrypted, hashed, never logged",
+    ],
+    stack: ["FastAPI", "LangGraph", "Preact", "Next.js", "PostgreSQL", "Redis"],
+    githubUrl: "https://github.com/milliondreamsblog/CRM_agent",
+  },
+  {
+    id: "brandvoiceagent",
+    index: "11",
     categories: ["ai"],
     title: "BrandVoiceAgent",
     tagline: "AI brand-voice critic · 19-rule system",
@@ -312,7 +338,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "cmoagent",
-    index: "11",
+    index: "12",
     categories: ["ai"],
     title: "CMO Agent",
     tagline: "Weekly content-intelligence agent",
@@ -335,7 +361,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "elvynchess",
-    index: "12",
+    index: "13",
     categories: ["fullstack", "backend"],
     title: "Elvyn-Chess",
     tagline: "Chess coaching SaaS · web + mobile",
@@ -358,7 +384,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "projectmanager",
-    index: "13",
+    index: "14",
     categories: ["fullstack", "backend"],
     title: "Project Manager",
     tagline: "Enterprise project management · MERN",
@@ -381,7 +407,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "rbac",
-    index: "14",
+    index: "15",
     categories: ["backend"],
     title: "RBAC Auth",
     tagline: "Role-based access control · Node.js",
@@ -404,7 +430,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ehm",
-    index: "15",
+    index: "16",
     categories: ["fullstack", "backend"],
     title: "EHM Platform",
     tagline: "ESG SaaS · ClimAgro Analytics",
@@ -427,7 +453,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "misinformation",
-    index: "16",
+    index: "17",
     categories: ["ai", "research"],
     title: "Misinformation Agent",
     tagline: "Agentic NLP · MANIT Bhopal Research",
