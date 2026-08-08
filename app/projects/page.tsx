@@ -245,12 +245,10 @@ export default function Projects() {
                             )}
                           date={`Entry ${p.index}`}
                           readTime={p.badge}
-                          actionLabel={p.liveUrl ? "View live" : "Source"}
-                          actionUrl={p.liveUrl ?? p.githubUrl ?? "#"}
-                          secondaryUrl={
-                            p.liveUrl && p.githubUrl ? p.githubUrl : undefined
-                          }
-                          secondaryLabel="Source"
+                          actionLabel="Case study"
+                          actionUrl={`/projects/${p.id}`}
+                          secondaryUrl={p.liveUrl ?? p.githubUrl}
+                          secondaryLabel={p.liveUrl ? "View live" : "Source"}
                         />
                       ))}
                     </div>
