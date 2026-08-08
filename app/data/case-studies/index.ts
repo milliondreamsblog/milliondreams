@@ -7,6 +7,7 @@ import { talk2pdf } from "./talk2pdf";
 import { evolvesanga } from "./evolvesanga";
 import { resumeai } from "./resumeai";
 import { contractrisk } from "./contractrisk";
+import { kirtanam } from "./kirtanam";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -21,6 +22,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   evolvesanga,
   resumeai,
   contractrisk,
+  kirtanam,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
