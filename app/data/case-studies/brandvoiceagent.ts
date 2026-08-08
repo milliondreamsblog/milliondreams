@@ -97,6 +97,39 @@ export const brandvoiceagent: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "a prompt rubric with structured output",
+      over: "code-side rule checking",
+      body: "The 19 rules live entirely in the system prompt and are applied by the model — deliberately, because nearly every rule carries a carve-out that requires judgment (one bans manufactured punch but keeps honest reactions; another bans 'I' in the body but allows it in the headline), and the prompt warns that 'false positives destroy trust faster than misses.' Code instead enforces the contract around the model: schemas force every finding to carry rule, severity, quote, why, and fix, and post-processing filters duplicates and repairs the recommended label.",
+    },
+    {
+      chose: "keyword-overlap retrieval",
+      over: "embeddings",
+      body: "With a corpus of 19 seeds plus a slowly growing flywheel, a vector store is overkill: the retriever loads the whole taste_examples table and ranks by stop-word-filtered token overlap, with a bonus for rows carrying the founder's edit notes. The file documents the pgvector upgrade path — 'same function shape.' The interesting part is bucket-first tiering: in-pillar examples win outright, and globals then other pillars only backfill when the bucket is sparse, fixing a diagnosed cross-bucket taste bleed.",
+    },
+    {
+      chose: "pre-generating rewrites at submit time",
+      over: "on-demand in review",
+      body: "All three rewrites are generated and persisted when the writer submits, so the founder's review page is instant reads. The cost is a long-running route and wasted-spend risk, bounded by a batch cap of 20 and a cache-aware sequencing trick: the first post runs alone to write the shared rubric cache, then the rest fan out in parallel as cheap cache reads instead of all paying the cache-write premium.",
+    },
+    {
+      chose: "a persisted /train calibration deck",
+      over: "extending the existing quiz",
+      body: "The old /game page is a hardcoded quiz with a correct answer that saves nothing. /train was built fresh because its contract is the opposite: there is no right answer — the founder's pick defines correct — and every pick must persist. Pairs are pre-generated offline (~54 per pillar, each pushing one contrast axis to opposite extremes), and winners, or the founder's hand-refined edits, go straight into the live retrieval pool.",
+    },
+    {
+      chose: "named left/right fields",
+      over: "arrays with length constraints",
+      body: "Both the pair generator and the rehook endpoint learned the same SDK truth: JSON-schema array length constraints are unsupported by structured outputs and silently stripped. So pairs are modeled as required string fields mapping 1:1 to columns, and the rehook route accepts an unconstrained hooks array and slices to exactly 3 in app code. Counting happens where it's reliable — in TypeScript, not in the schema.",
+    },
+  ],
+  funFacts: [
+    "The Anthropic account ran out of credits mid-session on demo day — two e2e runs plus a deck regeneration drained the balance, and the handoff doc's top blocker is literally 'Top up at console.anthropic.com.' The deployed code was healthy; the wallet was not.",
+    "That same credit starvation validated a safety guard for real: the pair generator's delete-guard floor aborted the too-thin regeneration instead of wiping the live 54-pair deck, and its per-model price table prints a cost line described in-code as the 'cheapest early-warning against another surprise bill.'",
+    "Both the Anthropic and R2 clients strip a leading Unicode BOM from env vars, because 'PowerShell-pasted env vars sometimes carry a leading BOM' — a Windows-development war story fossilized as code.",
+    "The rate limiter opens with the comment 'Limits: 2 requests per minute, 20 requests per day' directly above constants set to 10 and 50 — the comment preserves the original $5-budget limits that were later loosened.",
+    "The contrast-pair validator is structural, not vibes: the claim-density axis requires one side to contain a hard number or date and the other none, the length axis enforces a 140+ character gap, and any pair whose sides share over 60% of words is rejected as 'not extremes.'",
+    "The rubric file does double duty as a human skill: a Claude Code slash command turns the same specs into an in-chat critique-and-rewrite flow that then offers to POST its results into the live app's review queue.",
+  ],
 };
