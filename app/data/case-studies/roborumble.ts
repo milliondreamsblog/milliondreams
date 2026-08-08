@@ -102,6 +102,34 @@ export const roborumble: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "Next.js full-stack",
+      over: "a separate SPA + backend",
+      body: "The site needs both modes: marketing pages arrive fully server-rendered with meta descriptions and a sitemap for search and social reach, while /login and /register ship as minimal client shells for the app experience — and robots.txt shows the API living at /api/ on the same origin. One deployment covers SEO, the portal, and the backend, which matters for a small student team shipping under event-deadline pressure.",
+    },
+    {
+      chose: "a managed realtime service (Ably)",
+      over: "self-hosted WebSockets",
+      body: "Event-day traffic is a brutal spike profile: near-zero for weeks, then thousands of concurrent participants in lobbies during three days. A managed channel service absorbs that without capacity planning, and serverless hosting for Next.js can't hold long-lived socket connections anyway. The tradeoff is per-message vendor cost — acceptable when the alternative is a socket server falling over mid-finale.",
+    },
+    {
+      chose: "in-app cart and payments",
+      over: "Google Forms + UPI screenshots",
+      body: "The default for Indian college fests is a Google Form and a 'send screenshot of your UPI payment' honor system, which collapses at 1k+ registrations: manual reconciliation, disputed payments, no seat limits. Building payments in gives automatic reconciliation and lets the site enforce 'REGISTER BEFORE SLOTS FILL!' in real time. The cost is gateway integration work and a refund policy — the footer links a dedicated Refund & Cancellation page.",
+    },
+    {
+      chose: "a terminal aesthetic",
+      over: "a conventional event template",
+      body: "Every copy string commits to the bit — 'TERMINAL INACTIVE' boot screen, '// SYSTEM_ONLINE', CTAs like Register_Now and Brochure.pdf, a 'Deployment Countdown'. For engineering students choosing which fest to attend, the site itself is proof of technical credibility. The readability risk is contained by keeping the structure a conventional nav-plus-cards underneath the styling.",
+    },
+  ],
+  funFacts: [
+    "The loading screen says 'TERMINAL INACTIVE' and 'LOADING THE RUMBLE…' before the app hydrates — the site roleplays booting an operating system, then flips its status line to '// SYSTEM_ONLINE'.",
+    "robots.txt is a mini architecture diagram: Disallow: /admin/, /dashboard/, /api/, /onboarding/ reveals the entire private app surface the public never sees.",
+    "The event lineup spans combat robotics (Robo War, ₹20,000 pool), autonomous line followers, RC fixed-wing aircraft, BGMI and Free Fire e-sports squads (₹30,000 pool), a Defence Expo — and a Silent DJ.",
+    "The homepage stats block deadpans '∞ Energy' next to '14 ACTIVE_EVENTS' and '03 Days', under the 2026 theme 'NEXUS — Circuit of Champions'.",
+    "Even the university leadership gets snake_cased: the mentor hierarchy renders like a package tree — Chief_Patron (the Vice Chancellor), Strategic_Patrons, Technical_Advisors.",
+    "A turbopack-*.js runtime chunk ships to production, putting a college-fest website on the current bleeding edge of the Next.js toolchain.",
+  ],
 };
