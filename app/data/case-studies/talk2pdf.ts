@@ -94,6 +94,38 @@ export const talk2pdf: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "local embeddings",
+      over: "an embeddings API",
+      body: "Every upload embeds dozens of chunks and every query embeds again — running all-MiniLM-L6-v2 in-process makes the retrieval half of RAG completely free and offline-capable. The price is a heavyweight torch dependency and a slower cold start while the model loads. For a tool aimed at students, free wins.",
+    },
+    {
+      chose: "a three-tier LLM fallback",
+      over: "a single provider",
+      body: "At startup the engine probes Ollama on localhost, then a HuggingFace token, then settles for a template-based keyword-overlap extractor. The app never hard-fails from a missing API key — a deliberate zero-cost, demo-anywhere design. The honest cost: answer quality silently varies by environment, and detection happens only once at boot.",
+    },
+    {
+      chose: "PyPDF2-first with OCR fallback",
+      over: "always-OCR",
+      body: "OCR at 200 DPI through Tesseract is orders of magnitude slower than reading a PDF's text layer, so OCR only kicks in when direct extraction returns under 100 characters. Born-digital PDFs stay fast; scans still work. The edge case: a PDF with a thin text layer plus important image content would skip OCR entirely.",
+    },
+    {
+      chose: "embedded ChromaDB",
+      over: "pgvector or a hosted vector DB",
+      body: "A PersistentClient pointed at a local directory gives durable vector search with zero infrastructure — no Postgres, no Pinecone account, nothing to provision. That matches the 'runs on a laptop for free' ethos exactly. The tradeoff is single-node scale and one global collection shared by every user of the instance: clearing documents clears them for everyone.",
+    },
+    {
+      chose: "fixed word-count chunking",
+      over: "semantic or recursive splitting",
+      body: "A simple 500-word sliding window with 50-word overlap — trivially predictable and dependency-free, notably with zero LangChain anywhere in this RAG app. It can split sentences and tables mid-thought, but it never surprises you, and it keeps the whole pipeline legible.",
+    },
+  ],
+  funFacts: [
+    "Despite being a RAG app, there is zero LangChain in the codebase — chunking, embedding, retrieval, and prompting are all hand-rolled in roughly 230 lines of rag_engine.py.",
+    "The ultimate fallback 'LLM' is not an LLM: it does set-intersection of query words against document sentences and returns the top 3 overlapping ones — RAG that works with no model at all.",
+    "A session_id field exists in the query request model but is never read, so every user of an instance shares one global document store — and DELETE /documents wipes it for everyone.",
+    "The doc counter behind chunk IDs lives in memory while ChromaDB persists to disk, so restarting the server resets it to zero and new uploads can collide with old chunk IDs.",
+    "The repo ships setup scripts for both Unix and Windows, a 420-line ARCHITECTURE.md, and a YouTube demo video embedded in the README.",
+  ],
 };
