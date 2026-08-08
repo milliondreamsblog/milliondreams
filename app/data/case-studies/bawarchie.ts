@@ -118,6 +118,44 @@ export const bawarchie: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "SSE over a 3-second DB poll",
+      over: "WebSockets",
+      body: "The kitchen stream opens a long-lived ReadableStream pinned to the Node runtime — the code's own comment: 'SSE requires persistent connections, not edge' — and polls MongoDB every 3 seconds for active orders. A WebSocket server would need separate infrastructure and can't live in a standard Next.js route; SSE gives the kitchen a live-feeling Kanban with reconnect-for-free semantics, and the poll loop deliberately swallows transient errors so a Mongo hiccup doesn't kill the stream.",
+    },
+    {
+      chose: "structured JSON cart actions",
+      over: "an LLM chat that just talks",
+      body: "The AI waiter is prompted to emit { reply, cartActions } with response_format: json_object, using exact item IDs from the tenant's live menu injected into the prompt. The server then re-validates every action against the database and enriches it with real item data before the client touches the cart — so the LLM can never invent an item or a price.",
+    },
+    {
+      chose: "per-restaurant Razorpay keys",
+      over: "one platform account",
+      body: "Payment verification uses the restaurant's own key secret, falling back to platform keys. Each tenant bringing their own Razorpay account means money settles directly to the restaurant — no marketplace or escrow licensing headaches for a student-built SaaS — while the platform's 2% is tracked in the order document rather than split at the gateway. Simpler, at the cost of fee collection being bookkeeping rather than automatic.",
+    },
+    {
+      chose: "an immutable billing snapshot on the Order",
+      over: "computed-on-read",
+      body: "GST (validated against real Indian slabs) and the 2% fee are computed at order time and every intermediate number is persisted: baseTotal, gstAmount, platformFee, finalAmount, both earnings figures. If a restaurant later changes its GST rate or the platform changes its fee, historical orders and revenue analytics stay correct — a classic financial-data lesson applied properly.",
+    },
+    {
+      chose: "MongoDB",
+      over: "PostgreSQL",
+      body: "Menus are nested sections of item refs, orders embed line items and a billing subdocument, feedback embeds AI sentiment — shapes that map 1:1 to Mongoose schemas without join tables. Analytics runs on aggregation pipelines and tenancy is a restaurantId index everywhere instead of foreign-key ceremony. The tradeoff: no cross-document transactions around order and inventory updates.",
+    },
+  ],
+  funFacts: [
+    "The platform's revenue field is literally named myEarnings in the Order schema — the 2% cut, tracked per order right next to restaurantEarnings.",
+    "The default super admin in the env template is papa@Bawarchie.com / papa123, and the template ships a client-exposed password env var with all-caps warnings to remove it in production.",
+    "The kitchen's new-order sound alert is synthesized from scratch with the Web Audio API — an oscillator-and-gain triple-beep, zero audio files, zero dependencies.",
+    "'Bawarchie' is Hindi/Urdu for 'chef'; the README banner calls it a Final Year Engineering Project, yet it ships GST slab validation, a refund state machine, and a super-admin approval workflow.",
+    "The SSE stream sorts orders oldest-first with the comment 'oldest first so kitchen sees them in order' — a tiny detail that shows real thought about how kitchens actually work.",
+  ],
+  gallery: [
+    {
+      src: "/case-studies/bawarchie/dashboard.png",
+      caption: "Restaurant control center — demo account",
+    },
+  ],
 };
