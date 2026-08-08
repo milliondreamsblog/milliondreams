@@ -13,6 +13,7 @@ import { brandvoiceagent } from "./brandvoiceagent";
 import { cmoagent } from "./cmoagent";
 import { elvynchess } from "./elvynchess";
 import { projectmanager } from "./projectmanager";
+import { rbac } from "./rbac";
 
 /**
  * Registry of case studies, keyed by Project.id. Add a new case study by
@@ -33,6 +34,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   cmoagent,
   elvynchess,
   projectmanager,
+  rbac,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
