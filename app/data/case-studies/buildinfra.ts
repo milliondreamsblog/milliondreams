@@ -90,6 +90,44 @@ export const buildinfra: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "Golang services",
+      over: "a Node.js monolith",
+      body: "An ERP serving 1,000+ users across a portfolio benefits from modular services that scale and deploy independently, and Go's goroutine model handles concurrent approval streams and scheduled jobs cheaply. Keeping the backend in Go while both clients stay TypeScript separates the performance-critical core from fast-moving UI code.",
+    },
+    {
+      chose: "React Native for field crews",
+      over: "a mobile web app",
+      body: "Field crews work on construction sites with patchy connectivity and need a native-feeling app with push notifications for real-time approvals. React Native delivers Android and iOS from one TypeScript codebase that shares types with the rest of the stack, instead of maintaining Swift and Kotlin apps or forcing crews through a mobile browser.",
+    },
+    {
+      chose: "Puppeteer for payslips",
+      over: "a PDF library",
+      body: "Payslips are essentially styled documents, so rendering HTML/CSS templates through headless Chrome gives pixel-accurate layouts that anyone with web skills can iterate on — versus fighting low-level primitives in something like pdfkit. At 700+ PDFs a month, a batched background job amortizes the browser-startup cost.",
+    },
+    {
+      chose: "Resend",
+      over: "raw SES/SMTP",
+      body: "Payslips must reliably reach hundreds of employees every month, and Resend delivers a clean API plus deliverability tooling with minimal setup. The platform already runs on AWS, so picking Resend over SES was developer experience winning over stack purity.",
+    },
+    {
+      chose: "real-time workflows",
+      over: "polling dashboards",
+      body: "The headline 40% cut in coordination delays comes from approvals and status changes propagating instantly to the people waiting on them, instead of being discovered on the next dashboard refresh or phone call. When the bottleneck is humans waiting on humans, latency is the product.",
+    },
+  ],
+  funFacts: [
+    "The background payroll pipeline produces 700+ PDF payslips every month with Puppeteer and emails them via Resend — a print shop replaced by a cron job.",
+    "Real-time approval and status workflows measurably cut coordination delays by 40% across the portfolio.",
+    "The platform serves 1,000+ users managing a $2B real-estate portfolio.",
+    "The live app is locked down tight: the root URL 302s straight to /auth/login, and the login shell renders entirely client-side, exposing nothing to a curious visitor.",
+    "The browser tab quietly reveals the operating company suffix 'TTIPL', and the meta description pitches a full construction ERP 'from blueprint to completion'.",
+  ],
+  gallery: [
+    {
+      src: "/case-studies/buildinfra/dashboard.png",
+      caption: "Projects dashboard — demo account",
+    },
+  ],
 };
