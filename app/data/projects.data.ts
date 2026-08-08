@@ -187,7 +187,7 @@ export const PROJECTS: Project[] = [
       "Multi-step document reasoning — not just keyword search",
       "Reduces AI integration effort by 60% for downstream builders",
     ],
-    stack: ["Python", "LangChain", "FastAPI", "OpenAI"],
+    stack: ["Python", "FastAPI", "Custom RAG", "OpenAI"],
     githubUrl: "https://github.com/milliondreamsblog/AskyourPDF",
   },
   {
