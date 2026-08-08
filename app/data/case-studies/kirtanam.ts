@@ -92,6 +92,39 @@ export const kirtanam: CaseStudy = {
       ],
     },
   },
-  decisions: [],
-  funFacts: [],
+  decisions: [
+    {
+      chose: "a remote-URL Capacitor shell",
+      over: "a bundled static export",
+      body: "The APK doesn't package web assets — its WebView loads the live Vercel deployment, so every deploy instantly updates every installed phone with no rebuild or store review. The cost is requiring connectivity and giving up offline mode, which is acceptable for an app whose content streams from YouTube anyway. allowNavigation pins the WebView to the one domain so external links escape to the system browser.",
+    },
+    {
+      chose: "syncing YouTube metadata into Postgres",
+      over: "calling the API per request",
+      body: "Daily incremental and weekly full crons mirror channel uploads into local tables, trading slight staleness for surviving the Data API's tight quota. It also unlocks what the API can't do: cross-channel full-text and trigram search scoped to a monk's allowed channels, and history preservation — vanished videos are marked unavailable rather than deleted, so favorites and activity logs keep resolving.",
+    },
+    {
+      chose: "an ADMS-compatible endpoint inside Next.js",
+      over: "vendor attendance software",
+      body: "ZKTeco terminals normally push to a Windows 'ADMS' server; here a Next.js route speaks just enough of the protocol — SN handshake, ATTLOG parsing, a spoofed 'Server: ZK Web Server' header — that the devices believe they've found the real thing. That removes an entire self-hosted middleware box, at the cost of hand-maintaining a reverse-engineered parser. The route deliberately returns OK even on failure so a confused device never retry-storms the serverless function.",
+    },
+    {
+      chose: "integer roles + RLS helpers",
+      over: "an authorization framework",
+      body: "Roles are one integer column (1 Super Admin through 6 Viewer) with a CHECK constraint, enforced twice — by SECURITY DEFINER helpers in every table's RLS policies and by requireAdmin/requireUser in API code. For a single-tenant community app that's simpler and harder to bypass than an app-layer-only policy engine: even a leaked anon key still hits RLS. The tradeoff is hardwiring the role list into the database.",
+    },
+    {
+      chose: "an embedded YouTube player with shields",
+      over: "self-hosted video",
+      body: "Hosting hundreds of hours of lectures would cost real storage and bandwidth when the content already lives on YouTube. Instead the player wraps the IFrame API and fights the platform's engagement machinery: sandbox attributes, overlay shields over the logo and title bar, a paused-state interceptor that hides the related-videos grid, and an automatic fallback to a plain youtube-nocookie embed when ad-blockers kill the IFrame API. The price is a permanent cat-and-mouse dependency on YouTube's embed DOM.",
+    },
+  ],
+  funFacts: [
+    "The product name is spelled three ways in the same repo: the live site is 'kirtanam', the Android app and migration headers say 'Kritaman', the README calls the project 'Ashram-Connect', and package.json calls it 'yt-lectures-app'.",
+    "The very first migration file is committed as UTF-16, and the migrations README explicitly warns you to re-save it as UTF-8 before your SQL editor will accept it.",
+    "The repo contains a brutally honest self-audit that scores the codebase 7/10 and calls out a 2,700-line AdminPanel god component — followed by docs recording the refactor that split a 1,208-line component into 5 hooks, 5 components, and a 233-line orchestrator.",
+    "Attendance punches are only ingested inside a per-machine time window (default 02:00-11:00) — the system deliberately records only the morning program and discards every other biometric event. A hardcoded two-serial device whitelist survives as dead code, superseded by a database table.",
+    "The Harinam attendance table encodes spiritual practice as integer minutes per named session — the 7:00 AM and 7:40 AM sessions are worth 30 minutes each and 'PDC' is worth 90 — with a commented-out migration showing the columns used to be booleans.",
+    "next.config.ts sets unoptimized: true on images with the comment 'Bypass Vercel image optimization to stay within free plan limits' — the entire deployment is engineered around free tiers.",
+  ],
 };
