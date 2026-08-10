@@ -154,6 +154,31 @@ function BreakoutGame({
     });
   }, []);
 
+  const startGame = useCallback(() => {
+    const wrap = wrapRef.current;
+    const canvas = canvasRef.current;
+    if (!wrap || !canvas) return;
+    const s = world.current;
+    const rect = wrap.getBoundingClientRect();
+    s.w = rect.width;
+    s.h = 440;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = s.w * dpr;
+    canvas.height = s.h * dpr;
+    canvas.getContext("2d")?.scale(dpr, dpr);
+    s.cs = s.w / cols;
+    s.paddleW = Math.max(90, s.w * 0.09);
+    s.paddleX = s.w / 2;
+    s.speed = Math.max(380, s.w * 0.38);
+    s.lives = 3;
+    s.score = 0;
+    s.phase = "running";
+    setLives(3);
+    setScore(0);
+    setShared(false);
+    setPhase("running");
+    resetBall();
+  }, [cells, cols, resetBall]);
 
 
 
