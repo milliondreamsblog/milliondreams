@@ -4,8 +4,33 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 
+/**
+ * 7-row pixel glyphs for the giant footer wordmark. Rows use "#" for a lit
+ * cell; glyph widths vary so narrow letters (i, l) keep the wordmark's rhythm.
+ */
+const GLYPHS: Record<string, string[]> = {
+};
 
+const WORDMARK = "milliondreams";
+const ROWS = 7;
 
+function buildGrid(word: string): { cells: boolean[]; cols: number } {
+  const glyphs = word.split("").map((ch) => GLYPHS[ch] ?? GLYPHS.o);
+  const cols =
+    glyphs.reduce((sum, g) => sum + g[0].length, 0) + (glyphs.length - 1);
+  const cells: boolean[] = new Array(ROWS * cols).fill(false);
+  let offset = 0;
+  for (const glyph of glyphs) {
+    const width = glyph[0].length;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < width; c++) {
+        if (glyph[r][c] === "#") cells[r * cols + offset + c] = true;
+      }
+    }
+    offset += width + 1;
+  }
+  return { cells, cols };
+}
 
 const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[] =
   [
