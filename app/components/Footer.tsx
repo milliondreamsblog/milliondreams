@@ -79,6 +79,7 @@ const LIVE_LINKS = [
 
 
 export function Footer() {
+  const { cells, cols } = useMemo(() => buildGrid(WORDMARK), []);
 
   return (
     <footer className="border-t border-gray-200 bg-white px-6 pb-32 pt-14 dark:border-white/10 dark:bg-black sm:px-8 lg:px-10">
@@ -172,6 +173,24 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Giant pixel wordmark that becomes a Breakout game */}
+      <div className="relative mx-auto mt-16 max-w-6xl">
+            <div
+              className="grid w-full gap-[2px]"
+              style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+              aria-label={WORDMARK}
+              role="img"
+            >
+              {cells.map((on, i) => (
+                <div
+                  key={i}
+                  className={`aspect-square w-full rounded-[2px] ${
+                    on ? "bg-[#f6f6f6] dark:bg-zinc-900" : "opacity-0"
+                  }`}
+                />
+              ))}
+            </div>
+      </div>
     </footer>
   );
 }
