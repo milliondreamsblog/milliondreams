@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { ReadingProgress } from "./components/ReadingProgress";
 import { KonamiEasterEgg } from "./components/KonamiEasterEgg";
+import { Footer } from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -61,7 +62,9 @@ export default function RootLayout({
           <NavProvider>
             <ReadingProgress />
             <KonamiEasterEgg />
-            <SmoothScroll>{children}</SmoothScroll>
+            <SmoothScroll>
+              {children}
+            </SmoothScroll>
             <Navbar />
           </NavProvider>
         </ThemeProvider>
