@@ -255,6 +255,14 @@ function BreakoutGame({
               break;
             }
           }
+          if (!s.bricks.some((b) => b.alive)) endGame(true);
+          // Fell below paddle
+          if (s.ballY - r > s.h) {
+            s.lives -= 1;
+            setLives(s.lives);
+            if (s.lives <= 0) endGame(false);
+            else resetBall();
+          }
         }
       }
 
