@@ -28,6 +28,7 @@ const GLYPHS: Record<string, string[]> = {
 
 const WORDMARK = "milliondreams";
 const ROWS = 7;
+const BEST_SCORE_KEY = "footer-breakout-best";
 
 function buildGrid(word: string): { cells: boolean[]; cols: number } {
   const glyphs = word.split("").map((ch) => GLYPHS[ch] ?? GLYPHS.o);
@@ -127,6 +128,9 @@ function BreakoutGame({
     last: 0,
   });
 
+  useEffect(() => {
+    setBest(Number(localStorage.getItem(BEST_SCORE_KEY)) || 0);
+  }, []);
 
   const resetBall = useCallback(() => {
     const s = world.current;
@@ -139,6 +143,16 @@ function BreakoutGame({
     s.vy = -s.speed * Math.cos(angle);
   }, []);
 
+  const endGame = useCallback((won: boolean) => {
+    const s = world.current;
+    s.phase = won ? "won" : "over";
+    setPhase(s.phase);
+    setBest((prev) => {
+      const next = Math.max(prev, s.score);
+      localStorage.setItem(BEST_SCORE_KEY, String(next));
+      return next;
+    });
+  }, []);
 
 
 
