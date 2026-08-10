@@ -29,6 +29,15 @@ export function Footer() {
               Akshat Darshi
             </span>
           </Link>
+          <div className="text-3xl leading-[1.08] tracking-[-0.04em] text-black/60 dark:text-white/60 sm:text-4xl">
+            <p>Let&apos;s build together</p>
+            <a
+              href="mailto:akshatsan23@gmail.com"
+              className="transition-colors hover:text-black dark:hover:text-white"
+            >
+              akshatsan23@gmail.com
+            </a>
+          </div>
         </div>
 
       </div>
