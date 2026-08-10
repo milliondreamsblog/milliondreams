@@ -9,6 +9,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
  * cell; glyph widths vary so narrow letters (i, l) keep the wordmark's rhythm.
  */
 const GLYPHS: Record<string, string[]> = {
+  m: [".....", ".....", "##.#.", "#.#.#", "#.#.#", "#.#.#", "#.#.#"],
 };
 
 const WORDMARK = "milliondreams";
