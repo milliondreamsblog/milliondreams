@@ -23,6 +23,9 @@ const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[
         { label: "Bawarchie", href: "/projects/bawarchie" },
         { label: "RoboRumble", href: "/projects/roborumble" },
         { label: "Haven AI", href: "/projects/havenai" },
+        { label: "BuildInfra", href: "/projects/buildinfra" },
+        { label: "CMO Agent", href: "/projects/cmoagent" },
+        { label: "Elvyn Chess", href: "/projects/elvynchess" },
       ],
     },
   ];
