@@ -188,6 +188,39 @@ function BreakoutGame({
     resetBall();
   }, [cells, cols, resetBall]);
 
+  // Main loop + input listeners.
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+    const s = world.current;
+
+    const step = (t: number) => {
+      const dt = Math.min((t - s.last) / 1000, 1 / 30);
+      s.last = t;
+      const r = Math.max(5, s.cs * 0.35);
+      const paddleY = s.h - 24;
+
+      if (s.phase === "running") {
+        if (!s.launched) {
+          s.ballX = s.paddleX;
+          s.ballY = paddleY - r - 4;
+        } else {
+          s.ballX += s.vx * dt;
+          s.ballY += s.vy * dt;
+        }
+      }
+
+
+      s.raf = requestAnimationFrame(step);
+    };
+    s.last = performance.now();
+    s.raf = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(s.raf);
+    };
+  }, [endGame, resetBall]);
 
   // Kick off the first round once mounted.
   useEffect(() => {
