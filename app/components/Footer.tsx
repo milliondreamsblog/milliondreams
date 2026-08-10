@@ -37,6 +37,10 @@ const CONNECT_LINKS = [
   { label: "Codolio", href: "https://codolio.com/profile/milliondreamsblog" },
 ];
 
+const LIVE_LINKS = [
+  { label: "bawarchie.com", href: "https://www.bawarchie.com" },
+  { label: "roborumble.in", href: "https://roborumble.in" },
+];
 
 
 export function Footer() {
@@ -104,6 +108,24 @@ export function Footer() {
                         ? "noopener noreferrer"
                         : undefined
                     }
+                    className="text-sm text-[#666] transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-sm font-medium text-black dark:text-white">
+                Live
+              </p>
+              <div className="flex flex-col gap-3">
+                {LIVE_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-[#666] transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
                     {link.label}
