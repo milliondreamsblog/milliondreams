@@ -30,6 +30,12 @@ const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[
     },
   ];
 
+const CONNECT_LINKS = [
+  { label: "Email", href: "mailto:akshatsan23@gmail.com" },
+  { label: "GitHub", href: "https://github.com/milliondreamsblog" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/akshat-darshi/" },
+  { label: "Codolio", href: "https://codolio.com/profile/milliondreamsblog" },
+];
 
 
 
@@ -82,6 +88,30 @@ export function Footer() {
               </div>
             </div>
           ))}
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-4">
+              <p className="text-sm font-medium text-black dark:text-white">
+                Connect
+              </p>
+              <div className="flex flex-col gap-3">
+                {CONNECT_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      link.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="text-sm text-[#666] transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
