@@ -17,6 +17,14 @@ const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[
         { label: "Blog", href: "/blog" },
       ],
     },
+    {
+      title: "Case Studies",
+      links: [
+        { label: "Bawarchie", href: "/projects/bawarchie" },
+        { label: "RoboRumble", href: "/projects/roborumble" },
+        { label: "Haven AI", href: "/projects/havenai" },
+      ],
+    },
   ];
 
 
