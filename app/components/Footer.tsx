@@ -189,6 +189,10 @@ function BreakoutGame({
   }, [cells, cols, resetBall]);
 
 
+  // Kick off the first round once mounted.
+  useEffect(() => {
+    startGame();
+  }, [startGame]);
 
 
 
