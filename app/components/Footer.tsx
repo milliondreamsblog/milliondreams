@@ -137,6 +137,29 @@ function BreakoutGame({
 
   return (
     <div className={`${pixelify.className} select-none`}>
+      {/* HUD */}
+      <div className="mb-2 flex items-center justify-between text-[16px] text-black dark:text-white">
+        <div className="flex gap-1 text-[18px] text-red-500" aria-label={`${lives} lives`}>
+          {Array.from({ length: 3 }, (_, i) => (
+            <span key={i} className={i < lives ? "" : "opacity-20"}>
+              ♥
+            </span>
+          ))}
+        </div>
+        <p>Score : {score}</p>
+        <div className="flex items-center gap-4">
+          <p className="text-amber-500">
+            ★ <span className="text-black dark:text-white">{best}</span>
+          </p>
+          <button
+            onClick={onClose}
+            aria-label="Close game"
+            className="text-black transition-transform hover:scale-125 dark:text-white"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
 
       <div
         ref={wrapRef}
