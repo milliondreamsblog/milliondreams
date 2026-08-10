@@ -128,6 +128,16 @@ function BreakoutGame({
   });
 
 
+  const resetBall = useCallback(() => {
+    const s = world.current;
+    s.launched = false;
+    setAwaitingLaunch(true);
+    s.ballX = s.paddleX;
+    s.ballY = s.h - 40;
+    const angle = (Math.random() * 0.6 - 0.3) * Math.PI;
+    s.vx = s.speed * Math.sin(angle);
+    s.vy = -s.speed * Math.cos(angle);
+  }, []);
 
 
 
