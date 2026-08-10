@@ -7,6 +7,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 
 
+const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[] =
+  [
+  ];
 
 
 
@@ -40,6 +43,27 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Link columns */}
+        <div className="flex flex-wrap gap-x-16 gap-y-10 lg:gap-x-20">
+          {FOOTER_LINKS.map((column) => (
+            <div key={column.title} className="flex flex-col gap-4">
+              <p className="text-sm font-medium text-black dark:text-white">
+                {column.title}
+              </p>
+              <div className="flex flex-col gap-3">
+                {column.links.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-sm text-[#666] transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
     </footer>
