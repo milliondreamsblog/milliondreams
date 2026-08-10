@@ -291,8 +291,24 @@ function BreakoutGame({
     s.last = performance.now();
     s.raf = requestAnimationFrame(step);
 
+    const onKey = (e: KeyboardEvent) => {
+      if (s.phase !== "running") return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        s.paddleX = Math.max(s.paddleW / 2, s.paddleX - 32);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        s.paddleX = Math.min(s.w - s.paddleW / 2, s.paddleX + 32);
+      } else if (e.key === " ") {
+        e.preventDefault();
+        s.launched = true;
+        setAwaitingLaunch(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       cancelAnimationFrame(s.raf);
+      window.removeEventListener("keydown", onKey);
     };
   }, [endGame, resetBall]);
 
