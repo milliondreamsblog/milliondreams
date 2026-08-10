@@ -233,6 +233,28 @@ function BreakoutGame({
             s.vy = -s.speed * Math.cos(angle);
             s.ballY = paddleY - r;
           }
+          // Bricks
+          for (const b of s.bricks) {
+            if (!b.alive) continue;
+            const bs = s.cs;
+            if (
+              s.ballX + r > b.x &&
+              s.ballX - r < b.x + bs &&
+              s.ballY + r > b.y &&
+              s.ballY - r < b.y + bs
+            ) {
+              b.alive = false;
+              s.score += 1;
+              setScore(s.score);
+              const overlapX =
+                Math.min(s.ballX + r, b.x + bs) - Math.max(s.ballX - r, b.x);
+              const overlapY =
+                Math.min(s.ballY + r, b.y + bs) - Math.max(s.ballY - r, b.y);
+              if (overlapX < overlapY) s.vx = -s.vx;
+              else s.vy = -s.vy;
+              break;
+            }
+          }
         }
       }
 
