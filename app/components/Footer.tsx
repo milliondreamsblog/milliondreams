@@ -328,6 +328,18 @@ function BreakoutGame({
     );
   };
 
+  const share = async () => {
+    const s = world.current;
+    const text = `I scored ${s.score} playing Breakout on milliondreams.vercel.app 🕹️`;
+    try {
+      if (navigator.share) await navigator.share({ text });
+      else await navigator.clipboard.writeText(text);
+      setShared(true);
+      setTimeout(() => setShared(false), 2000);
+    } catch {
+      /* user dismissed the share sheet */
+    }
+  };
 
   return (
     <div className={`${pixelify.className} select-none`}>
@@ -367,6 +379,36 @@ function BreakoutGame({
       >
         <canvas ref={canvasRef} className="h-full w-full" />
 
+        {phase === "running" && awaitingLaunch && (
+          <p className="pointer-events-none absolute inset-x-0 bottom-16 text-center text-[14px] text-gray-400">
+            Click or press Space to launch — move with mouse or arrow keys
+          </p>
+        )}
+
+        {(phase === "over" || phase === "won") && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex w-[251px] cursor-auto flex-col items-center gap-4 rounded-[8px] border border-black bg-white p-6 shadow-xl dark:border-white dark:bg-black">
+              <p className="text-[16px] text-black dark:text-white">
+                {phase === "won" ? "You win!" : "Game over"}
+              </p>
+              <p className="text-[56px] leading-none text-black dark:text-white">
+                {score}
+              </p>
+              <button
+                onClick={startGame}
+                className="w-full rounded-[4px] border border-black bg-yellow-300 py-2 text-[16px] text-black transition-transform hover:scale-[1.03]"
+              >
+                ▸ Play Again
+              </button>
+              <button
+                onClick={share}
+                className="w-full rounded-[4px] border border-gray-300 bg-white py-2 text-[16px] text-black transition-transform hover:scale-[1.03] dark:border-gray-600 dark:bg-black dark:text-white"
+              >
+                {shared ? "Copied!" : "Share"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
