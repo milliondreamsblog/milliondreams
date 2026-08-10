@@ -317,6 +317,16 @@ function BreakoutGame({
     startGame();
   }, [startGame]);
 
+  const movePaddle = (clientX: number) => {
+    const wrap = wrapRef.current;
+    const s = world.current;
+    if (!wrap || s.phase !== "running") return;
+    const rect = wrap.getBoundingClientRect();
+    s.paddleX = Math.min(
+      s.w - s.paddleW / 2,
+      Math.max(s.paddleW / 2, clientX - rect.left),
+    );
+  };
 
 
   return (
@@ -348,6 +358,12 @@ function BreakoutGame({
       <div
         ref={wrapRef}
         className="relative h-[440px] w-full cursor-none touch-none"
+        onPointerMove={(e) => movePaddle(e.clientX)}
+        onPointerDown={(e) => {
+          movePaddle(e.clientX);
+          world.current.launched = true;
+          setAwaitingLaunch(false);
+        }}
       >
         <canvas ref={canvasRef} className="h-full w-full" />
 
