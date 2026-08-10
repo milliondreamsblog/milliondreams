@@ -100,7 +100,32 @@ function BreakoutGame({
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [lives, setLives] = useState(3);
+  const [score, setScore] = useState(0);
+  const [best, setBest] = useState(0);
+  const [phase, setPhase] = useState<Phase>("ready");
+  const [shared, setShared] = useState(false);
+  const [awaitingLaunch, setAwaitingLaunch] = useState(true);
 
+  const world = useRef({
+    w: 0,
+    h: 0,
+    cs: 0,
+    bricks: [] as Brick[],
+    paddleX: 0,
+    paddleW: 120,
+    ballX: 0,
+    ballY: 0,
+    vx: 0,
+    vy: 0,
+    speed: 0,
+    launched: false,
+    lives: 3,
+    score: 0,
+    phase: "ready" as Phase,
+    raf: 0,
+    last: 0,
+  });
 
 
 
