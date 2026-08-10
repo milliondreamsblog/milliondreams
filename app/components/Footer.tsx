@@ -208,6 +208,18 @@ function BreakoutGame({
         } else {
           s.ballX += s.vx * dt;
           s.ballY += s.vy * dt;
+          if (s.ballX - r < 0) {
+            s.ballX = r;
+            s.vx = Math.abs(s.vx);
+          }
+          if (s.ballX + r > s.w) {
+            s.ballX = s.w - r;
+            s.vx = -Math.abs(s.vx);
+          }
+          if (s.ballY - r < 0) {
+            s.ballY = r;
+            s.vy = Math.abs(s.vy);
+          }
         }
       }
 
