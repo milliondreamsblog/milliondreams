@@ -211,6 +211,25 @@ function BreakoutGame({
         }
       }
 
+      // Draw
+      const dark = document.documentElement.classList.contains("dark");
+      ctx.clearRect(0, 0, s.w, s.h);
+      ctx.fillStyle = dark ? "#27272a" : "#ededed";
+      for (const b of s.bricks) {
+        if (!b.alive) continue;
+        const bs = s.cs;
+        ctx.beginPath();
+        ctx.roundRect(b.x + 1, b.y + 1, bs - 2, bs - 2, 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = dark ? "#ffffff" : "#111111";
+      ctx.beginPath();
+      ctx.roundRect(s.paddleX - s.paddleW / 2, paddleY, s.paddleW, 10, 5);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.roundRect(s.ballX - r, s.ballY - r, r * 2, r * 2, r * 0.4);
+      ctx.fillStyle = "#ef4444";
+      ctx.fill();
 
       s.raf = requestAnimationFrame(step);
     };
