@@ -11,6 +11,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 const GLYPHS: Record<string, string[]> = {
   m: [".....", ".....", "##.#.", "#.#.#", "#.#.#", "#.#.#", "#.#.#"],
   i: [".#.", "...", "##.", ".#.", ".#.", ".#.", "###"],
+  l: ["##.", ".#.", ".#.", ".#.", ".#.", ".#.", "###"],
 };
 
 const WORDMARK = "milliondreams";
