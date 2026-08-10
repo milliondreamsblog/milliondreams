@@ -167,6 +167,14 @@ function BreakoutGame({
     canvas.height = s.h * dpr;
     canvas.getContext("2d")?.scale(dpr, dpr);
     s.cs = s.w / cols;
+    s.bricks = [];
+    const top = 16;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < cols; c++) {
+        if (cells[r * cols + c])
+          s.bricks.push({ x: c * s.cs, y: top + r * s.cs, alive: true });
+      }
+    }
     s.paddleW = Math.max(90, s.w * 0.09);
     s.paddleX = s.w / 2;
     s.speed = Math.max(380, s.w * 0.38);
