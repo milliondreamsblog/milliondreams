@@ -9,6 +9,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const FOOTER_LINKS: { title: string; links: { label: string; href: string }[] }[] =
   [
+    {
+      title: "Explore",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "Projects", href: "/projects" },
+        { label: "Blog", href: "/blog" },
+      ],
+    },
   ];
 
 
