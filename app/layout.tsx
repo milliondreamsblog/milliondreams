@@ -64,6 +64,7 @@ export default function RootLayout({
             <KonamiEasterEgg />
             <SmoothScroll>
               {children}
+              <Footer />
             </SmoothScroll>
             <Navbar />
           </NavProvider>
