@@ -220,6 +220,19 @@ function BreakoutGame({
             s.ballY = r;
             s.vy = Math.abs(s.vy);
           }
+          // Paddle
+          if (
+            s.vy > 0 &&
+            s.ballY + r >= paddleY &&
+            s.ballY + r <= paddleY + 14 &&
+            Math.abs(s.ballX - s.paddleX) <= s.paddleW / 2 + r
+          ) {
+            const offset = (s.ballX - s.paddleX) / (s.paddleW / 2);
+            const angle = offset * (Math.PI / 3);
+            s.vx = s.speed * Math.sin(angle);
+            s.vy = -s.speed * Math.cos(angle);
+            s.ballY = paddleY - r;
+          }
         }
       }
 
