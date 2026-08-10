@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Pixelify_Sans } from "next/font/google";
 
+const pixelify = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 /**
  * 7-row pixel glyphs for the giant footer wordmark. Rows use "#" for a lit
@@ -80,6 +85,7 @@ const LIVE_LINKS = [
 
 export function Footer() {
   const { cells, cols } = useMemo(() => buildGrid(WORDMARK), []);
+  const [playing, setPlaying] = useState(false);
 
   return (
     <footer className="border-t border-gray-200 bg-white px-6 pb-32 pt-14 dark:border-white/10 dark:bg-black sm:px-8 lg:px-10">
@@ -189,6 +195,16 @@ export function Footer() {
                   }`}
                 />
               ))}
+            </div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <button
+                onClick={() => setPlaying(true)}
+                className={`${pixelify.className} pointer-events-auto rounded-[8px] border border-black bg-black/15 pb-[4px] dark:border-white dark:bg-white/25`}
+              >
+                <span className="flex h-9 items-center justify-center rounded-[7px] bg-white px-4 text-[16px] tracking-[-0.02em] text-[#222020] dark:bg-black dark:text-gray-100">
+                  Click to Play
+                </span>
+              </button>
             </div>
       </div>
     </footer>
