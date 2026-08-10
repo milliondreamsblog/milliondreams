@@ -82,6 +82,47 @@ const LIVE_LINKS = [
   { label: "roborumble.in", href: "https://roborumble.in" },
 ];
 
+type Brick = { x: number; y: number; alive: boolean };
+type Phase = "ready" | "running" | "over" | "won";
+
+/**
+ * Breakout played against the pixel wordmark: every lit cell is a brick.
+ * Physics live in refs and a rAF loop; React state only drives the HUD.
+ */
+function BreakoutGame({
+  cells,
+  cols,
+  onClose,
+}: {
+  cells: boolean[];
+  cols: number;
+  onClose: () => void;
+}) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+
+
+
+
+
+
+
+
+
+  return (
+    <div className={`${pixelify.className} select-none`}>
+
+      <div
+        ref={wrapRef}
+        className="relative h-[440px] w-full cursor-none touch-none"
+      >
+        <canvas ref={canvasRef} className="h-full w-full" />
+
+      </div>
+    </div>
+  );
+}
 
 export function Footer() {
   const { cells, cols } = useMemo(() => buildGrid(WORDMARK), []);
@@ -181,6 +222,14 @@ export function Footer() {
 
       {/* Giant pixel wordmark that becomes a Breakout game */}
       <div className="relative mx-auto mt-16 max-w-6xl">
+        {playing ? (
+          <BreakoutGame
+            cells={cells}
+            cols={cols}
+            onClose={() => setPlaying(false)}
+          />
+        ) : (
+          <>
             <div
               className="grid w-full gap-[2px]"
               style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
@@ -206,6 +255,8 @@ export function Footer() {
                 </span>
               </button>
             </div>
+          </>
+        )}
       </div>
     </footer>
   );
