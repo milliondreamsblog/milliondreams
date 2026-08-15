@@ -144,7 +144,7 @@ function HeroLayout({ p }: { p: Project }) {
 
 function SidebarLayout({ p }: { p: Project }) {
   return (
-    <div className="grid grid-cols-[160px_1fr] md:grid-cols-[200px_1fr] gap-10 md:gap-12 items-start">
+    <div className="grid grid-cols-1 sm:grid-cols-[160px_1fr] md:grid-cols-[200px_1fr] gap-8 sm:gap-10 md:gap-12 items-start">
       <div>
         <EntryIndex value={p.index} />
         <Badge label={p.badge} variant={p.badgeVariant} />

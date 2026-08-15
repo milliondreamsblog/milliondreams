@@ -474,4 +474,29 @@ export const PROJECTS: Project[] = [
     stack: ["Python", "Transformers", "PyTorch", "Transfer Learning"],
     githubUrl: "https://github.com/milliondreamsblog/misinformation_agent",
   },
+  {
+    id: "arthenic",
+    index: "18",
+    categories: ["design", "fullstack"],
+    title: "Arthenic",
+    tagline: "Luxury Heirloom-Craft Storefront",
+    description:
+      "Premium redesign for a real Jaipur heirloom-craft house — an editorial luxury storefront with parallax hero, live Jaipur ✕ New York clocks, a special-editions Vault, and hover sound design synthesized entirely in the Web Audio API.",
+    tier: "tier1",
+    badge: "Client Work",
+    badgeVariant: "client",
+    stats: [
+      { value: "4",    label: "Craft collections" },
+      { value: "0",    label: "Audio files shipped" },
+    ],
+    bullets: [
+      "Editorial storefront over real catalog photography and pricing — markdown content layer, no CMS",
+      "Synthesized hover sound design and a footer brick-breaker easter egg — all Web Audio API, zero assets",
+      "Next.js 16 + React 19 + Tailwind 4, Lenis smooth scrolling, Framer Motion reveals",
+    ],
+    stack: ["Next.js", "React 19", "Tailwind CSS", "Framer Motion", "Web Audio API"],
+    githubUrl: "https://github.com/milliondreamsblog/Arthenic",
+    liveUrl: "https://arthenic-redesign.vercel.app",
+    image: "/case-studies/arthenic/hero.png",
+  },
 ];

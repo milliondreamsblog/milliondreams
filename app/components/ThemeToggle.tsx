@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
 import { Moon, Sun } from "lucide-react";
 
 function useIsClient() {
@@ -18,20 +19,37 @@ export function ThemeToggle() {
 
     if (!isClient) {
         return (
-            <div className="h-9 w-16 rounded-full bg-gray-100 dark:bg-gray-800 animate-pulse" />
+            <div className="h-7 w-12 rounded-full bg-gray-100 dark:bg-gray-800 animate-pulse" />
         );
     }
 
     const isDark = resolvedTheme === "dark";
 
+    const toggleTheme = () => {
+        const next = isDark ? "light" : "dark";
+        const doc = document as Document & {
+            startViewTransition?: (cb: () => void) => void;
+        };
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (!doc.startViewTransition || reduceMotion) {
+            setTheme(next);
+            return;
+        }
+        doc.startViewTransition(() => {
+            flushSync(() => setTheme(next));
+        });
+    };
+
     return (
         <button
-            onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="group relative flex h-8 w-14 cursor-pointer items-center rounded-full bg-gray-100 dark:bg-white p-1 transition-all duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-50"
+            onClick={toggleTheme}
+            className="group relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-gray-100 dark:bg-white p-1 transition-all duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-50"
             aria-label="Toggle Theme"
         >
             <div
-                className={`flex h-6 w-6 transform items-center justify-center rounded-full bg-white dark:bg-black shadow-md transition-all duration-500 ease-in-out ${isDark ? "translate-x-6" : "translate-x-0"
+                className={`flex h-5 w-5 transform items-center justify-center rounded-full bg-white dark:bg-black shadow-md transition-all duration-500 ease-in-out ${isDark ? "translate-x-5" : "translate-x-0"
                     }`}
             >
                 {isDark ? (
