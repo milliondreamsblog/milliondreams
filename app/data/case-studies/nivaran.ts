@@ -188,5 +188,9 @@ export const nivaran: CaseStudy = {
       body: "SQLite on Android and localStorage in the browser preserve the case between sessions. This makes the prototype usable without a hosted identity service, with the tradeoff that drafts do not sync between devices."
     }
   ],
-  funFacts: []
+  funFacts: [
+    "Hindi and English questions share the same field IDs and case rules.",
+    "The extraction demo accepts two known synthetic document fixtures and labels fallback results as simulated.",
+    "The research prototype has a separate moderator recorder. Dry runs are excluded from participant counts."
+  ]
 };
