@@ -106,6 +106,47 @@ export const PROJECTS: Project[] = [
     image: "/case-studies/nivaran/dashboard.png"
   },
   {
+    id: "elvynchess",
+    index: "13",
+    categories: [
+      "fullstack",
+      "backend",
+      "design"
+    ],
+    title: "Elvyn Chess",
+    tagline: "Chess academy, coaching platform, and mobile app",
+    description: "The website and coaching platform for Elvyn Chess. A public academy site introduces programs and trial classes, while students, coaches, and admins use a shared web and mobile backend for lessons, assignments, and live chess boards.",
+    tier: "tier1",
+    badge: "Live Product",
+    badgeVariant: "live",
+    layout: "hero",
+    stats: [
+      {
+        value: "3",
+        label: "User roles"
+      },
+      {
+        value: "2",
+        label: "App clients"
+      }
+    ],
+    bullets: [
+      "Public academy website with coaching programs and free-trial booking",
+      "Next.js and Expo clients share a tRPC API and Supabase backend",
+      "Realtime Playground with board control handoff and analysis trees",
+      "Class scheduling, learning materials, assignments, and notifications"
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Expo",
+      "tRPC",
+      "Supabase",
+      "Drizzle"
+    ],
+    liveUrl: "https://www.elvynchess.com"
+  },
+  {
     id: "gangatiram",
     index: "20",
     categories: [
@@ -448,29 +489,6 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["Node.js", "JavaScript", "Claude AI", "Next.js"],
     githubUrl: "https://github.com/milliondreamsblog/CMO_agent",
-  },
-  {
-    id: "elvynchess",
-    index: "13",
-    categories: ["fullstack", "backend"],
-    title: "Elvyn-Chess",
-    tagline: "Chess coaching SaaS · web + mobile",
-    description:
-      "Students, coaches, and admins manage classes and schedules on a shared backend, with web and mobile clients living in one Turborepo monorepo.",
-    tier: "tier2",
-    badge: "Full-Stack SaaS",
-    badgeVariant: "backend",
-    stats: [
-      { value: "3", label: "User roles" },
-      { value: "2", label: "Clients" },
-    ],
-    bullets: [
-      "Turborepo monorepo — Next.js web and Expo mobile share one tRPC API",
-      "Role-based flows across students, coaches, and admins",
-      "Supabase + Drizzle ORM with end-to-end type safety",
-    ],
-    stack: ["TypeScript", "Turborepo", "tRPC", "Expo", "Supabase", "Drizzle"],
-    githubUrl: "https://github.com/milliondreamsblog/Elvyn-Chess",
   },
   {
     id: "projectmanager",
