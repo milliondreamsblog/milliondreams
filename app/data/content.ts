@@ -43,6 +43,12 @@ Refactored inefficient training pipelines, directly reducing compute spend by $5
 
 ## Projects
 
+### Nivaran
+**Next.js, Expo, TypeScript, Gemini Live, SQLite**
+[Case study](/projects/nivaran) | [GitHub](https://github.com/milliondreamsblog/nivaran)
+
+A civic-tech prototype that turns a Hindi or English conversation into a reviewable PF transfer grievance. An Expo app combines typed input, voice, guided questions, and sample-document evidence around confirmed facts.
+
 ### Bawarchie – AI-Powered QR Restaurant Ordering System
 **Next.js, Razorpay, PostgreSQL**
 [GitHub](https://github.com/milliondreamsblog/orderbyqr) | [Live](https://www.bawarchie.com/)
