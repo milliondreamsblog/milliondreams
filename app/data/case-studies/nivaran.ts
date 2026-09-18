@@ -166,6 +166,27 @@ export const nivaran: CaseStudy = {
       ]
     }
   },
-  decisions: [],
+  decisions: [
+    {
+      chose: "Explicit fact confirmation",
+      over: "automatic acceptance of model output",
+      body: "A model response becomes a proposal with a source and quote. Conflicting dates stay visible until the citizen resolves them. This adds a confirmation step, but prevents a plausible extraction from silently becoming an accepted fact."
+    },
+    {
+      chose: "Deterministic draft generation",
+      over: "free-form model-written final drafts",
+      body: "The draft builder uses confirmed facts and keeps uncertainty explicit. Readiness and review operate on the same case revision, so changing a fact cannot leave an old approval attached to new text."
+    },
+    {
+      chose: "A focused PF transfer demo",
+      over: "claims of complete government integration",
+      body: "The current core supports preparation for a transfer grievance and blocks unsupported services. Sample documents and simulated receipts make the demonstrated scope clear. The separate research prototype can be evaluated without presenting a demo as a government submission."
+    },
+    {
+      chose: "Local draft storage",
+      over: "a required hosted citizen account",
+      body: "SQLite on Android and localStorage in the browser preserve the case between sessions. This makes the prototype usable without a hosted identity service, with the tradeoff that drafts do not sync between devices."
+    }
+  ],
   funFacts: []
 };
