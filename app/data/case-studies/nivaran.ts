@@ -72,7 +72,33 @@ export const nivaran: CaseStudy = {
       ]
     }
   },
-  stack: [],
+  stack: [
+    {
+      tech: "Expo + React Native",
+      role: "Android and browser app",
+      why: "Shared screens keep the interview, facts, and review steps consistent across both clients."
+    },
+    {
+      tech: "TypeScript",
+      role: "Case state and preparation rules",
+      why: "The core models proposed, confirmed, unknown, and conflicting facts explicitly. It has no React Native or network dependency."
+    },
+    {
+      tech: "Next.js + React",
+      role: "Web prototype and API routes",
+      why: "One server hosts the original demo, the separate research flow, and the mobile app's model endpoints."
+    },
+    {
+      tech: "Gemini Live",
+      role: "Voice conversation",
+      why: "A WebSocket session carries audio, transcripts, and tool proposals. The server issues the session token."
+    },
+    {
+      tech: "SQLite + localStorage",
+      role: "Draft persistence",
+      why: "Native and browser adapters save the same case bundle, including the current revision and review."
+    }
+  ],
   decisions: [],
   funFacts: []
 };
