@@ -106,6 +106,52 @@ export const PROJECTS: Project[] = [
     image: "/case-studies/nivaran/dashboard.png"
   },
   {
+    id: "gangatiram",
+    index: "20",
+    categories: [
+      "fullstack",
+      "design"
+    ],
+    title: "Ganga Tiram",
+    tagline: "Heritage storytelling, book orders, and festival participation",
+    description: "A website for the Ganga Tiram book and FACE mission, with a rotatable book, river chapters, UPI order submissions, and Dev Deepawali lamp dedications. A private admin panel tracks orders, payment evidence, and offerings.",
+    tier: "tier1",
+    badge: "Live Website",
+    badgeVariant: "live",
+    layout: "hero",
+    stats: [
+      {
+        value: "75",
+        label: "Places in the book"
+      },
+      {
+        value: "4",
+        label: "FACE themes"
+      },
+      {
+        value: "UPI",
+        label: "Payment-proof flow"
+      }
+    ],
+    bullets: [
+      "Editorial river journey with a 3D book preview and responsive motion",
+      "Book ordering and lamp dedications with uploaded payment evidence",
+      "Neon Postgres records saved before email and WhatsApp alerts",
+      "Admin workflows for reviewing submissions and updating order status"
+    ],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Neon Postgres",
+      "Framer Motion",
+      "Sharp"
+    ],
+    githubUrl: "https://github.com/milliondreamsblog/gangatiramV2",
+    liveUrl: "https://gangatiram.in",
+    image: "/case-studies/gangatiram/book.png"
+  },
+  {
     id: "buildinfra",
     index: "01",
     categories: ["fullstack", "backend"],

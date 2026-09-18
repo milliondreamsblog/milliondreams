@@ -1,4 +1,5 @@
 import { nivaran } from "./nivaran";
+import { gangatiram } from "./gangatiram";
 import type { CaseStudy } from "./types";
 import { havenai } from "./havenai";
 import { buildinfra } from "./buildinfra";
@@ -25,6 +26,7 @@ import { arthenic } from "./arthenic";
  */
 export const CASE_STUDIES: Record<string, CaseStudy> = {
   nivaran,
+  gangatiram,
   buildinfra,
   cadence,
   bawarchie,
