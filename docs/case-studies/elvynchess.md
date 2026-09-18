@@ -141,3 +141,8 @@ The RN board is ~130 lines: it parses FEN placement itself and renders Unicode c
 - No automated tests exist anywhere in the repo — worth acknowledging or explaining (the Zod + RLS + chess.js validation layers carry the correctness story).
 - Migration `0013` is missing from `packages/db/migrations/sql/` (sequence jumps 0012 to 0014_drop_course_content) — presumably an abandoned course-content experiment; the author should confirm the story.
 - The email integration is only half-visible: `packages/api/src/email/welcome.ts` and `RESEND_API_KEY` in `turbo.json` imply Resend welcome emails, but whether they are wired into production was not verified.
+
+
+## September 2026 portfolio refresh
+
+The public academy at https://www.elvynchess.com now describes coaching programs, free-trial booking, and the app for schedules, assignments, attendance, and progress. The portfolio entry now covers the academy site alongside the existing coaching platform case study and links to the verified public domain. The older GitHub URL returns 404 and has been removed from the project card. The detailed platform architecture above remains the previously researched implementation; current private app source and authenticated screens were not re-audited in this refresh.
