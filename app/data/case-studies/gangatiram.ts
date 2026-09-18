@@ -125,6 +125,27 @@ export const gangatiram: CaseStudy = {
       relations: []
     }
   },
-  decisions: [],
+  decisions: [
+    {
+      chose: "Save before notifying",
+      over: "using an email as the order record",
+      body: "The order route inserts into Postgres before sending alerts. An email or WhatsApp failure does not discard a saved order, and notification flags let the admin see which alerts went out."
+    },
+    {
+      chose: "UPI proof with staff review",
+      over: "automatic payment verification",
+      body: "Visitors submit payment evidence with their delivery details or dedication. This supports the current purchase process with fewer integrations, but staff must reconcile payments before treating orders as paid."
+    },
+    {
+      chose: "Compressed proof in Postgres",
+      over: "a separate object-storage integration",
+      body: "Images are resized to fit within 1,000 by 1,000 pixels and encoded as JPEG. Keeping the evidence with the record simplifies retrieval from the admin panel, while putting binary storage costs on the database."
+    },
+    {
+      chose: "River chapters and a book preview",
+      over: "a catalog-only landing page",
+      body: "The site gives the book's subject room before asking for a purchase. Chapter pages and the interactive book connect the physical edition to the wider FACE mission and the festival offering flow."
+    }
+  ],
   funFacts: []
 };
