@@ -2,6 +2,8 @@ import type { CaseStudy } from "./types";
 
 export const gangatiram: CaseStudy = {
   slug: "gangatiram",
+  heroImage: "/case-studies/gangatiram/book.png",
+  heroCaption: "Heritage photography behind the website's interactive book presentation.",
   tldr: "Ganga Tiram brings a heritage book, the FACE mission, and Dev Deepawali participation into one website. The book follows the Ganga through 75 places, and the site presents that journey through photography, river chapters, and a rotatable book. Visitors can order the printed edition or dedicate lamps through a UPI payment-proof flow. A private admin panel handles the resulting orders and offerings. The engineering work connects an editorial website to the practical tasks of collecting delivery details, preserving payment evidence, and tracking fulfillment.",
   architecture: {
     intro: "Next.js serves the public pages, purchase flow, festival pages, and admin panel. TypeScript content modules supply the book and river stories. Order and lamp endpoints validate multipart submissions, compress image evidence with Sharp, and save records in Neon Postgres. Notifications run after persistence, with delivery flags stored for the admin view. UPI payments are reviewed through submitted proof rather than automatically verified by a payment gateway.",
