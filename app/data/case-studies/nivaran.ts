@@ -99,6 +99,73 @@ export const nivaran: CaseStudy = {
       why: "Native and browser adapters save the same case bundle, including the current revision and review."
     }
   ],
+  dataModel: {
+    intro: "This is a local case model, not a government records database. Each case owns facts, messages, evidence references, and a review of a particular revision. A changed fact invalidates the earlier review. Applied tool-call IDs persist with the case so replayed proposals cannot apply twice.",
+    diagram: {
+      entities: [
+        {
+          name: "Case",
+          fields: [
+            "id, language, service",
+            "state, revision",
+            "facts, appliedCallIds",
+            "review"
+          ]
+        },
+        {
+          name: "Fact",
+          fields: [
+            "field, value, status",
+            "source, sourceRef, quote",
+            "alternatives, revision"
+          ]
+        },
+        {
+          name: "Message",
+          fields: [
+            "id, caseId, speaker",
+            "text, mode, state"
+          ]
+        },
+        {
+          name: "Evidence",
+          fields: [
+            "id, caseId, name, mime",
+            "path, purpose, check"
+          ]
+        },
+        {
+          name: "Review",
+          fields: [
+            "caseId, revision",
+            "draftHash, receipt, reviewedAt"
+          ]
+        }
+      ],
+      relations: [
+        {
+          from: "Case",
+          to: "Fact",
+          label: "records field-level provenance"
+        },
+        {
+          from: "Case",
+          to: "Message",
+          label: "conversation"
+        },
+        {
+          from: "Case",
+          to: "Evidence",
+          label: "sample documents"
+        },
+        {
+          from: "Case",
+          to: "Review",
+          label: "exact revision reviewed"
+        }
+      ]
+    }
+  },
   decisions: [],
   funFacts: []
 };
