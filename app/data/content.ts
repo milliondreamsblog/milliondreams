@@ -55,6 +55,13 @@ A civic-tech prototype that turns a Hindi or English conversation into a reviewa
 
 A website for the Ganga Tiram book and FACE mission, with a rotatable book, river chapters, UPI order submissions, and Dev Deepawali lamp dedications. A private admin panel tracks orders, payment evidence, and offerings.
 
+### Elvyn Chess
+**Next.js, Expo, tRPC, Supabase, Drizzle**
+[Case study](/projects/elvynchess) | [Live](https://www.elvynchess.com)
+
+The website and coaching platform for Elvyn Chess. A public academy site introduces programs and trial classes, while students, coaches, and admins use a shared web and mobile backend for lessons, assignments, and live chess boards.
+
+
 ### Bawarchie – AI-Powered QR Restaurant Ordering System
 **Next.js, Razorpay, PostgreSQL**
 [GitHub](https://github.com/milliondreamsblog/orderbyqr) | [Live](https://www.bawarchie.com/)
