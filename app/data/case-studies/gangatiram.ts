@@ -147,5 +147,9 @@ export const gangatiram: CaseStudy = {
       body: "The site gives the book's subject room before asking for a purchase. Chapter pages and the interactive book connect the physical edition to the wider FACE mission and the festival offering flow."
     }
   ],
-  funFacts: []
+  funFacts: [
+    "The book preview uses separate front, back, and spine assets so visitors can rotate the edition.",
+    "The footer includes a river animation with a leaping Gangetic dolphin.",
+    "A playable brick-breaker in the footer arranges its bricks to spell ganga."
+  ]
 };
