@@ -1,3 +1,4 @@
+import { nivaran } from "./nivaran";
 import type { CaseStudy } from "./types";
 import { havenai } from "./havenai";
 import { buildinfra } from "./buildinfra";
@@ -23,6 +24,7 @@ import { arthenic } from "./arthenic";
  * creating app/data/case-studies/<slug>.ts and importing it here.
  */
 export const CASE_STUDIES: Record<string, CaseStudy> = {
+  nivaran,
   buildinfra,
   cadence,
   bawarchie,

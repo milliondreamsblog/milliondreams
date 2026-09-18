@@ -62,6 +62,50 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: "nivaran",
+    index: "19",
+    categories: [
+      "ai",
+      "fullstack"
+    ],
+    title: "Nivaran",
+    tagline: "Bilingual grievance preparation for citizens",
+    description: "A civic-tech prototype that turns a Hindi or English conversation into a reviewable PF transfer grievance. An Expo app combines typed input, voice, guided questions, and sample-document evidence around confirmed facts.",
+    tier: "tier1",
+    badge: "AI Prototype",
+    badgeVariant: "ai",
+    layout: "hero",
+    stats: [
+      {
+        value: "2",
+        label: "Languages"
+      },
+      {
+        value: "2",
+        label: "App platforms"
+      },
+      {
+        value: "4",
+        label: "Fact states"
+      }
+    ],
+    bullets: [
+      "Shared TypeScript core for facts, conflicts, readiness, and draft review",
+      "Gemini Live voice and document proposals require citizen confirmation",
+      "SQLite on Android and localStorage on web preserve draft revisions",
+      "Demo scope: PF transfer preparation with simulated filing"
+    ],
+    stack: [
+      "Next.js",
+      "Expo",
+      "TypeScript",
+      "Gemini Live",
+      "SQLite"
+    ],
+    githubUrl: "https://github.com/milliondreamsblog/nivaran",
+    image: "/case-studies/nivaran/dashboard.png"
+  },
+  {
     id: "buildinfra",
     index: "01",
     categories: ["fullstack", "backend"],
