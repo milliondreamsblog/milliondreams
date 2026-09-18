@@ -99,6 +99,32 @@ export const gangatiram: CaseStudy = {
       why: "Image uploads are resized and converted to JPEG before storage. PDFs retain their original bytes."
     }
   ],
+  dataModel: {
+    intro: "Book orders and lamp offerings are separate records because delivery and dedication need different information. Both keep payment-proof metadata and notification status. These are submission records for staff review, not evidence that a payment has been automatically verified.",
+    diagram: {
+      entities: [
+        {
+          name: "book_orders",
+          fields: [
+            "id, name, phone",
+            "address, pincode, country, state",
+            "screenshot_filename",
+            "screenshot_mime, screenshot"
+          ]
+        },
+        {
+          name: "lamp_offerings",
+          fields: [
+            "id, name_on_lamp, dedication",
+            "email, whatsapp",
+            "screenshot_filename",
+            "screenshot, email_sent"
+          ]
+        }
+      ],
+      relations: []
+    }
+  },
   decisions: [],
   funFacts: []
 };
