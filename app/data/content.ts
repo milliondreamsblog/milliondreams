@@ -49,6 +49,12 @@ Refactored inefficient training pipelines, directly reducing compute spend by $5
 
 A civic-tech prototype that turns a Hindi or English conversation into a reviewable PF transfer grievance. An Expo app combines typed input, voice, guided questions, and sample-document evidence around confirmed facts.
 
+### Ganga Tiram
+**Next.js, React, TypeScript, Neon Postgres, Framer Motion, Sharp**
+[Case study](/projects/gangatiram) | [GitHub](https://github.com/milliondreamsblog/gangatiramV2) | [Live](https://gangatiram.in)
+
+A website for the Ganga Tiram book and FACE mission, with a rotatable book, river chapters, UPI order submissions, and Dev Deepawali lamp dedications. A private admin panel tracks orders, payment evidence, and offerings.
+
 ### Bawarchie – AI-Powered QR Restaurant Ordering System
 **Next.js, Razorpay, PostgreSQL**
 [GitHub](https://github.com/milliondreamsblog/orderbyqr) | [Live](https://www.bawarchie.com/)
