@@ -67,7 +67,38 @@ export const gangatiram: CaseStudy = {
       ]
     }
   },
-  stack: [],
+  stack: [
+    {
+      tech: "Next.js 16 + React 19",
+      role: "Public site and admin application",
+      why: "App Router pages and API routes keep the content, purchase steps, and order management in one deployment."
+    },
+    {
+      tech: "TypeScript",
+      role: "Content and request handling",
+      why: "The book, navigation, and river chapters live in versioned content modules alongside the forms that use them."
+    },
+    {
+      tech: "Tailwind CSS 4",
+      role: "Responsive page styling",
+      why: "Shared spacing and typography carry the same design through long editorial pages and compact checkout steps."
+    },
+    {
+      tech: "Framer Motion + Lenis",
+      role: "Animation and scrolling",
+      why: "Section transitions and smooth scrolling support the river journey and interactive book presentation."
+    },
+    {
+      tech: "Neon Postgres",
+      role: "Orders and lamp offerings",
+      why: "The serverless driver lets the Next.js routes persist submissions without a separate database service layer."
+    },
+    {
+      tech: "Sharp",
+      role: "Payment-proof image compression",
+      why: "Image uploads are resized and converted to JPEG before storage. PDFs retain their original bytes."
+    }
+  ],
   decisions: [],
   funFacts: []
 };
