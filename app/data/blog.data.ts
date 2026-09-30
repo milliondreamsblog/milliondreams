@@ -11,6 +11,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    id: "launch-film-in-code",
+    date: "SEP 30, 2026",
+    category: "MOTION",
+    categoryColor: "#d98620",
+    title: "It took six versions to make a 30-second film in code.",
+    description: `Every version of Elvyn Chess's launch film, made with Claude Code and Opus 5.5, and what the model is good and bad at as a motion designer.`,
+    image: "/Blog/launch-film-in-code/v51.jpg",
+    url: "/blog/launch-film-in-code",
+  },
+  {
     id: "ddos-lesson",
     date: "APR 2025",
     category: "ENGINEERING",
